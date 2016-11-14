@@ -1,0 +1,128 @@
+@import "colors"
+
+/**
+/*  General
+/**
+
+html
+  position: relative
+  min-height: 100vh
+  padding-bottom: 100px
+  font-family: sans-serif
+  -ms-text-size-adjust: 100%
+  -webkit-text-size-adjust: 100%
+  box-sizing: border-box
+  -ms-overflow-style: scrollbar
+  -webkit-tap-highlight-color: transparent
+
+body
+  font-family: "Source Sans Pro", sans-serif
+  color: #373a3c
+  background-color: #fff
+
+.pull-xs-right
+  float: right !important
+
+.btn-primary
+  background: $primaryButtonBackground !important
+  border: none
+  color: $primaryButtonColor
+  border: $primaryButtonBackgroundHover
+
+  &:hover
+    background: $primaryButtonBackgroundHover !important
+
+.container
+  &.page
+    margin-top: 1.5rem
+
+/**
+/*  Navigation bar
+/**
+
+.navbar
+  margin-bottom: 0
+
+  .navbar-brand
+    font-family: "Titillium Web", sans-serif
+    font-size: 2.5rem !important
+    margin-right: 2rem !important
+    color: $name !important
+    float: left
+
+
+  .nav-link
+    color: rgba(0, 0, 0, 0.3)
+    background: none !important
+    font-size: 16px
+
+    &.active, &:hover
+      color: $navigationActive
+
+/**
+/*  Table Style
+/**
+
+.action
+  margin: 0 0 0 1em
+
+  &.action-edit
+
+
+
+  &.action-delete
+
+
+/**
+/*  Banner
+/**
+
+.banner
+  background: $color-green
+  color: $color-white
+  box-shadow: inset 0 8px 8px -8px rgba(0, 0, 0, 0.3), inset 0 -8px 8px -8px
+  margin: 0 0 30px
+
+  .logo-font
+    font-family: "Titillium Web", sans-serif
+    text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3)
+    font-weight: 700 !important
+    text-align: center
+    font-size: 3.5rem
+    padding-bottom: 0.4em
+
+  p
+    color: #fff
+    text-align: center
+    font-size: 1.5rem
+    font-weight: 300 !important
+    margin: 0 0 10px
+
+
+/**
+/*  Footer
+/**
+
+footer
+  background: $footerbg
+  margin-top: 3rem
+  padding: 1rem 0
+  position: absolute
+  bottom: 0
+  width: 100%
+
+  .logo-font
+      font-family: "Titillium Web", sans-serif
+      font-weight: 700 !important
+      color: $name
+      line-height: 5rem
+
+  span
+    font-size: 1.2rem
+
+
+/**
+/*  Login
+/**
+
+@import "login"

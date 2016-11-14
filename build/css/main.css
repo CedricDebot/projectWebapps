@@ -1,0 +1,119 @@
+/** */
+/*  Primary button colors */
+/** */
+/** */
+/*  General */
+/** */
+html {
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 100px;
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  box-sizing: border-box;
+  -ms-overflow-style: scrollbar;
+  -webkit-tap-highlight-color: transparent; }
+
+body {
+  font-family: "Source Sans Pro", sans-serif;
+  color: #373a3c;
+  background-color: #fff; }
+
+.pull-xs-right {
+  float: right !important; }
+
+.btn-primary {
+  background: #5fb760 !important;
+  border: none;
+  color: #fff;
+  border: #449d44; }
+  .btn-primary:hover {
+    background: #449d44 !important; }
+
+.container.page {
+  margin-top: 1.5rem; }
+
+/** */
+/*  Navigation bar */
+/** */
+.navbar {
+  margin-bottom: 0; }
+  .navbar .navbar-brand {
+    font-family: "Titillium Web", sans-serif;
+    font-size: 2.5rem !important;
+    margin-right: 2rem !important;
+    color: #5fb760 !important;
+    float: left; }
+  .navbar .nav-link {
+    color: rgba(0, 0, 0, 0.3);
+    background: none !important;
+    font-size: 16px; }
+    .navbar .nav-link.active, .navbar .nav-link:hover {
+      color: #333; }
+
+/** */
+/*  Table Style */
+/** */
+.action {
+  margin: 0 0 0 1em; }
+
+/** */
+/*  Banner */
+/** */
+.banner {
+  background: #5fb760;
+  color: #fff;
+  box-shadow: inset 0 8px 8px -8px rgba(0, 0, 0, 0.3), inset 0 -8px 8px -8px;
+  margin: 0 0 30px; }
+  .banner .logo-font {
+    font-family: "Titillium Web", sans-serif;
+    text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+    font-weight: 700 !important;
+    text-align: center;
+    font-size: 3.5rem;
+    padding-bottom: 0.4em; }
+  .banner p {
+    color: #fff;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 300 !important;
+    margin: 0 0 10px; }
+
+/** */
+/*  Footer */
+/** */
+footer {
+  background: #f3f3f3;
+  margin-top: 3rem;
+  padding: 1rem 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%; }
+  footer .logo-font {
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 700 !important;
+    color: #5fb760;
+    line-height: 5rem; }
+  footer span {
+    font-size: 1.2rem; }
+
+/** */
+/*  Login */
+/** */
+.form-control-lg, .input-group-lg > .form-control, .input-group-lg > .input-group-addon, .input-group-lg > .input-group-btn > .btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 1.25rem;
+  border-radius: 0.3rem; }
+
+.form-group {
+  margin-bottom: 1rem; }
+
+form > fieldset {
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: 0; }
+
+.form-header {
+  margin-bottom: 2rem !important; }

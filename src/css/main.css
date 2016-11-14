@@ -1,0 +1,15 @@
+/** */
+/*  Navigation bar */
+/** */
+.navbar-brand {
+  font-family: "Titillium Web", sans-serif;
+  font-size: 1.5rem !important;
+  padding-top: 0rem !important;
+  margin-right: 2rem !important;
+  color: #5fb760 !important; }
+
+.navbar-light .navbar-nav .nav-link {
+  color: rgba(0, 0, 0, 0.3); }
+
+.pull-xs-right {
+  float: right !important; }

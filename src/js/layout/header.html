@@ -1,0 +1,96 @@
+<nav class="navbar navbar-light">
+  <div class="container">
+
+    <a class="navbar-brand"
+      ui-sref="app.home"
+      ng-bind="::$ctrl.appName | lowercase">
+    </a>
+
+    <!-- Show this for logged out users -->
+    <ul class="nav navbar-nav pull-xs-right" show-authed="true">
+      <li class="nav-item">
+        <a class="nav-link"
+          ui-sref-active="active"
+          ui-sref="app.home">
+          <i class="ion-ios-home"></i>
+          &nbsp;Home
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link"
+          ui-sref-active="active"
+          ui-sref="app.telephone">
+          <i class="ion-ios-telephone"></i>
+          &nbsp;Telefonie
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link"
+          ui-sref-active="active"
+          ui-sref="app.electricity">
+          <i class="ion-ios-bolt"></i>
+          &nbsp;Elektriciteit
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link"
+          ui-sref-active="active"
+          ui-sref="app.carinsurance">
+          <i class="ion-android-car"></i>
+          &nbsp;Autoverzekering
+        </a>
+      </li>
+
+      <li role="presentation" class="dropdown nav-item">
+        <a class="dropdown-toggle nav-link"
+          data-toggle="dropdown"
+          role="button"
+          aria-haspopup="true"
+          aria-expanded="false">
+
+          <i class="ion-ios-gear"></i>
+          &nbsp;Settings <span class="caret"></span>
+        </a>
+
+        <ul class="dropdown-menu">
+          <li class="nav-item">
+            <a class="nav-link"
+              ui-sref-active="active"
+              ui-sref="app.settings">
+              <i class="ion-ios-gear"></i>
+              &nbsp;Settings
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link"
+              ui-sref-active="active"
+              ui-sref="app.login"
+              ng-click="$ctrl.logout()">
+              <i class="ion-log-out"></i>
+              &nbsp;Logout
+            </a>
+          </li>
+
+        </ul>
+      </li>
+    </ul>
+
+    <!-- Show when logged out -->
+    <ul class="nav navbar-nav pull-xs-right" show-authed="false">
+      <li class="nav-item">
+        <a class="nav-link"
+          ui-sref-active="active"
+          ui-sref="app.login">
+          <i class="ion-log-in"></i>
+          &nbsp;Login
+        </a>
+      </li>
+    </ul>
+
+
+  </div>
+</nav>
