@@ -12,9 +12,6 @@ import './layout';
 import './components';
 import './home';
 import './services';
-import './telephone';
-import './electricity';
-import './carinsurance';
 import './auth';
 import './settings';
 
@@ -27,9 +24,6 @@ const requires = [
   'app.components',
   'app.home',
   'app.services',
-  'app.telephone',
-  'app.electricity',
-  'app.carinsurance',
   'app.auth',
   'app.settings'
 ];
