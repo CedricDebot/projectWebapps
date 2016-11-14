@@ -1,0 +1,25 @@
+.navbar {
+    text-align: right;
+    float: right;
+    margin-right: -110px;
+    margin-top: 90px;
+    width: 450px;
+    height: 50px;
+
+    ul {
+      list-style-type: none;
+
+      li {
+        display: inline-block;
+
+        a {
+          text-decoration: none;
+          color: $color-white;
+          display: block;
+          font-size: 20px;
+          padding-right: 25px;
+          padding-top: 5px;
+        }
+      }
+    }
+}

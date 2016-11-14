@@ -1,96 +1,84 @@
-<nav class="navbar navbar-light">
-  <div class="container">
-
-    <a class="navbar-brand"
-      ui-sref="app.home"
-      ng-bind="::$ctrl.appName | lowercase">
+<header>
+  <div class="logo">
+    <img src="../images/logo.png" alt="logo"/>
+  </div>
+  <div class="login-link">
+    <!--ik ben een dj link (niet-ingelogde gebruiker) -->
+    <a ui-sref="app.auth"
+      show-authed="false">
+      Ik ben een dj
     </a>
 
-    <!-- Show this for logged out users -->
-    <ul class="nav navbar-nav pull-xs-right" show-authed="true">
-      <li class="nav-item">
-        <a class="nav-link"
-          ui-sref-active="active"
-          ui-sref="app.home">
-          <i class="ion-ios-home"></i>
-          &nbsp;Home
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link"
-          ui-sref-active="active"
-          ui-sref="app.telephone">
-          <i class="ion-ios-telephone"></i>
-          &nbsp;Telefonie
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link"
-          ui-sref-active="active"
-          ui-sref="app.electricity">
-          <i class="ion-ios-bolt"></i>
-          &nbsp;Elektriciteit
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link"
-          ui-sref-active="active"
-          ui-sref="app.carinsurance">
-          <i class="ion-android-car"></i>
-          &nbsp;Autoverzekering
-        </a>
-      </li>
-
-      <li role="presentation" class="dropdown nav-item">
-        <a class="dropdown-toggle nav-link"
-          data-toggle="dropdown"
-          role="button"
-          aria-haspopup="true"
-          aria-expanded="false">
-
-          <i class="ion-ios-gear"></i>
-          &nbsp;Settings <span class="caret"></span>
-        </a>
-
-        <ul class="dropdown-menu">
-          <li class="nav-item">
-            <a class="nav-link"
-              ui-sref-active="active"
-              ui-sref="app.settings">
-              <i class="ion-ios-gear"></i>
-              &nbsp;Settings
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link"
-              ui-sref-active="active"
-              ui-sref="app.login"
-              ng-click="$ctrl.logout()">
-              <i class="ion-log-out"></i>
-              &nbsp;Logout
-            </a>
-          </li>
-
-        </ul>
-      </li>
-    </ul>
-
-    <!-- Show when logged out -->
-    <ul class="nav navbar-nav pull-xs-right" show-authed="false">
-      <li class="nav-item">
-        <a class="nav-link"
-          ui-sref-active="active"
-          ui-sref="app.login">
-          <i class="ion-log-in"></i>
-          &nbsp;Login
-        </a>
-      </li>
-    </ul>
-
-
+    <!-- log out (ingelogde gebruiker)-->
+    <a show-authed="true">
+      Uitloggen
+    </a>
   </div>
-</nav>
+
+  <div class="navigation">
+  <nav class="navbar">
+    <!-- nav voor niet-ingelogde gebruikers -->
+      <ul show-authed="false">
+        <li>
+          <a class="nav-link"
+            ui-sref-active="active"
+            ui-sref="app.home">
+            Home
+          </a>
+        </li>
+        <li>
+          <a class="nav-link"
+            ui-sref-active="active"
+            ui-sref="app.djs">
+            DJ's
+          </a>
+        </li>
+        <li>
+          <a class="nav-link"
+            ui-sref-active="active"
+            ui-sref="app.contact">
+            Contact
+          </a>
+        </li>
+      </ul>
+
+      <ul show-authed="true">
+        <li>
+          <a class="nav-link"
+            ui-sref-active="active"
+            ui-sref="app.home">
+            Home
+          </a>
+        </li>
+        <li>
+          <a class="nav-link"
+            ui-sref-active="active"
+            ui-sref="app.djs">
+            DJ's
+          </a>
+        </li>
+        <li>
+          <a class="nav-link"
+            ui-sref-active="active"
+            ui-sref="app.profile">
+            Profiel
+          </a>
+        </li>
+        <li>
+          <a class="nav-link"
+            ui-sref-active="active"
+            ui-sref="app.messages">
+            Berichten
+          </a>
+        </li>
+        <li>
+          <a class="nav-link"
+            ui-sref-active="active"
+            ui-sref="app.contact">
+            Contact
+          </a>
+        </li>
+      </ul>
+  </nav>
+</div>
+</header>

@@ -14,7 +14,7 @@ var sass          = require('gulp-sass');
 // Where our files are located
 var jsFiles   = "src/js/**/*.js";
 var viewFiles = "src/js/**/*.html";
-var sassFiles = "src/sass/**/*.sass";
+var sassFiles = "src/sass/**/*.scss";
 
 var interceptErrors = function() {
   var args = Array.prototype.slice.call(arguments);
@@ -43,7 +43,7 @@ gulp.task('browserify', ['views'], function() {
 });
 
 gulp.task('sass', function () {
-  return gulp.src('./src/sass/**/*.sass')
+  return gulp.src('./src/sass/**/*.scss')
     .pipe(sass.sync().on('error', sass.logError))
     .pipe(gulp.dest('./build/css'));
 });
