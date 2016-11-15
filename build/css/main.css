@@ -1,6 +1,9 @@
 /** */
 /*  Primary button colors */
 /** */
+/** */
+/*  Primary button colors */
+/** */
 .navbar {
   text-align: right;
   float: right;
@@ -83,3 +86,44 @@ footer {
       float: right;
       margin-top: 15px;
       margin-right: 10px; }
+
+body {
+  background-color: #f3f3f3;
+  align-items: center; }
+  body .form_search {
+    width: 75%;
+    height: auto;
+    margin-left: 12.5%;
+    margin-top: 2%;
+    background-color: #fff; }
+    body .form_search .form_header {
+      width: 75%;
+      margin-left: 12.5%;
+      margin-bottom: 2rem !important;
+      text-align: center; }
+    body .form_search form {
+      width: 75%;
+      margin-left: 12.5%; }
+      body .form_search form .form-group {
+        padding-top: 1rem; }
+      body .form_search form fieldset {
+        padding-right: 5px; }
+        body .form_search form fieldset p {
+          text-align: right; }
+        body .form_search form fieldset input {
+          width: 40%;
+          height: 30px;
+          border-radius: 2px;
+          border: 1px solid black;
+          display: block;
+          float: right;
+          padding-left: 1%;
+          margin-right: 20%; }
+      body .form_search form button {
+        margin-left: 50px;
+        background-color: #449d44; }
+  body .in_the_picture {
+    background-color: #fff;
+    width: 75%;
+    margin-left: 12.5%;
+    text-align: center; }

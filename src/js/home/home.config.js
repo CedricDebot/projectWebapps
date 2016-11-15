@@ -8,11 +8,11 @@ function HomeConfig($stateProvider) {
     controllerAs: '$ctrl',
     templateUrl: 'home/home.html',
     title: 'Home',
-    resolve: {
+    /*resolve: {
       auth: function(User) {
         return User.ensureAuthIs(true);
       }
-    }
+    }*/
   });
 
 }
