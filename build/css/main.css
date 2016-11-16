@@ -145,7 +145,7 @@ body {
   .form_auth form {
     width: 75%;
     margin-left: 12.5%; }
-    .form_auth form .form-group {
+    .form_auth form .form_group {
       padding-top: 1rem; }
     .form_auth form fieldset {
       padding-right: 5px; }
@@ -161,5 +161,46 @@ body {
         padding-left: 1%;
         margin-right: 20%; }
     .form_auth form button {
+      margin-left: 50px;
+      background-color: #449d44; }
+
+.form_contact {
+  width: 75%;
+  height: auto;
+  margin-left: 12.5%;
+  margin-top: 2%;
+  background-color: #fff; }
+  .form_contact .form_header {
+    width: 75%;
+    margin-left: 12.5%;
+    margin-bottom: 2rem !important;
+    text-align: center; }
+  .form_contact form {
+    width: 75%;
+    margin-left: 12.5%; }
+    .form_contact form .form_group {
+      padding-top: 1rem; }
+    .form_contact form fieldset {
+      padding-right: 5px; }
+      .form_contact form fieldset p {
+        text-align: right; }
+      .form_contact form fieldset input {
+        width: 40%;
+        height: 30px;
+        border-radius: 2px;
+        border: 1px solid black;
+        display: block;
+        float: right;
+        padding-left: 1%;
+        margin-right: 20%; }
+      .form_contact form fieldset textarea {
+        width: 40%;
+        border-radius: 2px;
+        border: 1px solid black;
+        display: block;
+        float: right;
+        padding-left: 1%;
+        margin-right: 20%; }
+    .form_contact form button {
       margin-left: 50px;
       background-color: #449d44; }
