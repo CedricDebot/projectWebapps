@@ -87,6 +87,9 @@ footer {
       margin-top: 15px;
       margin-right: 10px; }
 
+/** */
+/*  Primary button colors */
+/** */
 body {
   background-color: #f3f3f3;
   align-items: center; }
@@ -127,3 +130,36 @@ body {
     width: 75%;
     margin-left: 12.5%;
     text-align: center; }
+
+.form_auth {
+  width: 75%;
+  height: auto;
+  margin-left: 12.5%;
+  margin-top: 2%;
+  background-color: #fff; }
+  .form_auth .form_header {
+    width: 75%;
+    margin-left: 12.5%;
+    margin-bottom: 2rem !important;
+    text-align: center; }
+  .form_auth form {
+    width: 75%;
+    margin-left: 12.5%; }
+    .form_auth form .form-group {
+      padding-top: 1rem; }
+    .form_auth form fieldset {
+      padding-right: 5px; }
+      .form_auth form fieldset p {
+        text-align: right; }
+      .form_auth form fieldset input {
+        width: 40%;
+        height: 30px;
+        border-radius: 2px;
+        border: 1px solid black;
+        display: block;
+        float: right;
+        padding-left: 1%;
+        margin-right: 20%; }
+    .form_auth form button {
+      margin-left: 50px;
+      background-color: #449d44; }
