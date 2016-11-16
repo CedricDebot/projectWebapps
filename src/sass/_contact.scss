@@ -1,4 +1,4 @@
-.form_auth {
+.form_contact {
   width: 75%;
   height: auto;
   margin-left: 12.5%;
@@ -32,6 +32,16 @@
       input {
         width: 40%;
         height: 30px;
+        border-radius: 2px;
+        border: 1px solid black;
+        display: block;
+        float: right;
+        padding-left: 1%;
+        margin-right: 20%;
+      }
+
+      textarea {
+        width: 40%;
         border-radius: 2px;
         border: 1px solid black;
         display: block;
