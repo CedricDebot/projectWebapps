@@ -1,0 +1,14 @@
+.profile {
+  width: 75%;
+  height: auto;
+  margin-left: 12.5%;
+  margin-top: 2%;
+  background-color: $color-white;
+
+  .profile_pic {
+    width: 250px;
+    height: 250px;
+    float: left;
+    margin: 2%;
+  }
+}

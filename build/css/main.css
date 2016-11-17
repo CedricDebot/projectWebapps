@@ -204,3 +204,15 @@ body {
     .form_contact form button {
       margin-left: 50px;
       background-color: #449d44; }
+
+.profile {
+  width: 75%;
+  height: auto;
+  margin-left: 12.5%;
+  margin-top: 2%;
+  background-color: #fff; }
+  .profile .profile_pic {
+    width: 250px;
+    height: 250px;
+    float: left;
+    margin: 2%; }
