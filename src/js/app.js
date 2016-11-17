@@ -15,6 +15,7 @@ import './services';
 import './auth';
 import './settings';
 import './contact';
+import './profile';
 
 // Create and bootstrap application
 const requires = [
@@ -26,7 +27,8 @@ const requires = [
   'app.services',
   'app.auth',
   'app.settings',
-  'app.contact'
+  'app.contact',
+  'app.profile'
 ];
 
 // Mount on window for testing
