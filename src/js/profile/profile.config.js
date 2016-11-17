@@ -10,4 +10,4 @@ function ProfileConfig($stateProvider) {
   });
 }
 
-export default ProfileConfig;
+export default ProfileConfig; 
