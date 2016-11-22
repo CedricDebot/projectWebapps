@@ -1,0 +1,17 @@
+@import "_colors.scss";
+
+.overview {
+  width: 75%;
+  height: auto;
+  margin-left: 12.5%;
+  margin-top: 2%;
+  background-color: $color-white;
+
+  .overview_dj {
+    width: 25%;
+    height: auto;
+    margin-left: 5%;
+    margin-top: 5%;
+    background-color: $color-lightGray;
+  }
+}
