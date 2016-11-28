@@ -3,11 +3,19 @@ function ProfileConfig($stateProvider) {
 
   $stateProvider
   .state('app.profile', {
-    url: '/profile',
+    url: '/djs/:id',
     controller: 'ProfileCtrl as $ctrl',
     templateUrl: 'profile/profile.html',
-    title: "profile"
+    //title: "profile",
+    resolve: {
+      profile: function(Profile, $state, $stateParams) {
+        return Profile.get($stateParams.id).then(
+          (profile) => profile,
+          (err) => $state.go('app.overview'),
+        );
+      }
+     }
   });
 }
 
-export default ProfileConfig; 
+export default ProfileConfig;

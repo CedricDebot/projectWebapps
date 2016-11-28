@@ -36377,7 +36377,7 @@ _angular2.default.bootstrap(document, ['app'], {
   strictDi: true
 });
 
-},{"./auth":7,"./components":8,"./config/app.config":11,"./config/app.constants":12,"./config/app.run":13,"./config/app.templates":14,"./contact":18,"./home":21,"./layout":24,"./overview":25,"./profile":28,"./services":31,"./settings":34,"angular":3,"angular-ui-router":1}],5:[function(require,module,exports){
+},{"./auth":7,"./components":8,"./config/app.config":11,"./config/app.constants":12,"./config/app.run":13,"./config/app.templates":14,"./contact":18,"./home":21,"./layout":24,"./overview":25,"./profile":28,"./services":31,"./settings":35,"angular":3,"angular-ui-router":1}],5:[function(require,module,exports){
 'use strict';
 
 AuthConfig.$inject = ["$stateProvider"];
@@ -36628,7 +36628,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var AppConstants = {
-  api: 'http://localhost:3000/api',
+  api: 'http://localhost:3000',
   jwtKey: 'jwtToken',
   appName: 'TuneIn'
 };
@@ -36680,9 +36680,9 @@ angular.module("templates", []).run(["$templateCache", function ($templateCache)
   $templateCache.put("home/home.html", "<body>\n  <div class=\"form_search\">\n    <div>\n      <h1 class=\"form_header\">Zoek de DJ die bij u past</h1>\n      <p class=\"form_header\">Vul de categorieën in die u wenst en laat ons zoeken naar dé DJ die u zoekt!</p>\n      <form>\n        <fieldset class=\"form-group\">\n          <p>Genre:\n            <input type=\"text\" placeholder=\"genre\"/>\n          </p>\n        </fieldset>\n\n        <fieldset class=\"form-group\">\n          <p>Regio:\n            <input type=\"text\" placeholder=\"Regio\"/>\n          </p>\n        </fieldset>\n\n        <fieldset class=\"form-group\">\n          <p>Prijs:\n            <input type=\"text\" placeholder=\"prijs\"/>\n          </p>\n        </fieldset>\n        <button type=\"submit\">Zoek</button>\n      </form>\n    </div>\n  </div>\n\n  <div class=\"in_the_picture\">\n    <h1>Artiesten in de kijker</h1>\n  </div>\n  <div class=\"form_search\">\n    <h1 class=\"form_header\">Zoek een DJ bij naam</h1>\n    <p class=form_header>Vul de naam in van een DJ die je wenst te boeken voor jouw feestje en wij brengen jouw meteen in contact!</p>\n    <form>\n      <fieldset class=\"form-group\">\n        <p>Naam:\n        <input type=\"text\" placeholder=\"naam\"/>\n      </p>\n      </fieldset>\n      <button type=\"submit\">Zoek</button>\n    </form>\n  </div>\n</body>\n");
   $templateCache.put("layout/app-view.html", "<app-header></app-header>\n\n<div ui-view></div>\n\n<app-footer></app-footer>\n");
   $templateCache.put("layout/footer.html", "<footer>\n  <div class=\"footer_content\">\n    <img src=\"\" alt=\"logo\"/>\n    <form>\n      <input type=\"text\" placeholder=\"dj naam\"/>\n      <button type=\"submit\">zoek</button>\n    </form>\n    <div class=\"footer_menu\">\n      <a class=\"nav-link\"\n        ui-sref-active=\"active\"\n        ui-sref=\"app.contact\">\n        Contact\n      </a>\n  </div>\n  </div>\n  <div class=\"footer_poweredBy\">\n    <span class=\"attribution\">\n      &copy; {{::$ctrl.date | date:\'yyyy\'}} {{$ctrl.appName}}.\n      powered by Cédric Debot.\n    </span>\n  </div>\n</footer>\n");
-  $templateCache.put("layout/header.html", "<header>\n  <div class=\"logo\">\n    <img src=\"src/images/logo.png\" alt=\"logo\"/>\n  </div>\n  <div class=\"login-link\">\n    <!--ik ben een dj link (niet-ingelogde gebruiker) -->\n    <a ui-sref=\"app.login\"\n      show-authed=\"false\">\n      Ik ben een dj\n    </a>\n\n    <!-- log out (ingelogde gebruiker)-->\n    <a show-authed=\"true\">\n      Uitloggen\n    </a>\n  </div>\n\n  <div class=\"navigation\">\n  <nav class=\"navbar\">\n    <!-- nav voor niet-ingelogde gebruikers -->\n      <ul show-authed=\"false\">\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.home\">\n            Home\n          </a>\n        </li>\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.djs\">\n            DJ\'s\n          </a>\n        </li>\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.contact\">\n            Contact\n          </a>\n        </li>\n      </ul>\n\n      <ul show-authed=\"true\">\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.home\">\n            Home\n          </a>\n        </li>\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.djs\">\n            DJ\'s\n          </a>\n        </li>\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.profile\">\n            Profiel\n          </a>\n        </li>\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.messages\">\n            Berichten\n          </a>\n        </li>\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.contact\">\n            Contact\n          </a>\n        </li>\n      </ul>\n  </nav>\n</div>\n</header>\n");
+  $templateCache.put("layout/header.html", "<header>\n  <div class=\"logo\">\n    <img src=\"src/images/logo.png\" alt=\"logo\"/>\n  </div>\n  <div class=\"login-link\">\n    <!--ik ben een dj link (niet-ingelogde gebruiker) -->\n    <a ui-sref=\"app.login\"\n      show-authed=\"false\">\n      Ik ben een dj\n    </a>\n\n    <!-- log out (ingelogde gebruiker)-->\n    <a show-authed=\"true\">\n      Uitloggen\n    </a>\n  </div>\n\n  <div class=\"navigation\">\n  <nav class=\"navbar\">\n    <!-- nav voor niet-ingelogde gebruikers -->\n      <ul show-authed=\"false\">\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.home\">\n            Home\n          </a>\n        </li>\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.overview\">\n            DJ\'s\n          </a>\n        </li>\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.contact\">\n            Contact\n          </a>\n        </li>\n      </ul>\n\n      <ul show-authed=\"true\">\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.home\">\n            Home\n          </a>\n        </li>\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.djs\">\n            DJ\'s\n          </a>\n        </li>\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.profile\">\n            Profiel\n          </a>\n        </li>\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.messages\">\n            Berichten\n          </a>\n        </li>\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.contact\">\n            Contact\n          </a>\n        </li>\n      </ul>\n  </nav>\n</div>\n</header>\n");
   $templateCache.put("overview/overview.html", "<div class=\"overview\">\n  <div class=\"overview_dj\">\n  </div>\n</div>\n");
-  $templateCache.put("profile/profile.html", "<div class=\"profile\">\n  <div class=\"profile_pic\">\n    <img src=\"\" alt=\"profiel foto\">\n  </div>\n\n  <div class=\"profile_genres\">\n    <h2>Genres</h2>\n    <ul>\n      <li>Genre 1</li>\n      <li>Genre 2</li>\n      <li>Genre 3</li>\n      <li>Genre 4</li>\n    </ul>\n  </div>\n\n  <div class=\"profile_references\">\n    <h2>Referenties</h2>\n    <ul>\n      <li>referentie 1</li>\n      <li>referentie 2</li>\n      <li>referentie 3</li>\n      <li>referentie 4</li>\n    </ul>\n  </div>\n\n    <div class=\"profile_bio\">\n      <h2>BIO</h2>\n      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla imperdiet non dolor at sollicitudin. Fusce porta vestibulum ex. Integer interdum nibh odio, ac aliquet purus gravida in. Praesent dolor magna, tincidunt eget ullamcorper a, dictum at lacus. Aliquam erat volutpat. Duis eget interdum sapien. Vestibulum finibus eros enim, ut pellentesque augue congue sit amet. Mauris porttitor urna eget dolor aliquam iaculis. Vestibulum auctor ante dolor. Pellentesque quis aliquam ligula. Morbi enim mi, dapibus elementum arcu vel, faucibus gravida sapien. Donec volutpat neque eu euismod cursus. Donec felis ligula, hendrerit eu rutrum mollis, molestie a lorem. Sed vehicula lacus quis sapien cursus, id sagittis erat pharetra.\n\n  Nunc quis tellus est. Donec sit amet nibh nec urna gravida gravida eget ut nulla. Nunc sed lacus libero. In in nunc convallis odio cursus vulputate non ornare ipsum. Proin facilisis ante sit amet convallis iaculis. Fusce congue congue mi sed aliquam. Curabitur a ipsum id leo mattis venenatis a eu turpis. Integer volutpat vel felis sit amet laoreet. Suspendisse ac consequat nibh. Donec sapien lacus, ullamcorper ut semper id, egestas et massa.\n\n  Ut at augue aliquam, lacinia tellus sed, porttitor justo. Donec ultrices diam a commodo tempus. Nunc porttitor laoreet bibendum. Duis vel mauris sodales, facilisis purus sit amet, pellentesque mauris. Nunc euismod ante leo. Nullam consectetur lacus in nulla suscipit blandit. Praesent pulvinar turpis eu odio suscipit sodales a ac nisl. Curabitur ante justo, sollicitudin eu est vel, tempus vulputate nunc. Cras gravida, neque porttitor vulputate hendrerit, diam metus volutpat justo, non commodo libero magna vulputate purus. Vestibulum sit amet efficitur sapien. In euismod accumsan nulla, nec venenatis sapien fermentum quis. Donec sollicitudin enim magna, mattis pretium turpis consequat ut.\n    </p>\n    </div>\n    \n  <div class=\"profile_button\">\n    <button>Boeken</button>\n  </div>\n</div>\n");
+  $templateCache.put("profile/profile.html", "<div class=\"profile\">\n\n  <div class=\"profile_pic\">\n    <img src=\"\" alt=\"profiel foto\">\n  </div>\n\n  <div class=\"profile_genres\">\n    <h1 ng-bind=\"::$ctrl.profile.djName\"></h1>\n    <h2>Genres</h2>\n    <ul>\n      <li>Genre 1</li>\n      <li>Genre 2</li>\n      <li>Genre 3</li>\n      <li>Genre 4</li>\n    </ul>\n  </div>\n\n  <div class=\"profile_references\">\n    <h2>Referenties</h2>\n    <ul>\n      <li>referentie 1</li>\n      <li>referentie 2</li>\n      <li>referentie 3</li>\n      <li>referentie 4</li>\n    </ul>\n  </div>\n\n    <div class=\"profile_bio\">\n      <h2>BIO</h2>\n      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla imperdiet non dolor at sollicitudin. Fusce porta vestibulum ex. Integer interdum nibh odio, ac aliquet purus gravida in. Praesent dolor magna, tincidunt eget ullamcorper a, dictum at lacus. Aliquam erat volutpat. Duis eget interdum sapien. Vestibulum finibus eros enim, ut pellentesque augue congue sit amet. Mauris porttitor urna eget dolor aliquam iaculis. Vestibulum auctor ante dolor. Pellentesque quis aliquam ligula. Morbi enim mi, dapibus elementum arcu vel, faucibus gravida sapien. Donec volutpat neque eu euismod cursus. Donec felis ligula, hendrerit eu rutrum mollis, molestie a lorem. Sed vehicula lacus quis sapien cursus, id sagittis erat pharetra.\n\n  Nunc quis tellus est. Donec sit amet nibh nec urna gravida gravida eget ut nulla. Nunc sed lacus libero. In in nunc convallis odio cursus vulputate non ornare ipsum. Proin facilisis ante sit amet convallis iaculis. Fusce congue congue mi sed aliquam. Curabitur a ipsum id leo mattis venenatis a eu turpis. Integer volutpat vel felis sit amet laoreet. Suspendisse ac consequat nibh. Donec sapien lacus, ullamcorper ut semper id, egestas et massa.\n\n  Ut at augue aliquam, lacinia tellus sed, porttitor justo. Donec ultrices diam a commodo tempus. Nunc porttitor laoreet bibendum. Duis vel mauris sodales, facilisis purus sit amet, pellentesque mauris. Nunc euismod ante leo. Nullam consectetur lacus in nulla suscipit blandit. Praesent pulvinar turpis eu odio suscipit sodales a ac nisl. Curabitur ante justo, sollicitudin eu est vel, tempus vulputate nunc. Cras gravida, neque porttitor vulputate hendrerit, diam metus volutpat justo, non commodo libero magna vulputate purus. Vestibulum sit amet efficitur sapien. In euismod accumsan nulla, nec venenatis sapien fermentum quis. Donec sollicitudin enim magna, mattis pretium turpis consequat ut.\n    </p>\n    </div>\n\n  <div class=\"profile_button\">\n    <button>Boeken</button>\n  </div>\n</div>\n");
   $templateCache.put("settings/settings.html", "<div class=\"auth-page\">\n  <div class=\"container page\">\n    <div class=\"row\">\n\n      <div class=\"col-md-6 col-md-offset-3 col-xs-12\">\n        <h1 class=\"text-center form-header\" ng-bind=\"::$ctrl.title\">Login</h1>\n\n        <list-errors errors=\"$ctrl.errors\"></list-errors>\n\n        <form ng-submit=\"$ctrl.submitForm()\">\n          <fieldset ng-disabled=\"$ctrl.isSubmitting\">\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control input-lg\"\n                type=\"text\"\n                placeholder=\"Email\"\n                ng-model=\"$ctrl.formData.email\" />\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control input-lg\"\n                type=\"password\"\n                placeholder=\"Password\"\n                ng-model=\"$ctrl.formData.password\" />\n            </fieldset>\n\n            <button class=\"btn btn-lg btn-primary pull-xs-right\"\n              type=\"submit\" ng-bind=\"::$ctrl.title\"></button>\n\n          </fieldset>\n        </form>\n      </div>\n\n    </div>\n  </div>\n</div>\n");
 }]);
 
@@ -37055,10 +37055,19 @@ function ProfileConfig($stateProvider) {
   'ngInject';
 
   $stateProvider.state('app.profile', {
-    url: '/profile',
+    url: '/djs/:id',
     controller: 'ProfileCtrl as $ctrl',
     templateUrl: 'profile/profile.html',
-    title: "profile"
+    //title: "profile",
+    resolve: {
+      profile: ["Profile", "$state", "$stateParams", function profile(Profile, $state, $stateParams) {
+        return Profile.get($stateParams.id).then(function (profile) {
+          return profile;
+        }, function (err) {
+          return $state.go('app.overview');
+        });
+      }]
+    }
   });
 }
 
@@ -37073,11 +37082,14 @@ Object.defineProperty(exports, "__esModule", {
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var ProfileCtrl = function ProfileCtrl() {
+var ProfileCtrl = function ProfileCtrl(profile) {
   'ngInject';
 
   _classCallCheck(this, ProfileCtrl);
+
+  this.profile = profile;
 };
+ProfileCtrl.$inject = ["profile"];
 
 exports.default = ProfileCtrl;
 
@@ -37100,6 +37112,10 @@ var _user = require('./user.service');
 
 var _user2 = _interopRequireDefault(_user);
 
+var _profile = require('./profile.service');
+
+var _profile2 = _interopRequireDefault(_profile);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // Create the module where our functionality can attach to
@@ -37111,9 +37127,11 @@ servicesModule.service('JWT', _jwt2.default);
 
 servicesModule.service('User', _user2.default);
 
+servicesModule.service('Profile', _profile2.default);
+
 exports.default = servicesModule;
 
-},{"./jwt.service":32,"./user.service":33,"angular":3}],32:[function(require,module,exports){
+},{"./jwt.service":32,"./profile.service":33,"./user.service":34,"angular":3}],32:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -37158,6 +37176,45 @@ var JWT = function () {
 exports.default = JWT;
 
 },{}],33:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Profile = function () {
+  Profile.$inject = ["AppConstants", "$http"];
+  function Profile(AppConstants, $http) {
+    'ngInject';
+
+    _classCallCheck(this, Profile);
+
+    this._AppConstants = AppConstants;
+    this._$http = $http;
+  }
+
+  _createClass(Profile, [{
+    key: 'get',
+    value: function get(id) {
+      return this._$http({
+        url: this._AppConstants.api + '/djs/' + id,
+        method: 'GET'
+      }).then(function (res) {
+        res.data.profile;
+      });
+    }
+  }]);
+
+  return Profile;
+}();
+
+exports.default = Profile;
+
+},{}],34:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -37269,7 +37326,7 @@ var User = function () {
 
 exports.default = User;
 
-},{}],34:[function(require,module,exports){
+},{}],35:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -37303,7 +37360,7 @@ settingsModule.controller('SettingsController', _settings4.default);
 
 exports.default = settingsModule;
 
-},{"./settings.config":35,"./settings.controller":36,"angular":3}],35:[function(require,module,exports){
+},{"./settings.config":36,"./settings.controller":37,"angular":3}],36:[function(require,module,exports){
 'use strict';
 
 SettingsConfig.$inject = ["$stateProvider", "$httpProvider"];
@@ -37330,7 +37387,7 @@ function SettingsConfig($stateProvider, $httpProvider) {
 
 exports.default = SettingsConfig;
 
-},{}],36:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {

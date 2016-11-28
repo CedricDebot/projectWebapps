@@ -1,7 +1,8 @@
 class ProfileCtrl {
-  constructor() {
+  constructor(profile) {
     'ngInject';
+
+    this.profile = profile;
   }
 }
-
 export default ProfileCtrl;
