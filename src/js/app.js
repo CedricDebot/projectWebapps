@@ -18,6 +18,7 @@ import './contact';
 import './profile';
 import './overview';
 
+
 // Create and bootstrap application
 const requires = [
   'ui.router',
@@ -30,7 +31,7 @@ const requires = [
   'app.settings',
   'app.contact',
   'app.profile',
-  'app.overview'
+  'app.overview',
 ];
 
 // Mount on window for testing
