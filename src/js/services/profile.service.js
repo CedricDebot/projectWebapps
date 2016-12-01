@@ -11,7 +11,8 @@ export default class Profile {
       url: this._AppConstants.api + '/djs/' + id,
       method: 'GET'
     }).then((res) => {
-      res.data.profile
+      console.log(res);
+      return res.data
     });
   }
 }
