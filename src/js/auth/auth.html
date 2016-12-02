@@ -1,7 +1,6 @@
 <body>
     <div class="form_auth">
-      <h1 class="form_header" ng-show="$ctrl.authType === 'login'">Inloggen</h1>
-      <h1 class="form_header" ng-show="$ctrl.authType === 'register'">Account aanmaken</h1>
+      <h1 class="form_header" ng-bind="::$ctrl.title"></h1>
       <p class="form_header">
         <a ui-sref="app.register"
           ng-show="$ctrl.authType === 'login'">
@@ -12,52 +11,75 @@
           Ik heb al een account
         </a>
       </p>
+
+      <list-errors errors="$ctrl.errors"></list-errors>
+
         <form ng-submit="$ctrl.submitForm()">
-          <fieldset class="form_group">
-            <p>E-mail:
-              <input type="email" placeholder="E-mail">
-            </p>
-          </fieldset>
-          <fieldset class="form_group">
-            <p>Wachtwoord:
-              <input type="password" placeholder="Wachtwoord">
-            </p>
-          </fieldset>
-          <fieldset class="form_group" ng-show="$ctrl.authType === 'register'">
-            <p>Bevestig wachtwoord:
-              <input type="password" placeholder="Bevestig wachtwoord">
-            </p>
-          </fieldset>
-          <fieldset class="form_group" ng-show="$ctrl.authType === 'register'">
-            <p>Voornaam:
-              <input type="text" placeholder="Voornaam">
-            </p>
-          </fieldset>
-          <fieldset class="form_group" ng-show="$ctrl.authType === 'register'">
-            <p>Naam:
-              <input type="text" placeholder="Naam">
-            </p>
-          </fieldset>
-          <fieldset class="form_group" ng-show="$ctrl.authType === 'register'">
-            <p>Regio:
-              <input type="text" placeholder="Regio">
-            </p>
-          </fieldset>
-          <fieldset class="form_group" ng-show="$ctrl.authType === 'register'">
-            <p>DJ-naam:
-              <input type="text" placeholder="DJ-naam">
-            </p>
-          </fieldset>
-          <fieldset class="form_group" ng-show="$ctrl.authType === 'register'">
-            <p>Genres:
-            </p>
-          </fieldset>
-          <fieldset class="form_group" ng-show="$ctrl.authType === 'register'">
-            <p>Prijs:
-              <input type="text" placeholdeer="Prijs per uur">
-            </p>
-          </fieldset>
-          <button type="submit" ng-bind=::$ctrl.title></button>
+          <fieldset ng-disabled="$ctrl.isSubmitting">
+            <fieldset class="form_group">
+              <p>E-mail:
+                <input type="email"
+                  placeholder="E-mail"
+                  ng-model="$ctrl.formData.email">
+              </p>
+            </fieldset>
+            <fieldset class="form_group">
+              <p>Wachtwoord:
+                <input type="password"
+                  placeholder="Wachtwoord"
+                  ng-model="$ctrl.formData.password">
+              </p>
+            </fieldset>
+            <fieldset class="form_group" ng-show="$ctrl.authType === 'register'">
+              <p>Bevestig wachtwoord:
+                <input type="password"
+                  placeholder="Bevestig wachtwoord">
+              </p>
+            </fieldset>
+            <fieldset class="form_group" ng-show="$ctrl.authType === 'register'">
+              <p>Voornaam:
+                <input type="text"
+                  placeholder="Voornaam"
+                  ng-model="$ctrl.formData.firstName">
+              </p>
+            </fieldset>
+            <fieldset class="form_group" ng-show="$ctrl.authType === 'register'">
+              <p>Naam:
+                <input type="text"
+                  placeholder="Naam"
+                  ng-model="$ctrl.formData.Name">
+              </p>
+            </fieldset>
+            <fieldset class="form_group" ng-show="$ctrl.authType === 'register'">
+              <p>Regio:
+                <input type="text"
+                  placeholder="Regio"
+                  ng-model="$ctrl.formData.region">
+              </p>
+            </fieldset>
+            <fieldset class="form_group" ng-show="$ctrl.authType === 'register'">
+              <p>DJ-naam:
+                <input type="text"
+                  placeholder="DJ-naam"
+                  ng-model="$ctrl.formData.djName">
+              </p>
+            </fieldset>
+            <fieldset class="form_group" ng-show="$ctrl.authType === 'register'">
+              <p>Genres:
+                <input type="text"
+                  placeholder="Genre"
+                  ng-model="$ctrl.formData.genres">
+              </p>
+            </fieldset>
+            <fieldset class="form_group" ng-show="$ctrl.authType === 'register'">
+              <p>Prijs:
+                <input type="text"
+                  placeholdeer="Prijs per uur"
+                  ng-model="$ctrl.formData.price">
+              </p>
+            </fieldset>
+        </fieldset>
+          <button class="btn btn-lg btn-primary pull-xs-right" type="submit" ng-bind=::$ctrl.title></button>
         </form>
     </div>
 </body>
