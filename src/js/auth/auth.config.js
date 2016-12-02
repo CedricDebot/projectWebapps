@@ -7,7 +7,7 @@ function AuthConfig($stateProvider) { //$httpProvider
     url: '/login',
     controller: 'AuthController as $ctrl',
     templateUrl: 'auth/auth.html',
-    title: 'Login',
+    title: 'Inloggen',
     resolve: {
       auth: function(User) {
         return User.ensureAuthIs(false);
@@ -19,7 +19,7 @@ function AuthConfig($stateProvider) { //$httpProvider
     url: '/register',
     controller: 'AuthController as $ctrl',
     templateUrl: 'auth/auth.html',
-    title: "Sign up",
+    title: "Registeren",
     resolve: {
       auth: function(User) {
         return User.ensureAuthIs(false);

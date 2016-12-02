@@ -13,6 +13,25 @@ export default class User {
     this.current = null;
   }
 
+  attemptAuth(type, credentials) {
+    let route = (type === 'login') ? '/login' : '';
+
+    return this._$http({
+      url: this._AppConstants.api + '/users' + route,
+      method: 'POST',
+      data: {
+        user: credentials
+      }
+    }).then( (res) => {
+      this._JWT.save(res.data.token);
+      this.current = res.data;
+      return res;
+    },
+    (err) => {
+      console.log(err);
+    });
+  }
+
   // This method will be used by UI-Router resolves
   ensureAuthIs(bool) {
     let deferred = this._$q.defer();
@@ -32,6 +51,7 @@ export default class User {
 
   verifyAuth() {
     let deferred = this._$q.defer();
+
     if (!this._JWT.get()) {
       deferred.resolve(false);
       return deferred.promise;
@@ -42,10 +62,13 @@ export default class User {
     } else {
       this._$http({
         url: this._AppConstants.api + '/user',
-        method: 'GET'
+        method: 'GET',
+        headers: {
+          Authorization: 'Token' + this._JWT.get()
+        }
       }).then(
         (res) => {
-          this.current = res.data.user;
+          this.current = res.data;
           deferred.resolve(true);
         },
         () => {
@@ -62,24 +85,6 @@ export default class User {
     this.current = null;
     this._JWT.destroy();
 
-    // Do a hard reload of current state to ensure all data is flushed
     this._$state.go(this._$state.$current, null, { reload: true });
-  }
-
-  attemptAuth(credentials) {
-    return this._$http({
-      url: this._AppConstants.api + '/users/login',
-      method: 'POST',
-      data: {
-        user: credentials
-      }
-    }).then(
-      (res) => {
-        // Set the Jwt token
-        this._JWT.save(res.data.user.token);
-        this.current = res.data.user;
-        return res;
-      }
-    );
   }
 }

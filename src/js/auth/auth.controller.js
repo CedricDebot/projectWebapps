@@ -12,16 +12,18 @@ class AuthController {
   submitForm() {
     this.isSubmitting = true;
 
+    console.log(this.formData);
+
     this._User.attemptAuth(this.authType, this.formData).then(
       (res) => {
-        this._$state.go('app.home');
+        this.isSubmitting = false;
+        console.log("resultaat = " + res);
       },
       (err) => {
         this.isSubmitting = false;
-        console.log(err.data.errors);
-      }
-    );
-  }
+        this.errors = err.data.errors;
+      });
+   }
 }
 
 export default AuthController;
