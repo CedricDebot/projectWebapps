@@ -17,6 +17,7 @@ import './settings';
 import './contact';
 import './profile';
 import './overview';
+import './booking';
 
 
 // Create and bootstrap application
@@ -32,6 +33,7 @@ const requires = [
   'app.contact',
   'app.profile',
   'app.overview',
+  'app.booking'
 ];
 
 // Mount on window for testing
