@@ -10,7 +10,8 @@
     </a>
 
     <!-- log out (ingelogde gebruiker)-->
-    <a 
+    <a ui-sref="app.login"
+      ng-click="$ctrl.logout()"
     show-authed="true">
       Uitloggen
     </a>
@@ -68,8 +69,8 @@
         <li>
           <a class="nav-link"
             ui-sref-active="active"
-            ui-sref="app.messages">
-            Berichten
+            ui-sref="app.settings">
+            Settings
           </a>
         </li>
         <li>
