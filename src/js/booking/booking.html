@@ -1,0 +1,84 @@
+<div class="bookings-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3 col-xs-12">
+        <h1 class="text-xs-center">Boek dj-naam</h1>
+
+        <list-errors errors="$ctrl.errors"></list-errors>
+
+        <form ng-submit="$ctrl.submitForm()">
+          <fieldset ng-disabled="$ctrl.isSubmitting">
+
+            <fieldset class="form-group">
+              <input class="form-control"
+                type="text"
+                placeholder="naam"
+                ng-model="$ctrl.formData.name"/>
+            </fieldset>
+
+            <fieldset class="form-group">
+              <input class="form-control"
+                type="text"
+                placeholder="voornaam"
+                ng-model="$ctrl.formData.firstName"/>
+            </fieldset>
+
+            <fieldset class="form-group">
+              <input class="form-control"
+                type="email"
+                placeholder="email"
+                ng-model="$ctrl.formData.email"/>
+            </fieldset>
+
+            <fieldset class="form-group">
+              <input class="form-group"
+                type="text"
+                placeholder="tel of gsm"
+                ng-model="$ctrl.formData.tel"/>
+            </fieldset>
+
+            <fieldset class="form-group">
+              <input class="form-group"
+              type="text"
+              placeholder="naam van de activiteit"
+              ng-model="$ctrl.formData.activity"/>
+            </fieldset>
+
+            <fieldset class="form-group">
+              <input class="form-group"
+              type="date"
+              placeholder="Datum van de activiteit"
+              ng-model="$ctrl.formData.date"/>
+            </fieldset>
+
+            <fieldset class="form-group">
+              <input class="form-group"
+              type="text"
+              placeholder="adres"
+              ng-model="$ctrl.formData.adres"/>
+            </fieldset>
+
+            <fieldset class="form-group">
+              <input class="form-group"
+              type="text"
+              placeholder="locatie"
+              ng-model="$ctrl.formData.location"/>
+            </fieldset>
+
+            <fieldset class="form-group">
+              <textarea class="form-control form-control-lg"
+                rows="8"
+                placeholder="Uw bericht "
+                ng-model="$ctrl.formData.message"/>
+            </fieldset>
+
+            <button class="btn btn-lg btn-primary pull-xs-right"
+                type="submit">
+                Boek
+            </button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
