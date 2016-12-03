@@ -1,9 +1,8 @@
-<div class="auth-page">
-  <div class="container page">
+<div class="settings-page">
+  <div class="container">
     <div class="row">
-
-      <div class="col-md-6 col-md-offset-3 col-xs-12">
-        <h1 class="text-center form-header" ng-bind="::$ctrl.title">Login</h1>
+      <div class="col-md-6 offset-md-3 col-xs-12">
+        <h1 class="text-xs-center">Your settings</h1>
 
         <list-errors errors="$ctrl.errors"></list-errors>
 
@@ -11,26 +10,61 @@
           <fieldset ng-disabled="$ctrl.isSubmitting">
 
             <fieldset class="form-group">
-              <input class="form-control input-lg"
+              <input class="form-control"
                 type="text"
-                placeholder="Email"
-                ng-model="$ctrl.formData.email" />
+                placeholder="URL of profile picture"
+                ng-model="$ctrl.formData.image"/>
             </fieldset>
 
             <fieldset class="form-group">
-              <input class="form-control input-lg"
-                type="password"
-                placeholder="Password"
-                ng-model="$ctrl.formData.password" />
+              <input class="form-control"
+                type="text"
+                placeholder="dj-naam"
+                ng-model="$ctrl.formData.djName"/>
+            </fieldset>
+
+            <fieldset class="form-group">
+              <input class="form-control"
+                type="text"
+                placeholder="regio"
+                ng-model="$ctrl.formData.region"/>
+            </fieldset>
+
+            <fieldset class="form-group">
+              <input class="form-control"
+                type="number"
+                placeholder="prijs per uur"
+                ng-model="$ctrl.formData.price"/>
+            </fieldset>
+
+            <fieldset class="form-group">
+              <textarea class="form-control form-control-lg"
+                rows="8"
+                placeholder="Korte biografie"
+                ng-model="$ctrl.formData.biography"/>
+            </fieldset>
+
+            <fieldset class="form-group">
+              <input class="form-control"
+                type="text"
+                placeholder="genre"
+                ng-model="$ctrl.formData.genres"/>
+            </fieldset>
+
+            <fieldset class="form-group">
+              <input class="form-control"
+                type="text"
+                placeholder="referentie"
+                ng-model="$ctrl.formData.references"/>
             </fieldset>
 
             <button class="btn btn-lg btn-primary pull-xs-right"
-              type="submit" ng-bind="::$ctrl.title"></button>
-
+                type="submit">
+                Update profiel
+            </button>
           </fieldset>
         </form>
       </div>
-
     </div>
   </div>
 </div>
