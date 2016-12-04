@@ -6,12 +6,12 @@ export default class Profile {
     this._$http = $http;
   }
 
-  get(djname) {
+  get(id) {
     return this._$http({
-      url: this._AppConstants.api + '/profiles/djs/djname/' + djname,
+      url: this._AppConstants.api + '/profiles/djs/' + id,
       method: 'GET'
     }).then((res) => {
-      return res.data
+      return res.data;
     });
   }
 
