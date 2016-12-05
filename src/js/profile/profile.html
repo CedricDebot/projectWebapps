@@ -1,22 +1,29 @@
 <div class="profile">
 
+  <div class="left_container">
   <div class="profile_pic">
     <img src="" alt="profiel foto">
   </div>
 
-<h1 ng-bind="::$ctrl.profile.djName"></h1>
-
-  <div cass="profile_price_tag">
-    <p ng-bind="::$ctrl.profile.price"></p>
-  </div>
-
   <div class="profile_genres">
-    <h2>Genres</h2>
     <ul>
       <li ng-repeat="genre in $ctrl.profile.genres">
+
           {{genre}}
       </li>
     </ul>
+  </div>
+</div>
+
+<h1 class="profile_djName" ng-bind="::$ctrl.profile.djName"></h1>
+
+  <div class="profile_price_tag">
+    <span class="pricetag" ng-bind="::$ctrl.profile.price"></p>
+
+  </div>
+
+  <div class="profile_bio">
+    <p ng-bind="::$ctrl.profile.biography"></p>
   </div>
 
   <div class="profile_references">
@@ -28,12 +35,10 @@
     </ul>
   </div>
 
-    <div class="profile_bio">
-      <h2>BIO</h2>
-      <p ng-bind="::$ctrl.profile.biography"></p>
-    </div>
-
   <div class="profile_button">
-    <button>Boeken</button>
+    <button class="btn btn-lg btn-primary pull-xs-right"
+      ui-sref="app.booking">
+      Boeken
+    </button>
   </div>
 </div>

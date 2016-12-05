@@ -1,8 +1,7 @@
 .form_auth {
   width: 75%;
   height: auto;
-  margin-left: 12.5%;
-  margin-top: 2%;
+  margin: 2% 12.5%;
   background-color: $color-white;
 
   .form_header {
@@ -13,16 +12,16 @@
   }
 
   form {
-    width: 75%;
-    margin-left: 12.5%;
+    width: 50%;
+    margin: auto;
+
     //text-align: center;
 
     .form_group {
       padding-top: 1rem;
-
     }
 
-    fieldset {
+    /*fieldset {
       padding-right: 5px;
 
       p {
@@ -39,11 +38,11 @@
         padding-left: 1%;
         margin-right: 20%;
       }
-    }
+    }*/
 
     button {
-      margin-left: 50px;
-      background-color:  $color-darkGreen;
+      margin-left: 85%;
+      margin-bottom: 2%;
     }
   }
 }
