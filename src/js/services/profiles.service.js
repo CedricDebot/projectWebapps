@@ -15,13 +15,13 @@ export default class Profile {
     });
   }
 
-/*  query(config) {
+  query(config) {
     let request = {
-      url: this._AppConstants.api + '/djs',
+      url: this._AppConstants.api + '/profiles/djs',
       method: 'GET',
-      params: 'config.filters ? config.filters : null'
+      params: config.filters ? config.filters : null
     };
 
     return this._$http(request).then((res) => res.data);
-  }*/
+  }
 }
