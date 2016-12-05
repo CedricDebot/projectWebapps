@@ -12,3 +12,10 @@
   ng-show="!$ctrl.loading && !$ctrl.list.length">
   Er zijn nog geen djs gevonden met opgegeven categorieën
 </div>
+
+<list-pagination
+  total-pages="$ctrl.listConfig.totalPages"
+  current-page="$ctrl.listConfig.currentPage"
+  ng-hide="$ctrl.listConfig.totalPages <= 1"
+>
+</list-pagination>

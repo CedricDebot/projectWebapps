@@ -6,14 +6,17 @@ let componentsModule = angular.module('app.components', []);
 import ListErrors from './list-errors.component';
 componentsModule.component('listErrors', ListErrors);
 
-/*import ProfileMeta from './dj-helpers/profile-meta.component';
+import ProfileMeta from './dj-helpers/profile-meta.component';
 componentsModule.component('profileMeta', ProfileMeta);
 
 import DjPreview from './dj-helpers/dj-preview.component';
 componentsModule.component('djPreview', DjPreview);
 
 import DjList from './dj-helpers/dj-list.component';
-componentsModule.component('djList', DjList);*/
+componentsModule.component('djList', DjList);
+
+import ListPagination from './dj-helpers/list-pagination.component';
+componentsModule.component('listPagination', ListPagination);
 
 // directives
 import ShowAuthed from './show-authed.directive';

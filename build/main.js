@@ -36379,7 +36379,7 @@ _angular2.default.bootstrap(document, ['app'], {
   strictDi: true
 });
 
-},{"./auth":7,"./booking":10,"./components":11,"./config/app.config":14,"./config/app.constants":15,"./config/app.run":16,"./config/app.templates":17,"./contact":21,"./home":24,"./layout":27,"./overview":28,"./profile":31,"./services":34,"./settings":38,"angular":3,"angular-ui-router":1}],5:[function(require,module,exports){
+},{"./auth":7,"./booking":10,"./components":15,"./config/app.config":18,"./config/app.constants":19,"./config/app.run":20,"./config/app.templates":21,"./contact":25,"./home":28,"./layout":31,"./overview":32,"./profile":36,"./services":39,"./settings":43,"angular":3,"angular-ui-router":1}],5:[function(require,module,exports){
 'use strict';
 
 AuthConfig.$inject = ["$stateProvider"];
@@ -36571,6 +36571,175 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var DjListCtrl = function () {
+  DjListCtrl.$inject = ["Djs", "$scope"];
+  function DjListCtrl(Djs, $scope) {
+    'ngInject';
+
+    var _this = this;
+
+    _classCallCheck(this, DjListCtrl);
+
+    this._Djs = Djs;
+
+    this.setListTo(this.listConfig);
+
+    $scope.$on('setPageTo', function (ev, pageNumber) {
+      _this.setPageTo(pageNumber);
+    });
+  }
+
+  _createClass(DjListCtrl, [{
+    key: 'setListTo',
+    value: function setListTo(newList) {
+      this.list = [];
+
+      this.listConfig = newList;
+
+      this.runQuery();
+    }
+  }, {
+    key: 'runQuery',
+    value: function runQuery() {
+      var _this2 = this;
+
+      this.loading = true;
+
+      var queryConfig = {
+        type: this.listConfig.type,
+        filters: this.listConfig.filters || {}
+      };
+
+      if (!this.listConfig.currentPage) {
+        this.listConfig.currentPage = 1;
+      }
+
+      queryConfig.filters.offset = this.limit * (this.listConfig.currentPage - 1);
+
+      this._Djs.query(queryConfig).then(function (res) {
+        _this2.loading = false;
+        _this2.list = res.djs;
+
+        _this2.listConfig.totalPages = Math.ceil(res.djsCount / _this2.limit);
+      });
+    }
+  }, {
+    key: 'setPageTo',
+    value: function setPageTo() {
+      this.listConfig.currentPage = pageNumber;
+
+      this.runQuery();
+    }
+  }]);
+
+  return DjListCtrl;
+}();
+
+var DjList = {
+  bindings: {
+    listConfig: '='
+  },
+  controller: DjListCtrl,
+  templateUrl: 'components/dj-helpers/dj-list.html'
+};
+
+exports.default = DjList;
+
+},{}],12:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var DjPreview = {
+  bindings: {
+    dj: '='
+  },
+  templateUrl: 'components/dj-helpers/dj-preview.html'
+};
+
+exports.default = DjPreview;
+
+},{}],13:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var ListPaginationCtrl = function () {
+  ListPaginationCtrl.$inject = ["$scope"];
+  function ListPaginationCtrl($scope) {
+    'ngInject';
+
+    _classCallCheck(this, ListPaginationCtrl);
+
+    this._$scope = $scope;
+  }
+
+  _createClass(ListPaginationCtrl, [{
+    key: 'pageRange',
+    value: function pageRange(total) {
+      var pages = [];
+
+      for (var i = 0; i < total; i++) {
+        pages.push(i + 1);
+      }
+
+      return pages;
+    }
+  }, {
+    key: 'changePage',
+    value: function changePage(number) {
+      this._$scope.$emit('setPageTo', number);
+    }
+  }]);
+
+  return ListPaginationCtrl;
+}();
+
+var ListPagination = {
+  bindings: {
+    totalPages: '=',
+    currentPage: '='
+  },
+  controller: ListPaginationCtrl,
+  templateUrl: 'components/dj-helpers/list-pagination.html'
+};
+
+exports.default = ListPagination;
+
+},{}],14:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var ProfileMeta = {
+  bindings: {
+    profile: '='
+  },
+  transclude: true,
+  templateUrl: 'components/dj-helpers/profile-meta.html'
+};
+
+exports.default = ProfileMeta;
+
+},{}],15:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _angular = require('angular');
 
 var _angular2 = _interopRequireDefault(_angular);
@@ -36578,6 +36747,22 @@ var _angular2 = _interopRequireDefault(_angular);
 var _listErrors = require('./list-errors.component');
 
 var _listErrors2 = _interopRequireDefault(_listErrors);
+
+var _profileMeta = require('./dj-helpers/profile-meta.component');
+
+var _profileMeta2 = _interopRequireDefault(_profileMeta);
+
+var _djPreview = require('./dj-helpers/dj-preview.component');
+
+var _djPreview2 = _interopRequireDefault(_djPreview);
+
+var _djList = require('./dj-helpers/dj-list.component');
+
+var _djList2 = _interopRequireDefault(_djList);
+
+var _listPagination = require('./dj-helpers/list-pagination.component');
+
+var _listPagination2 = _interopRequireDefault(_listPagination);
 
 var _showAuthed = require('./show-authed.directive');
 
@@ -36591,14 +36776,13 @@ var componentsModule = _angular2.default.module('app.components', []);
 
 componentsModule.component('listErrors', _listErrors2.default);
 
-/*import ProfileMeta from './dj-helpers/profile-meta.component';
-componentsModule.component('profileMeta', ProfileMeta);
+componentsModule.component('profileMeta', _profileMeta2.default);
 
-import DjPreview from './dj-helpers/dj-preview.component';
-componentsModule.component('djPreview', DjPreview);
+componentsModule.component('djPreview', _djPreview2.default);
 
-import DjList from './dj-helpers/dj-list.component';
-componentsModule.component('djList', DjList);*/
+componentsModule.component('djList', _djList2.default);
+
+componentsModule.component('listPagination', _listPagination2.default);
 
 // directives
 
@@ -36606,7 +36790,7 @@ componentsModule.directive('showAuthed', _showAuthed2.default);
 
 exports.default = componentsModule;
 
-},{"./list-errors.component":12,"./show-authed.directive":13,"angular":3}],12:[function(require,module,exports){
+},{"./dj-helpers/dj-list.component":11,"./dj-helpers/dj-preview.component":12,"./dj-helpers/list-pagination.component":13,"./dj-helpers/profile-meta.component":14,"./list-errors.component":16,"./show-authed.directive":17,"angular":3}],16:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -36621,7 +36805,7 @@ var ListErrors = {
 
 exports.default = ListErrors;
 
-},{}],13:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 'use strict';
 
 ShowAuthed.$inject = ["User"];
@@ -36660,7 +36844,7 @@ function ShowAuthed(User) {
 
 exports.default = ShowAuthed;
 
-},{}],14:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 'use strict';
 
 AppConfig.$inject = ["$httpProvider", "$stateProvider", "$locationProvider", "$urlRouterProvider"];
@@ -36700,7 +36884,7 @@ function AppConfig($httpProvider, $stateProvider, $locationProvider, $urlRouterP
 
 exports.default = AppConfig;
 
-},{"./auth.interceptor":18}],15:[function(require,module,exports){
+},{"./auth.interceptor":22}],19:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -36714,7 +36898,7 @@ var AppConstants = {
 
 exports.default = AppConstants;
 
-},{}],16:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 'use strict';
 
 AppRun.$inject = ["AppConstants", "$rootScope"];
@@ -36749,27 +36933,29 @@ function AppRun(AppConstants, $rootScope) {
 
 exports.default = AppRun;
 
-},{}],17:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 "use strict";
 
 angular.module("templates", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("auth/auth.html", "<body>\n    <div class=\"form_auth\">\n      <h1 class=\"form_header\" ng-bind=\"::$ctrl.title\"></h1>\n      <p class=\"form_header\">\n        <a ui-sref=\"app.register\"\n          ng-show=\"$ctrl.authType === \'login\'\">\n           Een account aanmaken\n        </a>\n        <a ui-sref=\"app.login\"\n          ng-show=\"$ctrl.authType === \'register\'\">\n          Ik heb al een account\n        </a>\n      </p>\n\n      <list-errors errors=\"$ctrl.errors\"></list-errors>\n\n        <form ng-submit=\"$ctrl.submitForm()\">\n          <fieldset ng-disabled=\"$ctrl.isSubmitting\">\n            <fieldset class=\"form-group\">\n              <p>E-mail:\n                <input class=\"form-control\"\n                  type=\"email\"\n                  placeholder=\"E-mail\"\n                  ng-model=\"$ctrl.formData.email\">\n              </p>\n            </fieldset>\n            <fieldset class=\"form-group\">\n              <p>Wachtwoord:\n                <input class=\"form-control\"\n                  type=\"password\"\n                  placeholder=\"Wachtwoord\"\n                  ng-model=\"$ctrl.formData.password\">\n              </p>\n            </fieldset>\n            <fieldset class=\"form-group\"\n              ng-show=\"$ctrl.authType === \'register\'\">\n              <p>Bevestig wachtwoord:\n                <input class=\"form-control\"\n                  type=\"password\"\n                  placeholder=\"Bevestig wachtwoord\">\n              </p>\n            </fieldset>\n            <fieldset class=\"form-group\"\n              ng-show=\"$ctrl.authType === \'register\'\">\n              <p>Voornaam:\n                <input class=\"form-control\"\n                  type=\"text\"\n                  placeholder=\"Voornaam\"\n                  ng-model=\"$ctrl.formData.firstName\">\n              </p>\n            </fieldset>\n            <fieldset class=\"form-group\"\n              ng-show=\"$ctrl.authType === \'register\'\">\n              <p>Naam:\n                <input class=\"form-control\"\n                  type=\"text\"\n                  placeholder=\"Naam\"\n                  ng-model=\"$ctrl.formData.Name\">\n              </p>\n            </fieldset>\n            <fieldset class=\"form-group\"\n              ng-show=\"$ctrl.authType === \'register\'\">\n              <p>Regio:\n                <input class=\"form-control\"\n                  type=\"text\"\n                  placeholder=\"Regio\"\n                  ng-model=\"$ctrl.formData.region\">\n              </p>\n            </fieldset>\n            <fieldset class=\"form-group\"\n              ng-show=\"$ctrl.authType === \'register\'\">\n              <p>DJ-naam:\n                <input class=\"form-control\"\n                  type=\"text\"\n                  placeholder=\"DJ-naam\"\n                  ng-model=\"$ctrl.formData.djName\">\n              </p>\n            </fieldset>\n            <fieldset class=\"form-group\"\n              ng-show=\"$ctrl.authType === \'register\'\">\n              <p>Genres:\n                <input class=\"form-control\"\n                  type=\"text\"\n                  placeholder=\"Genre\"\n                  ng-model=\"$ctrl.formData.genres\">\n              </p>\n            </fieldset>\n            <fieldset class=\"form-group\"\n              ng-show=\"$ctrl.authType === \'register\'\">\n              <p>Prijs:\n                <input class=\"form-control\"\n                  type=\"text\"\n                  placeholdeer=\"Prijs per uur\"\n                  ng-model=\"$ctrl.formData.price\">\n              </p>\n            </fieldset>\n        </fieldset>\n          <button class=\"btn btn-lg btn-primary pull-xs-right\"\n            type=\"submit\"\n            ng-bind=::$ctrl.title></button>\n        </form>\n    </div>\n</body>\n");
-  $templateCache.put("booking/booking.html", "<div class=\"bookings-page\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-6 offset-md-3 col-xs-12\">\n        <h1 class=\"text-xs-center\">Boek dj-naam</h1>\n\n        <list-errors errors=\"$ctrl.errors\"></list-errors>\n\n        <form ng-submit=\"$ctrl.submitForm()\">\n          <fieldset ng-disabled=\"$ctrl.isSubmitting\">\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"naam\"\n                ng-model=\"$ctrl.formData.name\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"voornaam\"\n                ng-model=\"$ctrl.formData.firstName\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"email\"\n                placeholder=\"email\"\n                ng-model=\"$ctrl.formData.email\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"tel of gsm\"\n                ng-model=\"$ctrl.formData.tel\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n              type=\"text\"\n              placeholder=\"naam van de activiteit\"\n              ng-model=\"$ctrl.formData.activity\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n              type=\"date\"\n              placeholder=\"Datum van de activiteit\"\n              ng-model=\"$ctrl.formData.date\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n              type=\"text\"\n              placeholder=\"adres\"\n              ng-model=\"$ctrl.formData.adres\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-group\"\n              type=\"text\"\n              placeholder=\"locatie\"\n              ng-model=\"$ctrl.formData.location\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <textarea class=\"form-control form-control-lg\"\n                rows=\"8\"\n                placeholder=\"Uw bericht \"\n                ng-model=\"$ctrl.formData.message\"/>\n            </fieldset>\n\n            <button class=\"btn btn-lg btn-primary pull-xs-right\"\n                type=\"submit\">\n                Boek\n            </button>\n          </fieldset>\n        </form>\n      </div>\n    </div>\n  </div>\n</div>\n");
   $templateCache.put("components/list-errors.html", "<ul class=\"error-messages\" ng-show=\"$ctrl.errors\">\n  <div ng-repeat=\"(field, errors) in $ctrl.errors\">\n    <li ng-repeat=\"error in errors\">\n      {{field}} {{error}}\n    </li>\n  </div>\n</ul>\n");
+  $templateCache.put("booking/booking.html", "<div class=\"bookings-page\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-6 offset-md-3 col-xs-12\">\n        <h1 class=\"text-xs-center\">Boek dj-naam</h1>\n\n        <list-errors errors=\"$ctrl.errors\"></list-errors>\n\n        <form ng-submit=\"$ctrl.submitForm()\">\n          <fieldset ng-disabled=\"$ctrl.isSubmitting\">\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"naam\"\n                ng-model=\"$ctrl.formData.name\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"voornaam\"\n                ng-model=\"$ctrl.formData.firstName\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"email\"\n                placeholder=\"email\"\n                ng-model=\"$ctrl.formData.email\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"tel of gsm\"\n                ng-model=\"$ctrl.formData.tel\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n              type=\"text\"\n              placeholder=\"naam van de activiteit\"\n              ng-model=\"$ctrl.formData.activity\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n              type=\"date\"\n              placeholder=\"Datum van de activiteit\"\n              ng-model=\"$ctrl.formData.date\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n              type=\"text\"\n              placeholder=\"adres\"\n              ng-model=\"$ctrl.formData.adres\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-group\"\n              type=\"text\"\n              placeholder=\"locatie\"\n              ng-model=\"$ctrl.formData.location\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <textarea class=\"form-control form-control-lg\"\n                rows=\"8\"\n                placeholder=\"Uw bericht \"\n                ng-model=\"$ctrl.formData.message\"/>\n            </fieldset>\n\n            <button class=\"btn btn-lg btn-primary pull-xs-right\"\n                type=\"submit\">\n                Boek\n            </button>\n          </fieldset>\n        </form>\n      </div>\n    </div>\n  </div>\n</div>\n");
   $templateCache.put("contact/contact.html", "<body>\n  <div class=\"form_contact\">\n    <h1 class=\"form_header\">Vragen?</h1>\n    <p class=\"form_header\">\n      <a ui-sref=\"app.register\">\n        Een account aanmaken\n      </a>\n    </p>\n\n    <form>\n      <fieldset class=\"form_group\">\n        <p> Naam en voornaam:\n          <input class=\"form-control\"\n            type=\"text\"\n            placeholder=\"Naam en voornaam\">\n        </p>\n      </fieldset>\n      <fieldset class=\"form_group\">\n        <p> E-mail:\n          <input class=\"form-control\"\n            type=\"email\"\n            placehoder=\"E-mail\">\n        </p>\n      </fieldset>\n      <fieldset class=\"form_group\">\n        <p>Tel. of GSM:\n          <input class=\"form-control\"\n            type=\"text\"\n            placeholder=\"Tel. of GSM\">\n        </p>\n      </fieldset>\n      <fieldset class=\"form_group\">\n        <p>Uw bericht:\n          <textarea class=\"form-control\"\n            cols=\"25\"\n            rows=\"10\"/>\n        </p>\n      </fieldset>\n      <button class=\"btn btn-lg btn-primary pull-xs-right\"\n        type=\"submit\">Verzenden</button>\n    </form>\n  </div>\n</body>\n");
   $templateCache.put("home/home.html", "<body>\n  <div class=\"form_search\">\n    <div>\n      <h1 class=\"form_header\">Zoek de DJ die bij u past</h1>\n      <p class=\"form_header\">Vul de categorieën in die u wenst en laat ons zoeken naar dé DJ die u zoekt!</p>\n      <form>\n        <fieldset class=\"form-group\">\n          <p>Genre:\n            <input class=\"form-control\"\n              type=\"text\"\n              placeholder=\"genre\"/>\n          </p>\n        </fieldset>\n\n        <fieldset class=\"form-group\">\n          <p>Regio:\n            <input class=\"form-control\"\n              type=\"text\"\n              placeholder=\"Regio\"/>\n          </p>\n        </fieldset>\n\n        <fieldset class=\"form-group\">\n          <p>Prijs:\n            <input class=\"form-control\"\n              type=\"text\"\n              placeholder=\"prijs\"/>\n          </p>\n        </fieldset>\n        <button class=\"btn btn-lg btn-primary pull-xs-right\"\n          type=\"submit\">Zoek</button>\n      </form>\n    </div>\n  </div>\n\n  <div class=\"in_the_picture\">\n    <h1>Artiesten in de kijker</h1>\n  </div>\n\n  <div class=\"form_search\"\n    id=\"last_form\">\n    <h1 class=\"form_header\">Zoek een DJ bij naam</h1>\n    <p class=form_header>Vul de naam in van een DJ die je wenst te boeken voor jouw feestje en wij brengen jouw meteen in contact!</p>\n    <form>\n      <fieldset class=\"form-group\">\n        <p>Naam:\n        <input class=\"form-control\"\n          type=\"text\"\n          placeholder=\"naam\"/>\n      </p>\n      </fieldset>\n      <button class=\"btn btn-lg btn-primary pull-xs-right\"\n        type=\"submit\">Zoek</button>\n    </form>\n  </div>\n</body>\n");
-  $templateCache.put("overview/overview.html", "<div class=\"overview\">\n<!--  <dj-list listConfig=\"$ctrl.listConfig\"></dj-list> -->\n  <div class=\"overview_dj\">\n  </div>\n</div>\n");
   $templateCache.put("layout/app-view.html", "<app-header></app-header>\n\n<div ui-view></div>\n\n<app-footer></app-footer>\n");
   $templateCache.put("layout/footer.html", "<footer>\n  <div class=\"footer_content\">\n    <img src=\"\" alt=\"logo\"/>\n    <form>\n      <input type=\"text\" placeholder=\"dj naam\"/>\n      <button type=\"submit\">zoek</button>\n    </form>\n    <div class=\"footer_menu\">\n      <a class=\"nav-link\"\n        ui-sref-active=\"active\"\n        ui-sref=\"app.contact\">\n        Contact\n      </a>\n  </div>\n  </div>\n  <div class=\"footer_poweredBy\">\n    <span class=\"attribution\">\n      &copy; {{::$ctrl.date | date:\'yyyy\'}} {{$ctrl.appName}}.\n      powered by Cédric Debot.\n    </span>\n  </div>\n</footer>\n");
   $templateCache.put("layout/header.html", "<header>\n  <div class=\"logo\">\n    <img src=\"src/images/logo.png\" alt=\"logo\"/>\n  </div>\n  <div class=\"login-link\">\n    <!--ik ben een dj link (niet-ingelogde gebruiker) -->\n    <a ui-sref=\"app.login\"\n      show-authed=\"false\">\n      Ik ben een dj\n    </a>\n\n    <!-- log out (ingelogde gebruiker)-->\n    <a ui-sref=\"app.login\"\n      ng-click=\"$ctrl.logout()\"\n    show-authed=\"true\">\n      Uitloggen\n    </a>\n  </div>\n\n  <div class=\"navigation\">\n  <nav class=\"navbar\">\n    <!-- nav voor niet-ingelogde gebruikers -->\n      <ul show-authed=\"false\">\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.home\">\n            Home\n          </a>\n        </li>\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.overview\">\n            DJ\'s\n          </a>\n        </li>\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.contact\">\n            Contact\n          </a>\n        </li>\n      </ul>\n\n      <ul show-authed=\"true\">\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.home\">\n            Home\n          </a>\n        </li>\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.djs\">\n            DJ\'s\n          </a>\n        </li>\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.profile\">\n            Mijn Profiel\n          </a>\n        </li>\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.settings\">\n            Settings\n          </a>\n        </li>\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.contact\">\n            Contact\n          </a>\n        </li>\n      </ul>\n  </nav>\n</div>\n</header>\n");
+  $templateCache.put("overview/overview-profiles.html", "<dj-list limit=\"15\" list-config=\"$ctrl.listConfig\"></dj-list>\n");
+  $templateCache.put("overview/overview.html", "<div class=\"overview\">\n  <div class=\"overview_dj\">\n  </div>\n</div>\n");
   $templateCache.put("profile/profile.html", "<div class=\"profile\">\n\n  <div class=\"left_container\">\n  <div class=\"profile_pic\">\n    <img src=\"\" alt=\"profiel foto\">\n  </div>\n\n  <div class=\"profile_genres\">\n    <ul>\n      <li ng-repeat=\"genre in $ctrl.profile.genres\">\n\n          {{genre}}\n      </li>\n    </ul>\n  </div>\n</div>\n\n<h1 class=\"profile_djName\" ng-bind=\"::$ctrl.profile.djName\"></h1>\n\n  <div class=\"profile_price_tag\">\n    <span class=\"pricetag\" ng-bind=\"::$ctrl.profile.price\"></p>\n\n  </div>\n\n  <div class=\"profile_bio\">\n    <p ng-bind=\"::$ctrl.profile.biography\"></p>\n  </div>\n\n  <div class=\"profile_references\">\n    <h2>Referenties</h2>\n    <ul>\n      <li ng-repeat=\"reference in $ctrl.profile.references\">\n        {{reference}}\n      </li>\n    </ul>\n  </div>\n\n  <div class=\"profile_button\">\n    <button class=\"btn btn-lg btn-primary pull-xs-right\"\n      ui-sref=\"app.booking\">\n      Boeken\n    </button>\n  </div>\n</div>\n");
   $templateCache.put("settings/settings.html", "<div class=\"settings-page\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-6 offset-md-3 col-xs-12\">\n        <h1 class=\"text-xs-center\">Your settings</h1>\n\n        <list-errors errors=\"$ctrl.errors\"></list-errors>\n\n        <form ng-submit=\"$ctrl.submitForm()\">\n          <fieldset ng-disabled=\"$ctrl.isSubmitting\">\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"URL of profile picture\"\n                ng-model=\"$ctrl.formData.image\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"dj-naam\"\n                ng-model=\"$ctrl.formData.djName\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"regio\"\n                ng-model=\"$ctrl.formData.region\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"number\"\n                placeholder=\"prijs per uur\"\n                ng-model=\"$ctrl.formData.price\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <textarea class=\"form-control form-control-lg\"\n                rows=\"8\"\n                placeholder=\"Korte biografie\"\n                ng-model=\"$ctrl.formData.biography\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"genre\"\n                ng-model=\"$ctrl.formData.genres\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"referentie\"\n                ng-model=\"$ctrl.formData.references\"/>\n            </fieldset>\n\n            <button class=\"btn btn-lg btn-primary pull-xs-right\"\n                type=\"submit\">\n                Update profiel\n            </button>\n          </fieldset>\n        </form>\n      </div>\n    </div>\n  </div>\n</div>\n");
-  $templateCache.put("components/dj-helpers/dj-list.html", "<dj-preview\n  dj=\"dj\"\n  ng-repeat=\"dj in $ctrl.list\">\n</dj-preview>\n\n<div class=\"dj-preview\"\n    ng-hide=\"!ctrl.loading\">\n    Loading djs ...\n</div>\n\n<div class=\"article-preview\"\n  ng-show=\"!$ctrl.loading && !$ctrl.list.length\">\n  Er zijn nog geen djs gevonden met opgegeven categorieën\n</div>\n");
+  $templateCache.put("components/dj-helpers/dj-list.html", "<dj-preview\n  dj=\"dj\"\n  ng-repeat=\"dj in $ctrl.list\">\n</dj-preview>\n\n<div class=\"dj-preview\"\n    ng-hide=\"!ctrl.loading\">\n    Loading djs ...\n</div>\n\n<div class=\"article-preview\"\n  ng-show=\"!$ctrl.loading && !$ctrl.list.length\">\n  Er zijn nog geen djs gevonden met opgegeven categorieën\n</div>\n\n<list-pagination\n  total-pages=\"$ctrl.listConfig.totalPages\"\n  current-page=\"$ctrl.listConfig.currentPage\"\n  ng-hide=\"$ctrl.listConfig.totalPages <= 1\"\n>\n</list-pagination>\n");
   $templateCache.put("components/dj-helpers/dj-preview.html", "<div class=\"dj-preview\">\n  <profile-meta profile=\"$ctrl.profile\"></profile-meta>\n</div>\n");
+  $templateCache.put("components/dj-helpers/list-pagination.html", "<nav>\n  <ul class=\"pagination\">\n\n    <li class=\"page-item\"\n      ng-class=\"{active: pageNumber === $ctrl.currentPage }\"\n      ng-repeat=\"pageNumber in $ctrl.pageRange($ctrl.totalPages)\"\n      ng-click=\"$ctrl.changePage(pageNumber)\">\n\n      <a class=\"page-link\" href=\"\">{{ pageNumber }}</a>\n\n    </li>\n\n  </ul>\n</nav>\n");
   $templateCache.put("components/dj-helpers/profile-meta.html", "<div class=\"profile-meta\">\n  <a ui-sref=\"app.profile({djName:$ctrl.profile.djName})\">\n    <img ng-src=\"{{$ctrl.profile.image}}\"/>\n  </a>\n\n  <ng-transclude></ng-transclude>\n</div>\n");
 }]);
 
-},{}],18:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 'use strict';
 
 authInterceptor.$inject = ["JWT", "AppConstants", "$window", "$q"];
@@ -36804,7 +36990,7 @@ function authInterceptor(JWT, AppConstants, $window, $q) {
 
 exports.default = authInterceptor;
 
-},{}],19:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 'use strict';
 
 ContactConfig.$inject = ["$stateProvider"];
@@ -36824,7 +37010,7 @@ function ContactConfig($stateProvider) {
 
 exports.default = ContactConfig;
 
-},{}],20:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -36841,7 +37027,7 @@ var ContactCtrl = function ContactCtrl() {
 
 exports.default = ContactCtrl;
 
-},{}],21:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -36870,7 +37056,7 @@ contactModule.controller('ContactCtrl', _contact4.default);
 
 exports.default = contactModule;
 
-},{"./contact.config":19,"./contact.controller":20,"angular":3}],22:[function(require,module,exports){
+},{"./contact.config":23,"./contact.controller":24,"angular":3}],26:[function(require,module,exports){
 'use strict';
 
 HomeConfig.$inject = ["$stateProvider"];
@@ -36891,7 +37077,7 @@ function HomeConfig($stateProvider) {
 
 exports.default = HomeConfig;
 
-},{}],23:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -36911,7 +37097,7 @@ HomeCtrl.$inject = ["AppConstants"];
 
 exports.default = HomeCtrl;
 
-},{}],24:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -36945,7 +37131,7 @@ homeModule.controller('HomeCtrl', _home4.default);
 
 exports.default = homeModule;
 
-},{"./home.config":22,"./home.controller":23,"angular":3}],25:[function(require,module,exports){
+},{"./home.config":26,"./home.controller":27,"angular":3}],29:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -36973,7 +37159,7 @@ var AppFooter = {
 
 exports.default = AppFooter;
 
-},{}],26:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -37000,7 +37186,7 @@ var AppHeader = {
 
 exports.default = AppHeader;
 
-},{}],27:[function(require,module,exports){
+},{}],31:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -37032,7 +37218,7 @@ layoutModule.component('appFooter', _footer2.default);
 
 exports.default = layoutModule;
 
-},{"./footer.component":25,"./header.component":26,"angular":3}],28:[function(require,module,exports){
+},{"./footer.component":29,"./header.component":30,"angular":3}],32:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -37051,6 +37237,10 @@ var _overview3 = require('./overview.controller');
 
 var _overview4 = _interopRequireDefault(_overview3);
 
+var _overviewProfiles = require('./overview-profiles.controller');
+
+var _overviewProfiles2 = _interopRequireDefault(_overviewProfiles);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var overviewModule = _angular2.default.module('app.overview', []);
@@ -37059,9 +37249,28 @@ overviewModule.config(_overview2.default);
 
 overviewModule.controller('OverviewCtrl', _overview4.default);
 
+overviewModule.controller('OverviewProfilesCtrl', _overviewProfiles2.default);
+
 exports.default = overviewModule;
 
-},{"./overview.config":29,"./overview.controller":30,"angular":3}],29:[function(require,module,exports){
+},{"./overview-profiles.controller":33,"./overview.config":34,"./overview.controller":35,"angular":3}],33:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var OverviewProfilesCtrl = function OverviewProfilesCtrl() {
+  'ngInject';
+
+  _classCallCheck(this, OverviewProfilesCtrl);
+};
+
+exports.default = OverviewProfilesCtrl;
+
+},{}],34:[function(require,module,exports){
 'use strict';
 
 OverviewConfig.$inject = ["$stateProvider"];
@@ -37073,6 +37282,7 @@ function OverviewConfig($stateProvider) {
 
   $stateProvider.state('app.overview', {
     url: '/djs',
+    abstract: true,
     controller: 'OverviewCtrl as $ctrl',
     templateUrl: 'overview/overview.html',
     title: 'djs'
@@ -37081,7 +37291,7 @@ function OverviewConfig($stateProvider) {
 
 exports.default = OverviewConfig;
 
-},{}],30:[function(require,module,exports){
+},{}],35:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -37100,7 +37310,7 @@ var OverviewCtrl = function OverviewCtrl() {
 
 exports.default = OverviewCtrl;
 
-},{}],31:[function(require,module,exports){
+},{}],36:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -37129,7 +37339,7 @@ profileModule.controller('ProfileCtrl', _profile4.default);
 
 exports.default = profileModule;
 
-},{"./profile.config":32,"./profile.controller":33,"angular":3}],32:[function(require,module,exports){
+},{"./profile.config":37,"./profile.controller":38,"angular":3}],37:[function(require,module,exports){
 'use strict';
 
 ProfileConfig.$inject = ["$stateProvider"];
@@ -37158,7 +37368,7 @@ function ProfileConfig($stateProvider) {
 
 exports.default = ProfileConfig;
 
-},{}],33:[function(require,module,exports){
+},{}],38:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -37178,7 +37388,7 @@ ProfileCtrl.$inject = ["profile"];
 
 exports.default = ProfileCtrl;
 
-},{}],34:[function(require,module,exports){
+},{}],39:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -37216,7 +37426,7 @@ servicesModule.service('Profile', _profiles2.default);
 
 exports.default = servicesModule;
 
-},{"./jwt.service":35,"./profiles.service":36,"./user.service":37,"angular":3}],35:[function(require,module,exports){
+},{"./jwt.service":40,"./profiles.service":41,"./user.service":42,"angular":3}],40:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -37260,7 +37470,7 @@ var JWT = function () {
 
 exports.default = JWT;
 
-},{}],36:[function(require,module,exports){
+},{}],41:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -37312,7 +37522,7 @@ var Profile = function () {
 
 exports.default = Profile;
 
-},{}],37:[function(require,module,exports){
+},{}],42:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -37486,7 +37696,7 @@ var User = function () {
 
 exports.default = User;
 
-},{}],38:[function(require,module,exports){
+},{}],43:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -37520,7 +37730,7 @@ settingsModule.controller('SettingsController', _settings4.default);
 
 exports.default = settingsModule;
 
-},{"./settings.config":39,"./settings.controller":40,"angular":3}],39:[function(require,module,exports){
+},{"./settings.config":44,"./settings.controller":45,"angular":3}],44:[function(require,module,exports){
 'use strict';
 
 SettingsConfig.$inject = ["$stateProvider", "$httpProvider"];
@@ -37547,7 +37757,7 @@ function SettingsConfig($stateProvider, $httpProvider) {
 
 exports.default = SettingsConfig;
 
-},{}],40:[function(require,module,exports){
+},{}],45:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
