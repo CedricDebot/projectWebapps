@@ -4,7 +4,7 @@ function OverviewConfig($stateProvider) {
   $stateProvider
   .state('app.overview', {
     url: '/djs',
-    abstract: true,
+    //abstract: true,
     controller: 'OverviewCtrl as $ctrl',
     templateUrl: 'overview/overview.html',
     title: 'djs',

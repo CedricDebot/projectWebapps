@@ -3,6 +3,7 @@ class ProfileCtrl {
     'ngInject';
 
     this.profile = profile;
+    console.log(profile);
   }
 }
 export default ProfileCtrl;

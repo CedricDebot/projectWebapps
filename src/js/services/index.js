@@ -13,4 +13,7 @@ servicesModule.service('User', UserService);
 import ProfileService from './profiles.service';
 servicesModule.service('Profile', ProfileService);
 
+import DjService from './dj.service';
+servicesModule.service('Dj', DjService);
+
 export default servicesModule;
