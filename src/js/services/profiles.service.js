@@ -6,22 +6,41 @@ export default class Profile {
     this._$http = $http;
   }
 
-  get(id) {
+  /*get(id) {
     return this._$http({
       url: this._AppConstants.api + '/profiles/djs/' + id,
       method: 'GET'
     }).then((res) => {
       return res.data;
     });
-  }
+  }*/
 
-/*  query(config) {
+  /*query(config) {
     let request = {
-      url: this._AppConstants.api + '/djs',
+      url: this._AppConstants.api + '/profiles/djs',
       method: 'GET',
-      params: 'config.filters ? config.filters : null'
+      params: config.filters ? config.filters : null
     };
 
     return this._$http(request).then((res) => res.data);
   }*/
+
+  searchDjs() {
+    return this._$http({
+      url: this._AppConstants.api + 'profiles/djs',
+      method: 'GET'
+    }).then((res) => {
+      console.log(res.data);
+      return res.data;
+    })
+  }
+
+  searchDjByName(djName) {
+    return this._$http({
+      url: this._AppConstants.api + '/profiles/djs/djName/' + djName,
+      method: 'GET'
+    }).then((res) => {
+      return res.data;
+    });
+  }
 }

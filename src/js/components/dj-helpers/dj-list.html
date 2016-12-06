@@ -1,0 +1,21 @@
+<dj-preview
+  dj="dj"
+  ng-repeat="dj in $ctrl.list">
+</dj-preview>
+
+<div class="dj-preview"
+    ng-hide="!ctrl.loading">
+    Loading djs ...
+</div>
+
+<div class="article-preview"
+  ng-show="!$ctrl.loading && !$ctrl.list.length">
+  Er zijn nog geen djs gevonden met opgegeven categorieën
+</div>
+
+<list-pagination
+  total-pages="$ctrl.listConfig.totalPages"
+  current-page="$ctrl.listConfig.currentPage"
+  ng-hide="$ctrl.listConfig.totalPages <= 1"
+>
+</list-pagination>

@@ -3,18 +3,18 @@ function ProfileConfig($stateProvider) {
 
   $stateProvider
   .state('app.profile', {
-    url: '/djs/:id',
+    url: '/djs/:djName',
     controller: 'ProfileCtrl as $ctrl',
     templateUrl: 'profile/profile.html',
     //title: "profile",
     resolve: {
       profile: function(Profile, $state, $stateParams) {
-        return Profile.get($stateParams.id).then(
+        return Profile.searchDjByName($stateParams.djName).then(
           (profile) => profile,
           (err) => $state.go('app.overview'),
         );
       }
-     }
+  }
   });
 }
 

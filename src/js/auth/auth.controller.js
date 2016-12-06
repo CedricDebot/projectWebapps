@@ -12,8 +12,6 @@ class AuthController {
   submitForm() {
     this.isSubmitting = true;
 
-    console.log(this.formData);
-
     this._User.attemptAuth(this.authType, this.formData).then(
       (res) => {
         this.isSubmitting = false;
