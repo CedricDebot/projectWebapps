@@ -1,3 +1,5 @@
+@import "_colors";
+
 .form_contact {
   width: 75%;
   height: auto;
@@ -8,52 +10,28 @@
     width: 75%;
     margin-left: 12.5%;
     margin-bottom: 2rem !important;
+    padding-top: 1.5%;
     text-align: center;
   }
 
   form {
     width: 50%;
     margin: auto;
-    //text-align: center;
 
     .form_group {
-      padding-top: 1rem;
-
+      margin: auto;
+      margin-bottom: 2%;
     }
 
-    /*fieldset {
-      padding-right: 5px;
-
-      p {
-        text-align: right;
-      }
-
-      input {
-        width: 40%;
-        height: 30px;
-        border-radius: 2px;
-        border: 1px solid black;
-        display: block;
-        float: right;
-        padding-left: 1%;
-        margin-right: 20%;
-      }
-
-      textarea {
-        width: 40%;
-        border-radius: 2px;
-        border: 1px solid black;
-        display: block;
-        float: right;
-        padding-left: 1%;
-        margin-right: 20%;
-      }
-    }*/
-
+    .form-control {
+      width: 60%;
+      margin: auto;
+    }
+    
     button {
-      margin-left: 78%;
+      margin-left: 63.5%;
       background-color:  $color-darkGreen;
-      margin-bottom: 2%;
+      margin-bottom: 5%;
     }
   }
 }

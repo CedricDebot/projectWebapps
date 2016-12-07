@@ -107,27 +107,7 @@ body {
       text-align: center; }
     body .form_search form {
       width: 50%;
-      margin: auto;
-      /*  .form-group {
-        //padding-top: 1%;
-      }*/
-      /*  fieldset {
-        padding-right: 5px;
-
-        p {
-          text-align: right;
-        }
-        input {
-          width: 40%;
-          height: 30px;
-          border-radius: 2px;
-          border: 1px solid black;
-          display: block;
-          float: right;
-          padding-left: 1%;
-          margin-right: 20%;
-        }
-      }*/ }
+      margin: auto; }
       body .form_search form .form-group {
         margin: auto;
         margin-bottom: 2%; }
@@ -159,25 +139,7 @@ body {
     text-align: center; }
   .form_auth form {
     width: 50%;
-    margin: auto;
-    /*fieldset {
-      padding-right: 5px;
-
-      p {
-        text-align: right;
-      }
-
-      input {
-        width: 40%;
-        height: 30px;
-        border-radius: 2px;
-        border: 1px solid black;
-        display: block;
-        float: right;
-        padding-left: 1%;
-        margin-right: 20%;
-      }
-    }*/ }
+    margin: auto; }
     .form_auth form .form_group {
       margin: auto;
       margin-bottom: 2%; }
@@ -188,6 +150,9 @@ body {
       margin-left: 66.5%;
       margin-bottom: 5%; }
 
+/** */
+/*  Primary button colors */
+/** */
 .form_contact {
   width: 75%;
   height: auto;
@@ -197,44 +162,21 @@ body {
     width: 75%;
     margin-left: 12.5%;
     margin-bottom: 2rem !important;
+    padding-top: 1.5%;
     text-align: center; }
   .form_contact form {
     width: 50%;
-    margin: auto;
-    /*fieldset {
-      padding-right: 5px;
-
-      p {
-        text-align: right;
-      }
-
-      input {
-        width: 40%;
-        height: 30px;
-        border-radius: 2px;
-        border: 1px solid black;
-        display: block;
-        float: right;
-        padding-left: 1%;
-        margin-right: 20%;
-      }
-
-      textarea {
-        width: 40%;
-        border-radius: 2px;
-        border: 1px solid black;
-        display: block;
-        float: right;
-        padding-left: 1%;
-        margin-right: 20%;
-      }
-    }*/ }
+    margin: auto; }
     .form_contact form .form_group {
-      padding-top: 1rem; }
-    .form_contact form button {
-      margin-left: 78%;
-      background-color: #449d44;
+      margin: auto;
       margin-bottom: 2%; }
+    .form_contact form .form-control {
+      width: 60%;
+      margin: auto; }
+    .form_contact form button {
+      margin-left: 63.5%;
+      background-color: #449d44;
+      margin-bottom: 5%; }
 
 /** */
 /*  Primary button colors */
@@ -333,11 +275,27 @@ body {
 /** */
 /*  Primary button colors */
 /** */
-.settings-page {
+.form_settings {
   width: 75%;
   height: auto;
   margin: 2% auto;
   background-color: #fff; }
-  .settings-page .form_header {
+  .form_settings .form_header {
     width: 75%;
+    margin: auto;
+    margin-bottom: 2rem !important;
+    padding-top: 1.5%;
+    text-align: center; }
+  .form_settings form {
+    width: 50%;
     margin: auto; }
+    .form_settings form .form-group {
+      margin: auto;
+      margin-bottom: 2%; }
+    .form_settings form .form-control {
+      width: 60%;
+      margin: auto; }
+    .form_settings form button {
+      margin-left: 59.5%;
+      background-color: #449d44;
+      margin-bottom: 5%; }
