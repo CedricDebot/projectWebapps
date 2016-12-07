@@ -36379,7 +36379,7 @@ _angular2.default.bootstrap(document, ['app'], {
   strictDi: true
 });
 
-},{"./auth":7,"./booking":10,"./components":15,"./config/app.config":18,"./config/app.constants":19,"./config/app.run":20,"./config/app.templates":21,"./contact":25,"./home":28,"./layout":31,"./overview":32,"./profile":36,"./services":40,"./settings":44,"angular":3,"angular-ui-router":1}],5:[function(require,module,exports){
+},{"./auth":7,"./booking":10,"./components":15,"./config/app.config":18,"./config/app.constants":19,"./config/app.run":20,"./config/app.templates":21,"./contact":25,"./home":28,"./layout":31,"./overview":32,"./profile":36,"./services":39,"./settings":43,"angular":3,"angular-ui-router":1}],5:[function(require,module,exports){
 'use strict';
 
 AuthConfig.$inject = ["$stateProvider"];
@@ -36450,7 +36450,8 @@ var AuthController = function () {
 
       this._User.attemptAuth(this.authType, this.formData).then(function (res) {
         _this.isSubmitting = false;
-        _this._$state.go('app.profile');
+        console.log(_this._User);
+        _this._$state.go('app.profile', { djName: res.data.djName });
       }, function (err) {
         _this.isSubmitting = false;
         _this.errors = err.data.errors;
@@ -36935,18 +36936,18 @@ exports.default = AppRun;
 "use strict";
 
 angular.module("templates", []).run(["$templateCache", function ($templateCache) {
+  $templateCache.put("auth/auth.html", "<body>\n    <div class=\"form_auth\">\n      <div class=\"form_header\">\n      <h1 ng-bind=\"::$ctrl.title\"></h1>\n      <p>\n        <a ui-sref=\"app.register\"\n          ng-show=\"$ctrl.authType === \'login\'\">\n           Een account aanmaken\n        </a>\n        <a ui-sref=\"app.login\"\n          ng-show=\"$ctrl.authType === \'register\'\">\n          Ik heb al een account\n        </a>\n      </p>\n    </div>\n\n      <list-errors errors=\"$ctrl.errors\"></list-errors>\n\n        <form ng-submit=\"$ctrl.submitForm()\">\n          <fieldset ng-disabled=\"$ctrl.isSubmitting\">\n            <fieldset class=\"form-group\">\n                <input class=\"form-control\"\n                  type=\"email\"\n                  placeholder=\"E-mail\"\n                  ng-model=\"$ctrl.formData.email\">\n            </fieldset>\n            <fieldset class=\"form-group\">\n                <input class=\"form-control\"\n                  type=\"password\"\n                  placeholder=\"Wachtwoord\"\n                  ng-model=\"$ctrl.formData.password\">\n            </fieldset>\n            <fieldset class=\"form-group\"\n              ng-show=\"$ctrl.authType === \'register\'\">\n                <input class=\"form-control\"\n                  type=\"password\"\n                  placeholder=\"Bevestig wachtwoord\">\n            </fieldset>\n            <fieldset class=\"form-group\"\n              ng-show=\"$ctrl.authType === \'register\'\">\n                <input class=\"form-control\"\n                  type=\"text\"\n                  placeholder=\"Voornaam\"\n                  ng-model=\"$ctrl.formData.firstName\">\n            </fieldset>\n            <fieldset class=\"form-group\"\n              ng-show=\"$ctrl.authType === \'register\'\">\n                <input class=\"form-control\"\n                  type=\"text\"\n                  placeholder=\"Naam\"\n                  ng-model=\"$ctrl.formData.Name\">\n            </fieldset>\n            <fieldset class=\"form-group\"\n              ng-show=\"$ctrl.authType === \'register\'\">\n                <input class=\"form-control\"\n                  type=\"text\"\n                  placeholder=\"Regio\"\n                  ng-model=\"$ctrl.formData.region\">\n            </fieldset>\n            <fieldset class=\"form-group\"\n              ng-show=\"$ctrl.authType === \'register\'\">\n                <input class=\"form-control\"\n                  type=\"text\"\n                  placeholder=\"DJ-naam\"\n                  ng-model=\"$ctrl.formData.djName\">\n            </fieldset>\n            <fieldset class=\"form-group\"\n              ng-show=\"$ctrl.authType === \'register\'\">\n                <input class=\"form-control\"\n                  type=\"text\"\n                  placeholder=\"Genre\"\n                  ng-model=\"$ctrl.formData.genres\">\n            </fieldset>\n            <fieldset class=\"form-group\"\n              ng-show=\"$ctrl.authType === \'register\'\">\n                <input class=\"form-control\"\n                  type=\"text\"\n                  placeholdeer=\"Prijs per uur\"\n                  ng-model=\"$ctrl.formData.price\">\n            </fieldset>\n        </fieldset>\n          <button class=\"btn btn-lg btn-primary pull-xs-right\"\n            type=\"submit\"\n            ng-bind=::$ctrl.title></button>\n        </form>\n    </div>\n</body>\n");
   $templateCache.put("booking/booking.html", "<div class=\"bookings-page\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-6 offset-md-3 col-xs-12\">\n        <h1 class=\"text-xs-center\">Boek dj-naam</h1>\n\n        <list-errors errors=\"$ctrl.errors\"></list-errors>\n\n        <form ng-submit=\"$ctrl.submitForm()\">\n          <fieldset ng-disabled=\"$ctrl.isSubmitting\">\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"naam\"\n                ng-model=\"$ctrl.formData.name\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"voornaam\"\n                ng-model=\"$ctrl.formData.firstName\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"email\"\n                placeholder=\"email\"\n                ng-model=\"$ctrl.formData.email\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"tel of gsm\"\n                ng-model=\"$ctrl.formData.tel\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n              type=\"text\"\n              placeholder=\"naam van de activiteit\"\n              ng-model=\"$ctrl.formData.activity\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n              type=\"date\"\n              placeholder=\"Datum van de activiteit\"\n              ng-model=\"$ctrl.formData.date\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n              type=\"text\"\n              placeholder=\"adres\"\n              ng-model=\"$ctrl.formData.adres\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-group\"\n              type=\"text\"\n              placeholder=\"locatie\"\n              ng-model=\"$ctrl.formData.location\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <textarea class=\"form-control form-control-lg\"\n                rows=\"8\"\n                placeholder=\"Uw bericht \"\n                ng-model=\"$ctrl.formData.message\"/>\n            </fieldset>\n\n            <button class=\"btn btn-lg btn-primary pull-xs-right\"\n                type=\"submit\">\n                Boek\n            </button>\n          </fieldset>\n        </form>\n      </div>\n    </div>\n  </div>\n</div>\n");
-  $templateCache.put("components/list-errors.html", "<ul class=\"error-messages\" ng-show=\"$ctrl.errors\">\n  <div ng-repeat=\"(field, errors) in $ctrl.errors\">\n    <li ng-repeat=\"error in errors\">\n      {{field}} {{error}}\n    </li>\n  </div>\n</ul>\n");
-  $templateCache.put("auth/auth.html", "<body>\n    <div class=\"form_auth\">\n      <h1 class=\"form_header\" ng-bind=\"::$ctrl.title\"></h1>\n      <p class=\"form_header\">\n        <a ui-sref=\"app.register\"\n          ng-show=\"$ctrl.authType === \'login\'\">\n           Een account aanmaken\n        </a>\n        <a ui-sref=\"app.login\"\n          ng-show=\"$ctrl.authType === \'register\'\">\n          Ik heb al een account\n        </a>\n      </p>\n\n      <list-errors errors=\"$ctrl.errors\"></list-errors>\n\n        <form ng-submit=\"$ctrl.submitForm()\">\n          <fieldset ng-disabled=\"$ctrl.isSubmitting\">\n            <fieldset class=\"form-group\">\n              <p>E-mail:\n                <input class=\"form-control\"\n                  type=\"email\"\n                  placeholder=\"E-mail\"\n                  ng-model=\"$ctrl.formData.email\">\n              </p>\n            </fieldset>\n            <fieldset class=\"form-group\">\n              <p>Wachtwoord:\n                <input class=\"form-control\"\n                  type=\"password\"\n                  placeholder=\"Wachtwoord\"\n                  ng-model=\"$ctrl.formData.password\">\n              </p>\n            </fieldset>\n            <fieldset class=\"form-group\"\n              ng-show=\"$ctrl.authType === \'register\'\">\n              <p>Bevestig wachtwoord:\n                <input class=\"form-control\"\n                  type=\"password\"\n                  placeholder=\"Bevestig wachtwoord\">\n              </p>\n            </fieldset>\n            <fieldset class=\"form-group\"\n              ng-show=\"$ctrl.authType === \'register\'\">\n              <p>Voornaam:\n                <input class=\"form-control\"\n                  type=\"text\"\n                  placeholder=\"Voornaam\"\n                  ng-model=\"$ctrl.formData.firstName\">\n              </p>\n            </fieldset>\n            <fieldset class=\"form-group\"\n              ng-show=\"$ctrl.authType === \'register\'\">\n              <p>Naam:\n                <input class=\"form-control\"\n                  type=\"text\"\n                  placeholder=\"Naam\"\n                  ng-model=\"$ctrl.formData.Name\">\n              </p>\n            </fieldset>\n            <fieldset class=\"form-group\"\n              ng-show=\"$ctrl.authType === \'register\'\">\n              <p>Regio:\n                <input class=\"form-control\"\n                  type=\"text\"\n                  placeholder=\"Regio\"\n                  ng-model=\"$ctrl.formData.region\">\n              </p>\n            </fieldset>\n            <fieldset class=\"form-group\"\n              ng-show=\"$ctrl.authType === \'register\'\">\n              <p>DJ-naam:\n                <input class=\"form-control\"\n                  type=\"text\"\n                  placeholder=\"DJ-naam\"\n                  ng-model=\"$ctrl.formData.djName\">\n              </p>\n            </fieldset>\n            <fieldset class=\"form-group\"\n              ng-show=\"$ctrl.authType === \'register\'\">\n              <p>Genres:\n                <input class=\"form-control\"\n                  type=\"text\"\n                  placeholder=\"Genre\"\n                  ng-model=\"$ctrl.formData.genres\">\n              </p>\n            </fieldset>\n            <fieldset class=\"form-group\"\n              ng-show=\"$ctrl.authType === \'register\'\">\n              <p>Prijs:\n                <input class=\"form-control\"\n                  type=\"text\"\n                  placeholdeer=\"Prijs per uur\"\n                  ng-model=\"$ctrl.formData.price\">\n              </p>\n            </fieldset>\n        </fieldset>\n          <button class=\"btn btn-lg btn-primary pull-xs-right\"\n            type=\"submit\"\n            ng-bind=::$ctrl.title></button>\n        </form>\n    </div>\n</body>\n");
-  $templateCache.put("home/home.html", "<body>\n  <div class=\"form_search\">\n    <div>\n      <h1 class=\"form_header\">Zoek de DJ die bij u past</h1>\n      <p class=\"form_header\">Vul de categorieën in die u wenst en laat ons zoeken naar dé DJ die u zoekt!</p>\n      <form ng-submit=\"$ctrl.submitForm()\">\n        <fieldset ng-disabled=\"$ctrl.isSubmitting\">\n          <fieldset class=\"form-group\">\n            <p>Genre:\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"genre\"\n                ng-model=\"$ctrl.formData.genre\"/>\n            </p>\n          </fieldset>\n\n          <fieldset class=\"form-group\">\n            <p>Regio:\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"Regio\"\n                ng-model=\"$ctrl.formData.region\"/>\n            </p>\n          </fieldset>\n\n          <fieldset class=\"form-group\">\n            <p>Prijs:\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"prijs\"\n                ng-model=\"$ctrl.formData.price\"/>\n            </p>\n          </fieldset>\n      </fieldset>\n        <button class=\"btn btn-lg btn-primary pull-xs-right\"\n          type=\"submit\">Zoek</button>\n      </form>\n    </div>\n  </div>\n\n  <div class=\"in_the_picture\">\n    <h1>Artiesten in de kijker</h1>\n  </div>\n\n  <div class=\"form_search\"\n    id=\"last_form\">\n    <h1 class=\"form_header\">Zoek een DJ bij naam</h1>\n    <p class=form_header>Vul de naam in van een DJ die je wenst te boeken voor jouw feestje en wij brengen jouw meteen in contact!</p>\n    <form ng-submit=\"$ctrl.submitFormDjName()\">\n      <fieldset class=\"form-group\" ng-disabled=\"$ctrl.isSubmitting\">\n        <p>Naam:\n        <input class=\"form-control\"\n          type=\"text\"\n          placeholder=\"naam\"\n          ng-model=\"$ctrl.formDataName.djName\"/>\n      </p>\n      </fieldset>\n      <button class=\"btn btn-lg btn-primary pull-xs-right\"\n        type=\"submit\">Zoek</button>\n    </form>\n  </div>\n</body>\n");
-  $templateCache.put("layout/app-view.html", "<app-header></app-header>\n\n<div ui-view></div>\n\n<app-footer></app-footer>\n");
-  $templateCache.put("layout/footer.html", "<footer>\n  <div class=\"footer_content\">\n    <img src=\"\" alt=\"logo\"/>\n    <form>\n      <input type=\"text\" placeholder=\"dj naam\"/>\n      <button type=\"submit\">zoek</button>\n    </form>\n    <div class=\"footer_menu\">\n      <a class=\"nav-link\"\n        ui-sref-active=\"active\"\n        ui-sref=\"app.contact\">\n        Contact\n      </a>\n  </div>\n  </div>\n  <div class=\"footer_poweredBy\">\n    <span class=\"attribution\">\n      &copy; {{::$ctrl.date | date:\'yyyy\'}} {{$ctrl.appName}}.\n      powered by Cédric Debot.\n    </span>\n  </div>\n</footer>\n");
-  $templateCache.put("layout/header.html", "<header>\n  <div class=\"logo\">\n    <img src=\"src/images/logo.png\" alt=\"logo\"/>\n  </div>\n  <div class=\"login-link\">\n    <!--ik ben een dj link (niet-ingelogde gebruiker) -->\n    <a ui-sref=\"app.login\"\n      show-authed=\"false\">\n      Ik ben een dj\n    </a>\n\n    <!-- log out (ingelogde gebruiker)-->\n    <a ui-sref=\"app.login\"\n      ng-click=\"$ctrl.logout()\"\n    show-authed=\"true\">\n      Uitloggen\n    </a>\n  </div>\n\n  <div class=\"navigation\">\n  <nav class=\"navbar\">\n    <!-- nav voor niet-ingelogde gebruikers -->\n      <ul show-authed=\"false\">\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.home\">\n            Home\n          </a>\n        </li>\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.overview\">\n            DJ\'s\n          </a>\n        </li>\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.contact\">\n            Contact\n          </a>\n        </li>\n      </ul>\n\n      <ul show-authed=\"true\">\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.home\">\n            Home\n          </a>\n        </li>\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.djs\">\n            DJ\'s\n          </a>\n        </li>\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.profile\">\n            Mijn Profiel\n          </a>\n        </li>\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.settings\">\n            Settings\n          </a>\n        </li>\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.contact\">\n            Contact\n          </a>\n        </li>\n      </ul>\n  </nav>\n</div>\n</header>\n");
-  $templateCache.put("overview/overview-profiles.html", "<dj-list limit=\"15\" list-config=\"$ctrl.listConfig\"></dj-list>\n");
-  $templateCache.put("overview/overview.html", "<div class=\"overview\">\n  <div class=\"overview_dj\">\n  </div>\n</div>\n");
   $templateCache.put("contact/contact.html", "<body>\n  <div class=\"form_contact\">\n    <h1 class=\"form_header\">Vragen?</h1>\n    <p class=\"form_header\">\n      <a ui-sref=\"app.register\">\n        Een account aanmaken\n      </a>\n    </p>\n\n    <form>\n      <fieldset class=\"form_group\">\n        <p> Naam en voornaam:\n          <input class=\"form-control\"\n            type=\"text\"\n            placeholder=\"Naam en voornaam\">\n        </p>\n      </fieldset>\n      <fieldset class=\"form_group\">\n        <p> E-mail:\n          <input class=\"form-control\"\n            type=\"email\"\n            placehoder=\"E-mail\">\n        </p>\n      </fieldset>\n      <fieldset class=\"form_group\">\n        <p>Tel. of GSM:\n          <input class=\"form-control\"\n            type=\"text\"\n            placeholder=\"Tel. of GSM\">\n        </p>\n      </fieldset>\n      <fieldset class=\"form_group\">\n        <p>Uw bericht:\n          <textarea class=\"form-control\"\n            cols=\"25\"\n            rows=\"10\"/>\n        </p>\n      </fieldset>\n      <button class=\"btn btn-lg btn-primary pull-xs-right\"\n        type=\"submit\">Verzenden</button>\n    </form>\n  </div>\n</body>\n");
+  $templateCache.put("components/list-errors.html", "<ul class=\"error-messages\" ng-show=\"$ctrl.errors\">\n  <div ng-repeat=\"(field, errors) in $ctrl.errors\">\n    <li ng-repeat=\"error in errors\">\n      {{field}} {{error}}\n    </li>\n  </div>\n</ul>\n");
+  $templateCache.put("layout/app-view.html", "<app-header></app-header>\n\n<div ui-view></div>\n\n<app-footer></app-footer>\n");
+  $templateCache.put("layout/footer.html", "<footer>\n  <div class=\"footer_content\">\n    <img src=\"../../images/logo.png\" alt=\"logo\"/>\n    <form>\n      <input type=\"text\" placeholder=\"dj naam\"/>\n      <button type=\"submit\">zoek</button>\n    </form>\n    <div class=\"footer_menu\">\n      <a class=\"nav-link\"\n        ui-sref-active=\"active\"\n        ui-sref=\"app.contact\">\n        Contact\n      </a>\n  </div>\n  </div>\n  <div class=\"footer_poweredBy\">\n    <span class=\"attribution\">\n      &copy; {{::$ctrl.date | date:\'yyyy\'}} {{$ctrl.appName}}.\n      powered by Cédric Debot.\n    </span>\n  </div>\n</footer>\n");
+  $templateCache.put("layout/header.html", "<header>\n  <div class=\"logo\">\n    <img src=\"../../images/logo.png\" alt=\"logo\"/>\n  </div>\n  <div class=\"login-link\">\n    <!--ik ben een dj link (niet-ingelogde gebruiker) -->\n    <a ui-sref=\"app.login\"\n      show-authed=\"false\">\n      Ik ben een dj\n    </a>\n\n    <!-- log out (ingelogde gebruiker)-->\n    <a ui-sref=\"app.login\"\n      ng-click=\"$ctrl.logout()\"\n    show-authed=\"true\">\n      Uitloggen\n    </a>\n  </div>\n\n  <div class=\"navigation\">\n  <nav class=\"navbar\">\n    <!-- nav voor niet-ingelogde gebruikers -->\n      <ul show-authed=\"false\">\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.home\">\n            Home\n          </a>\n        </li>\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.overview\">\n            DJ\'s\n          </a>\n        </li>\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.contact\">\n            Contact\n          </a>\n        </li>\n      </ul>\n\n      <ul show-authed=\"true\">\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.home\">\n            Home\n          </a>\n        </li>\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.djs\">\n            DJ\'s\n          </a>\n        </li>\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.profile\">\n            Mijn Profiel\n          </a>\n        </li>\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.settings\">\n            Settings\n          </a>\n        </li>\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.contact\">\n            Contact\n          </a>\n        </li>\n      </ul>\n  </nav>\n</div>\n</header>\n");
+  $templateCache.put("home/home.html", "<body>\n  <div class=\"form_search\">\n    <div>\n      <div class=\"form_header\">\n        <h1>Zoek de DJ die bij u past</h1>\n        <p>Vul de categorieën in die u wenst en laat ons zoeken naar dé DJ die u zoekt!</p>\n      </div>\n      <form ng-submit=\"$ctrl.submitForm()\">\n        <fieldset ng-disabled=\"$ctrl.isSubmitting\">\n          <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"Genre\"\n                ng-model=\"$ctrl.formData.genre\"/>\n          </fieldset>\n\n          <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"Regio\"\n                ng-model=\"$ctrl.formData.region\"/>\n          </fieldset>\n\n          <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"Prijs\"\n                ng-model=\"$ctrl.formData.price\"/>\n          </fieldset>\n      </fieldset>\n        <button class=\"btn btn-lg btn-primary pull-xs-right\"\n          type=\"submit\">Zoek</button>\n      </form>\n    </div>\n  </div>\n\n  <div class=\"in_the_picture\">\n    <h1>Artiesten in de kijker</h1>\n  </div>\n\n  <div class=\"form_search\"\n    id=\"last_form\">\n    <div class=\"form_header\">\n    <h1>Zoek een DJ bij naam</h1>\n    <p>Vul de naam in van een DJ die je wenst te boeken voor jouw feestje en wij brengen jouw meteen in contact!</p>\n  </div>\n    <form ng-submit=\"$ctrl.submitFormDjName()\">\n      <fieldset class=\"form-group\" ng-disabled=\"$ctrl.isSubmitting\">\n        <input class=\"form-control\"\n          type=\"text\"\n          placeholder=\"Naam\"\n          ng-model=\"$ctrl.formDataName.djName\"/>\n      </fieldset>\n      <button class=\"btn btn-lg btn-primary pull-xs-right\"\n        type=\"submit\">Zoek</button>\n    </form>\n  </div>\n</body>\n");
+  $templateCache.put("overview/overview-profiles.html", "<dj-list limit=\"15\" list-config=\"$ctrl.listConfig\"></dj-list>\n");
+  $templateCache.put("overview/overview.html", "<div class=\"overview\">\n  <div class=\"overview_dj\">\n    <p>hallo?</p>\n  </div>\n</div>\n");
   $templateCache.put("profile/profile.html", "<div class=\"profile\">\n\n  <div class=\"left_container\">\n  <div class=\"profile_pic\">\n    <img src=\"\" alt=\"profiel foto\">\n  </div>\n\n  <div class=\"profile_genres\">\n    <ul>\n      <li ng-repeat=\"genre in $ctrl.profile.genres\">\n          {{genre}}\n      </li>\n    </ul>\n  </div>\n</div>\n\n<h1 class=\"profile_djName\" ng-bind=\"::$ctrl.profile.djName\"></h1>\n\n  <div class=\"profile_price_tag\">\n    <span id=\"test\" class=\"pricetag\" ng-bind=\"::$ctrl.profile.price\"></span>\n  </div>\n\n  <div class=\"profile_bio\">\n    <p ng-bind=\"::$ctrl.profile.biography\"></p>\n  </div>\n\n  <div class=\"profile_references\">\n    <h2>Referenties</h2>\n    <ul>\n      <li ng-repeat=\"reference in $ctrl.profile.references\">\n        {{reference}}\n      </li>\n    </ul>\n  </div>\n\n  <div class=\"profile_button\">\n    <button class=\"btn btn-lg btn-primary pull-xs-right\"\n      ui-sref=\"app.booking\">\n      Boeken\n    </button>\n  </div>\n</div>\n");
-  $templateCache.put("settings/settings.html", "<div class=\"settings-page\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-6 offset-md-3 col-xs-12\">\n        <h1 class=\"text-xs-center\">Your settings</h1>\n\n        <list-errors errors=\"$ctrl.errors\"></list-errors>\n\n        <form ng-submit=\"$ctrl.submitForm()\">\n          <fieldset ng-disabled=\"$ctrl.isSubmitting\">\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"URL of profile picture\"\n                ng-model=\"$ctrl.formData.image\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"dj-naam\"\n                ng-model=\"$ctrl.formData.djName\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"regio\"\n                ng-model=\"$ctrl.formData.region\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"number\"\n                placeholder=\"prijs per uur\"\n                ng-model=\"$ctrl.formData.price\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <textarea class=\"form-control form-control-lg\"\n                rows=\"8\"\n                placeholder=\"Korte biografie\"\n                ng-model=\"$ctrl.formData.biography\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"genre\"\n                ng-model=\"$ctrl.formData.genres\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"referentie\"\n                ng-model=\"$ctrl.formData.references\"/>\n            </fieldset>\n\n            <button class=\"btn btn-lg btn-primary pull-xs-right\"\n                type=\"submit\">\n                Update profiel\n            </button>\n          </fieldset>\n        </form>\n      </div>\n    </div>\n  </div>\n</div>\n");
+  $templateCache.put("settings/settings.html", "<div class=\"settings-page\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-6 offset-md-3 col-xs-12\">\n        <h1 class=\"form_header\">Your settings</h1>\n\n        <list-errors errors=\"$ctrl.errors\"></list-errors>\n\n        <form ng-submit=\"$ctrl.submitForm()\">\n          <fieldset ng-disabled=\"$ctrl.isSubmitting\">\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"URL of profile picture\"\n                ng-model=\"$ctrl.formData.image\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"dj-naam\"\n                ng-model=\"$ctrl.formData.djName\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"regio\"\n                ng-model=\"$ctrl.formData.region\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"number\"\n                placeholder=\"prijs per uur\"\n                ng-model=\"$ctrl.formData.price\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <textarea class=\"form-control form-control-lg\"\n                rows=\"8\"\n                placeholder=\"Korte biografie\"\n                ng-model=\"$ctrl.formData.biography\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"genre\"\n                ng-model=\"$ctrl.formData.genres\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"referentie\"\n                ng-model=\"$ctrl.formData.references\"/>\n            </fieldset>\n\n            <button class=\"btn btn-lg btn-primary pull-xs-right\"\n                type=\"submit\">\n                Update profiel\n            </button>\n          </fieldset>\n        </form>\n      </div>\n    </div>\n  </div>\n</div>\n");
   $templateCache.put("components/dj-helpers/dj-list.html", "<dj-preview\n  dj=\"dj\"\n  ng-repeat=\"dj in $ctrl.list\">\n</dj-preview>\n\n<div class=\"dj-preview\"\n    ng-hide=\"!ctrl.loading\">\n    Loading djs ...\n</div>\n\n<div class=\"article-preview\"\n  ng-show=\"!$ctrl.loading && !$ctrl.list.length\">\n  Er zijn nog geen djs gevonden met opgegeven categorieën\n</div>\n\n<list-pagination\n  total-pages=\"$ctrl.listConfig.totalPages\"\n  current-page=\"$ctrl.listConfig.currentPage\"\n  ng-hide=\"$ctrl.listConfig.totalPages <= 1\"\n>\n</list-pagination>\n");
   $templateCache.put("components/dj-helpers/dj-preview.html", "<div class=\"dj-preview\">\n  <profile-meta profile=\"$ctrl.profile\"></profile-meta>\n</div>\n");
   $templateCache.put("components/dj-helpers/list-pagination.html", "<nav>\n  <ul class=\"pagination\">\n\n    <li class=\"page-item\"\n      ng-class=\"{active: pageNumber === $ctrl.currentPage }\"\n      ng-repeat=\"pageNumber in $ctrl.pageRange($ctrl.totalPages)\"\n      ng-click=\"$ctrl.changePage(pageNumber)\">\n\n      <a class=\"page-link\" href=\"\">{{ pageNumber }}</a>\n\n    </li>\n\n  </ul>\n</nav>\n");
@@ -37098,32 +37099,64 @@ var HomeCtrl = function () {
     this._$state = $state;
   }
 
-  /*submitForm() {
-    this.isSubmitting = true;
-     this._profile.searchDjByName().then(
-      (res) => {
-        console.log(res);
-        this.isSubmitting = false;
-      },
-      (err) => {
-        this.isSubmitting = false;
-        this.errors = err.data.errors;
-      });
-  }*/
-
   _createClass(HomeCtrl, [{
-    key: 'submitFormDjName',
-    value: function submitFormDjName() {
+    key: 'submitForm',
+    value: function submitForm() {
       var _this = this;
 
       this.isSubmitting = true;
 
-      this._profile.searchDjByName(this.formDataName.djName).then(function (res) {
+      switch (true) {
+        case !this.formData.genre && !this.formData.region && !this.formData.price:
+          this.listConfig.filters = null;
+          break;
+        case !this.formData.genre && !this.formData.region:
+          this.listConfig.filters = { price: this.formData.price };
+          break;
+        case !this.formData.genre && !this.formData.price:
+          this.listConfig.filters = { region: this.formData.region };
+          break;
+        case !this.formData.region && !this.formData.price:
+          this.listConfig.filters = { genre: this.formData.genre };
+          break;
+        case !this.formData.genre:
+          this.listConfig.filters = { region: this.formData.region, price: this.formData.price };
+          break;
+        case !this.formData.region:
+          this.listConfig.filters = { genre: this.formData.genre, price: this.formData.price };
+          break;
+        case !this.formData.price:
+          this.listConfig.filters = { genre: this.formData.genre, region: this.formData.region };
+          break;
+        default:
+          this.listConfig.filters = { genre: this.formData.genre, region: this.formData.region, price: this.formData.price };
+          break;
+      }
+
+      console.log(this.listConfig.filters);
+
+      this._profile.searchDjs(this.formData.genre, this.formData.region, this.formData.price).then(function (res) {
+        console.log(res);
         _this.isSubmitting = false;
-        _this._$state.go('app.profile', { djName: _this.formDataName.djName });
+        _this._$state.go('app.overview');
       }, function (err) {
         _this.isSubmitting = false;
         _this.errors = err.data.errors;
+      });
+    }
+  }, {
+    key: 'submitFormDjName',
+    value: function submitFormDjName() {
+      var _this2 = this;
+
+      this.isSubmitting = true;
+
+      this._profile.get(this.formDataName.djName).then(function (res) {
+        _this2.isSubmitting = false;
+        _this2._$state.go('app.profile', { djName: _this2.formDataName.djName });
+      }, function (err) {
+        _this2.isSubmitting = false;
+        _this2.errors = err.data.errors;
       });
     }
   }]);
@@ -37392,7 +37425,7 @@ function ProfileConfig($stateProvider) {
     //title: "profile",
     resolve: {
       profile: ["Profile", "$state", "$stateParams", function profile(Profile, $state, $stateParams) {
-        return Profile.searchDjByName($stateParams.djName).then(function (profile) {
+        return Profile.get($stateParams.djName).then(function (profile) {
           return profile;
         }, function (err) {
           return $state.go('app.overview');
@@ -37432,27 +37465,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Dj = function Dj(AppConstants, $http) {
-  'ngInject';
-
-  _classCallCheck(this, Dj);
-
-  this._AppConstants = AppConstants;
-  this._$http = $http;
-};
-Dj.$inject = ["AppConstants", "$http"];
-
-exports.default = Dj;
-
-},{}],40:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
 var _angular = require('angular');
 
 var _angular2 = _interopRequireDefault(_angular);
@@ -37469,10 +37481,6 @@ var _profiles = require('./profiles.service');
 
 var _profiles2 = _interopRequireDefault(_profiles);
 
-var _dj = require('./dj.service');
-
-var _dj2 = _interopRequireDefault(_dj);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // Create the module where our functionality can attach to
@@ -37486,11 +37494,9 @@ servicesModule.service('User', _user2.default);
 
 servicesModule.service('Profile', _profiles2.default);
 
-servicesModule.service('Dj', _dj2.default);
-
 exports.default = servicesModule;
 
-},{"./dj.service":39,"./jwt.service":41,"./profiles.service":42,"./user.service":43,"angular":3}],41:[function(require,module,exports){
+},{"./jwt.service":40,"./profiles.service":41,"./user.service":42,"angular":3}],40:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -37534,7 +37540,7 @@ var JWT = function () {
 
 exports.default = JWT;
 
-},{}],42:[function(require,module,exports){
+},{}],41:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -37565,20 +37571,24 @@ var Profile = function () {
     });
   }*/
 
-  /*query(config) {
-    let request = {
-      url: this._AppConstants.api + '/profiles/djs',
-      method: 'GET',
-      params: config.filters ? config.filters : null
-    };
-     return this._$http(request).then((res) => res.data);
-  }*/
-
   _createClass(Profile, [{
+    key: 'query',
+    value: function query(config) {
+      var request = {
+        url: this._AppConstants.api + '/profiles/djs',
+        method: 'GET',
+        params: config.filters ? config.filters : null
+      };
+
+      return this._$http(request).then(function (res) {
+        return res.data;
+      });
+    }
+  }, {
     key: 'searchDjs',
-    value: function searchDjs() {
+    value: function searchDjs(genre, region, price) {
       return this._$http({
-        url: this._AppConstants.api + 'profiles/djs',
+        url: this._AppConstants.api + '/profiles/djs',
         method: 'GET'
       }).then(function (res) {
         console.log(res.data);
@@ -37586,10 +37596,10 @@ var Profile = function () {
       });
     }
   }, {
-    key: 'searchDjByName',
-    value: function searchDjByName(djName) {
+    key: 'get',
+    value: function get(djname) {
       return this._$http({
-        url: this._AppConstants.api + '/profiles/djs/djName/' + djName,
+        url: this._AppConstants.api + '/profiles/djs/djname/' + djname,
         method: 'GET'
       }).then(function (res) {
         return res.data;
@@ -37602,7 +37612,7 @@ var Profile = function () {
 
 exports.default = Profile;
 
-},{}],43:[function(require,module,exports){
+},{}],42:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -37646,6 +37656,7 @@ var User = function () {
       }).then(function (res) {
         _this._JWT.save(res.data.token);
         _this.current = res.data;
+        console.log(res.data);
         return res;
       }, function (err) {
         console.log(err);
@@ -37776,7 +37787,7 @@ var User = function () {
 
 exports.default = User;
 
-},{}],44:[function(require,module,exports){
+},{}],43:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -37810,7 +37821,7 @@ settingsModule.controller('SettingsController', _settings4.default);
 
 exports.default = settingsModule;
 
-},{"./settings.config":45,"./settings.controller":46,"angular":3}],45:[function(require,module,exports){
+},{"./settings.config":44,"./settings.controller":45,"angular":3}],44:[function(require,module,exports){
 'use strict';
 
 SettingsConfig.$inject = ["$stateProvider", "$httpProvider"];
@@ -37837,7 +37848,7 @@ function SettingsConfig($stateProvider, $httpProvider) {
 
 exports.default = SettingsConfig;
 
-},{}],46:[function(require,module,exports){
+},{}],45:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {

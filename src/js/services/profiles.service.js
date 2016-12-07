@@ -15,7 +15,7 @@ export default class Profile {
     });
   }*/
 
-  /*query(config) {
+  query(config) {
     let request = {
       url: this._AppConstants.api + '/profiles/djs',
       method: 'GET',
@@ -23,11 +23,11 @@ export default class Profile {
     };
 
     return this._$http(request).then((res) => res.data);
-  }*/
+  }
 
-  searchDjs() {
+  searchDjs(genre, region, price) {
     return this._$http({
-      url: this._AppConstants.api + 'profiles/djs',
+      url: this._AppConstants.api + '/profiles/djs' ,
       method: 'GET'
     }).then((res) => {
       console.log(res.data);
@@ -35,9 +35,9 @@ export default class Profile {
     })
   }
 
-  searchDjByName(djName) {
+  get(djname) {
     return this._$http({
-      url: this._AppConstants.api + '/profiles/djs/djName/' + djName,
+      url: this._AppConstants.api + '/profiles/djs/djname/' + djname,
       method: 'GET'
     }).then((res) => {
       return res.data;

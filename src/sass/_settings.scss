@@ -1,0 +1,13 @@
+@import "_colors";
+
+.settings-page {
+  width: 75%;
+  height: auto;
+  margin: 2% auto;
+  background-color: $color-white;
+
+  .form_header {
+    width: 75%;
+    margin: auto;
+  }
+}

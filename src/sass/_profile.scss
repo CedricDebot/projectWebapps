@@ -4,9 +4,7 @@
   width: 75%;
   height: auto;
   min-height: 500px;
-  margin-left: 12.5%;
-  margin-top: 2%;
-  margin-bottom: 2%;
+  margin: 2% auto;
   background-color: $color-white;
 
   .left_container {
@@ -39,9 +37,6 @@
         text-align: center;
       }
 
-      li:before {
-        content: url(https://www.iconfinder.com/icons/1417636/itunes_listen_music_play_tunes_icon#size=128);
-      }
     }
   }
 }

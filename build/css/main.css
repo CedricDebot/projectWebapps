@@ -72,7 +72,7 @@ footer {
     footer .footer_content img {
       width: 150px;
       height: 150px;
-      margin-left: 475px;
+      margin: auto;
       margin-bottom: 15px; }
     footer .footer_content form {
       margin-bottom: 15px; }
@@ -96,17 +96,20 @@ body {
   body .form_search {
     width: 75%;
     height: auto;
-    margin-left: 12.5%;
-    margin-top: 2%;
+    margin: 2% auto;
     background-color: #fff; }
     body .form_search .form_header {
       width: 75%;
-      margin-left: 12.5%;
+      margin: auto;
       margin-bottom: 2rem !important;
+      padding-top: 1.5%;
       text-align: center; }
     body .form_search form {
       width: 50%;
       margin: auto;
+      /*  .form-group {
+        //padding-top: 1%;
+      }*/
       /*  fieldset {
         padding-right: 5px;
 
@@ -125,11 +128,15 @@ body {
         }
       }*/ }
       body .form_search form .form-group {
-        padding-top: 1rem; }
-      body .form_search form button {
-        margin-left: 85%;
-        background-color: #449d44;
+        margin: auto;
         margin-bottom: 2%; }
+      body .form_search form .form-control {
+        width: 60%;
+        margin: auto; }
+      body .form_search form button {
+        margin-left: 66.5%;
+        background-color: #449d44;
+        margin-bottom: 5%; }
   body #last_form {
     margin-bottom: 2%; }
   body .in_the_picture {
@@ -141,12 +148,13 @@ body {
 .form_auth {
   width: 75%;
   height: auto;
-  margin: 2% 12.5%;
+  margin: 2% auto;
   background-color: #fff; }
   .form_auth .form_header {
     width: 75%;
-    margin-left: 12.5%;
-    margin-bottom: 2rem !important;
+    height: auto;
+    margin: 2% auto;
+    padding-top: 1.5%;
     text-align: center; }
   .form_auth form {
     width: 50%;
@@ -170,17 +178,19 @@ body {
       }
     }*/ }
     .form_auth form .form_group {
-      padding-top: 1rem; }
-    .form_auth form button {
-      margin-left: 85%;
+      margin: auto;
       margin-bottom: 2%; }
+    .form_auth form .form-control {
+      width: 60%;
+      margin: auto; }
+    .form_auth form button {
+      margin-left: 66.5%;
+      margin-bottom: 5%; }
 
 .form_contact {
   width: 75%;
   height: auto;
-  margin-left: 12.5%;
-  margin-top: 2%;
-  margin-bottom: 2%;
+  margin: 2% auto;
   background-color: #fff; }
   .form_contact .form_header {
     width: 75%;
@@ -232,9 +242,7 @@ body {
   width: 75%;
   height: auto;
   min-height: 500px;
-  margin-left: 12.5%;
-  margin-top: 2%;
-  margin-bottom: 2%;
+  margin: 2% auto;
   background-color: #fff; }
   .profile .left_container {
     float: left;
@@ -258,8 +266,6 @@ body {
           padding: 1% 3% 1% 3%;
           border-radius: 20px;
           text-align: center; }
-        .profile .left_container .profile_genres ul li:before {
-          content: url(https://www.iconfinder.com/icons/1417636/itunes_listen_music_play_tunes_icon#size=128); }
   .profile .profile_djName {
     margin-left: 270px; }
   .profile .profile_price_tag {
@@ -314,8 +320,7 @@ body {
 .overview {
   width: 75%;
   height: auto;
-  margin-left: 12.5%;
-  margin-top: 2%;
+  margin: 2% auto;
   background-color: #fff; }
   .overview .overview_dj {
     width: 25%;
@@ -323,3 +328,15 @@ body {
     margin-left: 5%;
     margin-top: 5%;
     background-color: #bbbbc1; }
+
+/** */
+/*  Primary button colors */
+/** */
+.settings-page {
+  width: 75%;
+  height: auto;
+  margin: 2% auto;
+  background-color: #fff; }
+  .settings-page .form_header {
+    width: 75%;
+    margin: auto; }
