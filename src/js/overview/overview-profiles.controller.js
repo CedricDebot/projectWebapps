@@ -1,6 +1,8 @@
 class OverviewProfilesCtrl {
-  constructor() {
+  constructor($state, $rootScope) {
     'ngInject';
+
+    
   }
 }
 

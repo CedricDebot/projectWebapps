@@ -17,7 +17,7 @@ export default class Profile {
 
   query(config) {
     let request = {
-      url: this._AppConstants.api + '/profiles/djs',
+      url: this._AppConstants.api + '/profiles/djs/',
       method: 'GET',
       params: config.filters ? config.filters : null
     };
@@ -25,7 +25,7 @@ export default class Profile {
     return this._$http(request).then((res) => res.data);
   }
 
-  searchDjs(genre, region, price) {
+  searchDjs() {
     return this._$http({
       url: this._AppConstants.api + '/profiles/djs' ,
       method: 'GET'
