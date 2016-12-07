@@ -11,14 +11,30 @@
               <input class="form-control"
                 type="text"
                 placeholder="Genre"
+                list="datalistGenres"
                 ng-model="$ctrl.formData.genre"/>
+              <datalist id="datalistGenres">
+              </datalist>
           </fieldset>
 
           <fieldset class="form-group">
               <input class="form-control"
                 type="text"
                 placeholder="Regio"
+                list="datalistRegions"
                 ng-model="$ctrl.formData.region"/>
+                <datalist id="datalistRegions">
+                  <option value="Antwerpen">Antwerpen</option>
+                  <option value="Henegouwen">Henegouwen</option>
+                  <option value="Limburg">Limburg</option>
+                  <option value="Luik">Luik</option>
+                  <option value="Luxemburg">Luxemburg</option>
+                  <option value="Namen">Namen</option>
+                  <option value="Oost-Vlaanderen">Oost-Vlaanderen</option>
+                  <option value="Vlaam-Brabant">Vlaams-Brabant</option>
+                  <option value="Waals-Brabant">Waals-Brabant</option>
+                  <option value="West-Vlaanderen">West-Vlaanderen</option>
+                </datalist>
           </fieldset>
 
           <fieldset class="form-group">
