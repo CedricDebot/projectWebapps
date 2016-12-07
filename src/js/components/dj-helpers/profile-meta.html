@@ -1,7 +1,11 @@
 <div class="profile-meta">
-  <a ui-sref="app.profile({djName:$ctrl.profile.djName})">
-    <img ng-src="{{$ctrl.profile.image}}"/>
-  </a>
+  <div class="info">
+    <a class="dj"
+      ui-sref="app.profile({ djName:$ctrl.profile.djName })">
+      <img class="dj_image"
+        ng-src="{{$ctrl.profile.image}}"/>
+    </a>
+  </div>
 
   <ng-transclude></ng-transclude>
 </div>

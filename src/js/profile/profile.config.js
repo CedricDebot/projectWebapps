@@ -9,7 +9,7 @@ function ProfileConfig($stateProvider) {
     //title: "profile",
     resolve: {
       profile: function(Profile, $state, $stateParams) {
-        return Profile.searchDjByName($stateParams.djName).then(
+        return Profile.get($stateParams.djName).then(
           (profile) => profile,
           (err) => $state.go('app.overview'),
         );

@@ -9,11 +9,11 @@ componentsModule.component('listErrors', ListErrors);
 import ProfileMeta from './dj-helpers/profile-meta.component';
 componentsModule.component('profileMeta', ProfileMeta);
 
-import DjPreview from './dj-helpers/dj-preview.component';
-componentsModule.component('djPreview', DjPreview);
+import ProfilePreview from './dj-helpers/profile-preview.component';
+componentsModule.component('profilePreview', ProfilePreview);
 
-import DjList from './dj-helpers/dj-list.component';
-componentsModule.component('djList', DjList);
+import ProfileList from './dj-helpers/profile-list.component';
+componentsModule.component('profileList', ProfileList);
 
 import ListPagination from './dj-helpers/list-pagination.component';
 componentsModule.component('listPagination', ListPagination);

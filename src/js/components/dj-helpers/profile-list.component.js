@@ -1,8 +1,8 @@
-class DjListCtrl {
-  constructor(Djs, $scope) {
+class ProfileListCtrl {
+  constructor(Profiles, $scope) {
     'ngInject';
 
-    this._Djs = Djs;
+    this._Profiles = Profiles;
 
     this.setListTo(this.listConfig);
 
@@ -26,6 +26,8 @@ class DjListCtrl {
       type: this.listConfig.type,
       filters: this.listConfig.filters || {}
     };
+
+    queryConfig.filters.limit = this.limit;
 
     if(!this.listConfig.currentPage) {
       this.listConfig.currentPage = 1;
@@ -51,12 +53,13 @@ class DjListCtrl {
 }
 
 
-let DjList = {
+let ProfileList = {
   bindings: {
+    limit: '=',
     listConfig: '='
   },
-  controller: DjListCtrl,
-  templateUrl: 'components/dj-helpers/dj-list.html'
+  controller: ProfileListCtrl,
+  templateUrl: 'components/dj-helpers/profile-list.html'
 };
 
-export default DjList;
+export default ProfileList;

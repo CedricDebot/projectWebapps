@@ -3,6 +3,9 @@
 
 footer {
   background-color: $color-darkGreen;
+//  position: absolute;
+  //bottom: 0;
+  width: 100%;
 
   .footer_content {
     text-align: center;
@@ -10,7 +13,7 @@ footer {
     img {
       width: 150px;
       height: 150px;
-      margin-left: 475px;
+      margin: auto;
       margin-bottom: 15px;
     }
 

@@ -1,7 +1,8 @@
 <body>
     <div class="form_auth">
-      <h1 class="form_header" ng-bind="::$ctrl.title"></h1>
-      <p class="form_header">
+      <div class="form_header">
+      <h1 ng-bind="::$ctrl.title"></h1>
+      <p>
         <a ui-sref="app.register"
           ng-show="$ctrl.authType === 'login'">
            Een account aanmaken
@@ -11,88 +12,84 @@
           Ik heb al een account
         </a>
       </p>
+    </div>
 
       <list-errors errors="$ctrl.errors"></list-errors>
 
         <form ng-submit="$ctrl.submitForm()">
           <fieldset ng-disabled="$ctrl.isSubmitting">
             <fieldset class="form-group">
-              <p>E-mail:
                 <input class="form-control"
                   type="email"
                   placeholder="E-mail"
                   ng-model="$ctrl.formData.email">
-              </p>
             </fieldset>
             <fieldset class="form-group">
-              <p>Wachtwoord:
                 <input class="form-control"
                   type="password"
                   placeholder="Wachtwoord"
                   ng-model="$ctrl.formData.password">
-              </p>
             </fieldset>
             <fieldset class="form-group"
               ng-show="$ctrl.authType === 'register'">
-              <p>Bevestig wachtwoord:
                 <input class="form-control"
                   type="password"
                   placeholder="Bevestig wachtwoord">
-              </p>
             </fieldset>
             <fieldset class="form-group"
               ng-show="$ctrl.authType === 'register'">
-              <p>Voornaam:
                 <input class="form-control"
                   type="text"
                   placeholder="Voornaam"
                   ng-model="$ctrl.formData.firstName">
-              </p>
             </fieldset>
             <fieldset class="form-group"
               ng-show="$ctrl.authType === 'register'">
-              <p>Naam:
                 <input class="form-control"
                   type="text"
                   placeholder="Naam"
                   ng-model="$ctrl.formData.Name">
-              </p>
             </fieldset>
             <fieldset class="form-group"
               ng-show="$ctrl.authType === 'register'">
-              <p>Regio:
                 <input class="form-control"
                   type="text"
                   placeholder="Regio"
+                  list="datalistRegions"
                   ng-model="$ctrl.formData.region">
-              </p>
+                  <datalist id="datalistRegions">
+                    <option value="Antwerpen">Antwerpen</option>
+                    <option value="Henegouwen">Henegouwen</option>
+                    <option value="Limburg">Limburg</option>
+                    <option value="Luik">Luik</option>
+                    <option value="Luxemburg">Luxemburg</option>
+                    <option value="Namen">Namen</option>
+                    <option value="Oost-Vlaanderen">Oost-Vlaanderen</option>
+                    <option value="Vlaam-Brabant">Vlaams-Brabant</option>
+                    <option value="Waals-Brabant">Waals-Brabant</option>
+                    <option value="West-Vlaanderen">West-Vlaanderen</option>
+                  </datalist>
             </fieldset>
             <fieldset class="form-group"
               ng-show="$ctrl.authType === 'register'">
-              <p>DJ-naam:
                 <input class="form-control"
                   type="text"
                   placeholder="DJ-naam"
                   ng-model="$ctrl.formData.djName">
-              </p>
             </fieldset>
             <fieldset class="form-group"
               ng-show="$ctrl.authType === 'register'">
-              <p>Genres:
                 <input class="form-control"
                   type="text"
                   placeholder="Genre"
                   ng-model="$ctrl.formData.genres">
-              </p>
             </fieldset>
             <fieldset class="form-group"
               ng-show="$ctrl.authType === 'register'">
-              <p>Prijs:
                 <input class="form-control"
                   type="text"
                   placeholdeer="Prijs per uur"
                   ng-model="$ctrl.formData.price">
-              </p>
             </fieldset>
         </fieldset>
           <button class="btn btn-lg btn-primary pull-xs-right"

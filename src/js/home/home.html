@@ -1,35 +1,47 @@
 <body>
   <div class="form_search">
     <div>
-      <h1 class="form_header">Zoek de DJ die bij u past</h1>
-      <p class="form_header">Vul de categorieën in die u wenst en laat ons zoeken naar dé DJ die u zoekt!</p>
+      <div class="form_header">
+        <h1>Zoek de DJ die bij u past</h1>
+        <p>Vul de categorieën in die u wenst en laat ons zoeken naar dé DJ die u zoekt!</p>
+      </div>
       <form ng-submit="$ctrl.submitForm()">
         <fieldset ng-disabled="$ctrl.isSubmitting">
           <fieldset class="form-group">
-            <p>Genre:
               <input class="form-control"
                 type="text"
-                placeholder="genre"
+                placeholder="Genre"
+                list="datalistGenres"
                 ng-model="$ctrl.formData.genre"/>
-            </p>
+              <datalist id="datalistGenres">
+              </datalist>
           </fieldset>
 
           <fieldset class="form-group">
-            <p>Regio:
               <input class="form-control"
                 type="text"
                 placeholder="Regio"
+                list="datalistRegions"
                 ng-model="$ctrl.formData.region"/>
-            </p>
+                <datalist id="datalistRegions">
+                  <option value="Antwerpen">Antwerpen</option>
+                  <option value="Henegouwen">Henegouwen</option>
+                  <option value="Limburg">Limburg</option>
+                  <option value="Luik">Luik</option>
+                  <option value="Luxemburg">Luxemburg</option>
+                  <option value="Namen">Namen</option>
+                  <option value="Oost-Vlaanderen">Oost-Vlaanderen</option>
+                  <option value="Vlaam-Brabant">Vlaams-Brabant</option>
+                  <option value="Waals-Brabant">Waals-Brabant</option>
+                  <option value="West-Vlaanderen">West-Vlaanderen</option>
+                </datalist>
           </fieldset>
 
           <fieldset class="form-group">
-            <p>Prijs:
               <input class="form-control"
                 type="text"
-                placeholder="prijs"
+                placeholder="Prijs"
                 ng-model="$ctrl.formData.price"/>
-            </p>
           </fieldset>
       </fieldset>
         <button class="btn btn-lg btn-primary pull-xs-right"
@@ -44,16 +56,16 @@
 
   <div class="form_search"
     id="last_form">
-    <h1 class="form_header">Zoek een DJ bij naam</h1>
-    <p class=form_header>Vul de naam in van een DJ die je wenst te boeken voor jouw feestje en wij brengen jouw meteen in contact!</p>
+    <div class="form_header">
+    <h1>Zoek een DJ bij naam</h1>
+    <p>Vul de naam in van een DJ die je wenst te boeken voor jouw feestje en wij brengen jouw meteen in contact!</p>
+  </div>
     <form ng-submit="$ctrl.submitFormDjName()">
       <fieldset class="form-group" ng-disabled="$ctrl.isSubmitting">
-        <p>Naam:
         <input class="form-control"
           type="text"
-          placeholder="naam"
+          placeholder="Naam"
           ng-model="$ctrl.formDataName.djName"/>
-      </p>
       </fieldset>
       <button class="btn btn-lg btn-primary pull-xs-right"
         type="submit">Zoek</button>

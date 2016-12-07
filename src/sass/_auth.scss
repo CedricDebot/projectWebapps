@@ -1,13 +1,14 @@
 .form_auth {
   width: 75%;
   height: auto;
-  margin: 2% 12.5%;
+  margin: 2% auto;
   background-color: $color-white;
 
   .form_header {
     width: 75%;
-    margin-left: 12.5%;
-    margin-bottom: 2rem !important;
+    height: auto;
+    margin: 2% auto;
+    padding-top: 1.5%;
     text-align: center;
   }
 
@@ -15,34 +16,19 @@
     width: 50%;
     margin: auto;
 
-    //text-align: center;
-
     .form_group {
-      padding-top: 1rem;
+      margin: auto;
+      margin-bottom: 2%;
     }
 
-    /*fieldset {
-      padding-right: 5px;
-
-      p {
-        text-align: right;
-      }
-
-      input {
-        width: 40%;
-        height: 30px;
-        border-radius: 2px;
-        border: 1px solid black;
-        display: block;
-        float: right;
-        padding-left: 1%;
-        margin-right: 20%;
-      }
-    }*/
+    .form-control {
+      width: 60%;
+      margin: auto;
+    }
 
     button {
-      margin-left: 85%;
-      margin-bottom: 2%;
+      margin-left: 66.5%;
+      margin-bottom: 5%;
     }
   }
 }

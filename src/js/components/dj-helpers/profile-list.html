@@ -1,14 +1,14 @@
-<dj-preview
-  dj="dj"
-  ng-repeat="dj in $ctrl.list">
-</dj-preview>
+<profile-preview
+  profile="profile"
+  ng-repeat="profile in $ctrl.list">
+</profile-preview>
 
-<div class="dj-preview"
-    ng-hide="!ctrl.loading">
-    Loading djs ...
+<div class="profile-preview"
+  ng-hide="!ctrl.loading">
+    Loading profiles ...
 </div>
 
-<div class="article-preview"
+<div class="profile-preview"
   ng-show="!$ctrl.loading && !$ctrl.list.length">
   Er zijn nog geen djs gevonden met opgegeven categorieën
 </div>
@@ -16,6 +16,5 @@
 <list-pagination
   total-pages="$ctrl.listConfig.totalPages"
   current-page="$ctrl.listConfig.currentPage"
-  ng-hide="$ctrl.listConfig.totalPages <= 1"
->
+  ng-hide="$ctrl.listConfig.totalPages <= 1">
 </list-pagination>
