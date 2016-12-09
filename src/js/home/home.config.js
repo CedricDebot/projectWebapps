@@ -13,6 +13,11 @@ function HomeConfig($stateProvider) {
         return User.ensureAuthIs(true);
       }
     }*/
+    resolve: {
+      profile: function(Profile) {
+        return Profile.getDjsInThePicture();
+      }
+    }
   });
 
 }

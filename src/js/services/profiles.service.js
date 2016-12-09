@@ -25,9 +25,9 @@ export default class Profile {
     return this._$http(request).then((res) => res.data);
   }
 
-  searchDjs() {
+  searchDjs(queryParams) {
     return this._$http({
-      url: this._AppConstants.api + '/profiles/djs' ,
+      url: this._AppConstants.api + '/profiles/djs' + queryParams ,
       method: 'GET'
     }).then((res) => {
       console.log(res.data);
@@ -40,6 +40,16 @@ export default class Profile {
       url: this._AppConstants.api + '/profiles/djs/djname/' + djname,
       method: 'GET'
     }).then((res) => {
+      return res.data;
+    });
+  }
+
+  getDjsInThePicture() {
+    return this._$http({
+      url: this._AppConstants.api + '/profiles/inthepicture',
+      method: 'GET'
+    }).then((res) => {
+      console.log(res.data);
       return res.data;
     });
   }

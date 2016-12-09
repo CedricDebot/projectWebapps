@@ -10,41 +10,48 @@ class HomeCtrl {
 
   submitForm() {
     this.isSubmitting = true;
-
+    var queryParams = "";
     switch(true) {
-      case !this.formData.genre && !this.formData.region && !this.formData.price:
-        this.listConfig.filters = null;
+      case this.formData.genre === 'undefined' && !this.formData.region && !this.formData.price:
+        queryParams = "";
         break;
       case !this.formData.genre && !this.formData.region:
-        this.listConfig.filters = { price : this.formData.price };
+      //  this.listConfig.filters = { price : this.formData.price };
+        queryParams = "?price=" + this.formData.price;
         break;
       case !this.formData.genre && !this.formData.price:
-        this.listConfig.filters = { region: this.formData.region };
+        //this.listConfig.filters = { region: this.formData.region };
+        queryParams = "?region=" + this.formData.region;
         break
       case !this.formData.region && !this.formData.price:
-        this.listConfig.filters = { genre: this.formData.genre };
+        //this.listConfig.filters = { genre: this.formData.genre };
+        queryParams = "?genre=" + this.formData.genre;
         break;
       case !this.formData.genre:
-        this.listConfig.filters = { region: this.formData.region, price: this.formData.price };
+        //this.listConfig.filters = { region: this.formData.region, price: this.formData.price };
+        queryParams = "?region=" + this.formData.region + "&price=" + this.formData.price;
         break;
       case !this.formData.region:
-        this.listConfig.filters = { genre: this.formData.genre, price: this.formData.price };
+        //this.listConfig.filters = { genre: this.formData.genre, price: this.formData.price };
+        queryParams = "?genre=" + this.formData.genre + "&price=" + this.formData.price;
         break;
       case !this.formData.price:
-        this.listConfig.filters = { genre: this.formData.genre, region: this.formData.region };
+        //this.listConfig.filters = { genre: this.formData.genre, region: this.formData.region };
+        queryParams = "&region=" + this.formData.region + "?genre=" + this.formData.genre;
         break;
       default:
-        this.listConfig.filters = { genre: this.formData.genre, region: this.formData.region, price:  this.formData.price };
+        //this.listConfig.filters = { genre: this.formData.genre, region: this.formData.region, price:  this.formData.price };
+        queryParams = "?region=" + this.formData.region + "&genre=" + this.formData.genre + "&price=" + this.formData.price;
         break;
     }
 
-    console.log(this.listConfig.filters);
+    console.log(queryParams);
 
-    this._profile.searchDjs(this.formData.genre, this.formData.region, this.formData.price).then(
+    this._profile.searchDjs(queryParams).then(
       (res) => {
         console.log(res);
         this.isSubmitting = false;
-        this._$state.go('app.overview');
+        this._$state.go('app.overview', queryParams);
       },
       (err) => {
         this.isSubmitting = false;
