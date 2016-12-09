@@ -1,0 +1,42 @@
+/** */
+/*  Primary button colors */
+/** */
+header {
+  background-color: #449d44;
+  height: 150px; }
+
+.logo {
+  background-color: green;
+  width: 150px;
+  height: 150px;
+  float: left;
+  margin-left: 5%; }
+  .logo img {
+    width: 150px;
+    height: 150px; }
+
+.navbar {
+  text-align: right;
+  float: right;
+  margin-right: -110px;
+  margin-top: 90px;
+  width: 450px;
+  height: 50px; }
+  .navbar ul {
+    list-style-type: none; }
+    .navbar ul li {
+      display: inline-block; }
+      .navbar ul li a {
+        text-decoration: none;
+        color: #fff;
+        display: block;
+        font-size: 20px;
+        padding-right: 25px;
+        padding-top: 5px; }
+
+.login-link {
+  width: 150px;
+  float: right;
+  margin-top: 10px; }
+  .login-link a {
+    color: #fff; }

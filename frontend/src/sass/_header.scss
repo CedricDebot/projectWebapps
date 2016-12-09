@@ -1,0 +1,29 @@
+@import "_colors";
+@import "_navbar";
+
+header {
+  background-color: $color-darkGreen;
+  height: 150px
+}
+
+.logo {
+  width: 150px;
+  height: 150px;
+  float: left;
+  margin-left: 5%;
+
+  img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+.login-link {
+  width: 150px;
+  float: right;
+  margin-top: 10px;
+
+  a {
+    color: $color-white;
+  }
+}

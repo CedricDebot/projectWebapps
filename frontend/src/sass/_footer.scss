@@ -1,0 +1,40 @@
+@import "_colors";
+@import "_navbar";
+
+footer {
+  background-color: $color-darkGreen;
+//  position: absolute;
+  //bottom: 0;
+  width: 100%;
+
+  .footer_content {
+    text-align: center;
+
+    img {
+      width: 150px;
+      height: 150px;
+      margin: auto;
+      margin-bottom: 15px;
+    }
+
+    form {
+      margin-bottom: 15px;
+    }
+
+    .footer_menu {
+      margin-bottom: 15px;
+    }
+  }
+
+  .footer_poweredBy {
+    width: 100%;
+    height: 50px;
+    background-color: $color-veryLightGray;
+
+    span {
+      float: right;
+      margin-top: 15px;
+      margin-right: 10px;
+    }
+  }
+}
