@@ -9,7 +9,7 @@ function OverviewConfig($stateProvider) {
     title: 'djs',
     resolve: {
       profile: function(Profile, $state, $stateParams) {
-        return Profile.searchDjs().then(
+        return Profile.searchDjs($stateParams.queryParams).then(
           (profile) => profile,
           (err) => $state.go('app.home')
         );
