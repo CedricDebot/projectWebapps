@@ -1,0 +1,53 @@
+@import "_colors";
+
+body {
+  background-color: $color-veryLightGray;
+  align-items: center;
+
+  .form_search {
+    width: 75%;
+    height: auto;
+    margin: 2% auto;
+    background-color: $color-white;
+
+  .form_header {
+      width: 75%;
+      margin: auto;
+      margin-bottom: 2rem !important;
+      padding-top: 1.5%;
+      text-align: center;
+    }
+
+    form {
+      width: 50%;
+      margin: auto;
+
+      .form-group {
+        margin: auto;
+        margin-bottom: 2%;
+      }
+
+      .form-control {
+        width: 60%;
+        margin: auto;
+      }
+
+      button {
+        margin-left: 69.5%;
+        background-color:  $color-darkGreen;
+        margin-bottom: 5%;
+      }
+    }
+  }
+
+  #last_form {
+    margin-bottom: 2%;
+  }
+
+  .in_the_picture {
+    background-color: $color-white;
+    width: 75%;
+    margin-left: 12.5%;
+    text-align: center;
+  }
+}

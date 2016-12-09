@@ -1,0 +1,16 @@
+@import "_colors";
+
+.overview {
+  width: 75%;
+  height: auto;
+  margin: 2% auto;
+  background-color: $color-white;
+
+  .overview_dj {
+    width: 25%;
+    height: auto;
+    margin-left: 5%;
+    margin-top: 5%;
+    background-color: $color-lightGray;
+  }
+}
