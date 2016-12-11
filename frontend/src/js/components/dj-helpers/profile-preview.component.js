@@ -1,6 +1,6 @@
 let ProfilePreview = {
   bindings : {
-    profile: '='
+    profiles: '='
   },
   templateUrl: 'components/dj-helpers/profile-preview.html'
 };

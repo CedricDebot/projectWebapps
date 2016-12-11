@@ -1,3 +1,6 @@
 <div class="profile-preview">
-  <profile-meta profile="$ctrl.profile"></profile-meta>
+  <div class="profile_pic" ng-repeat="profiles in $ctrl.profiles">
+    <img src="$ctrl.profile.image" alt="profile pic"/>
+    <h3 ng-bind:"::$ctrl.profile.djName"></h3>
+  </div>
 </div>

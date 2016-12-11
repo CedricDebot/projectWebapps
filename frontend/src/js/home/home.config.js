@@ -4,8 +4,7 @@ function HomeConfig($stateProvider) {
   $stateProvider
   .state('app.home', {
     url: '/',
-    controller: 'HomeCtrl',
-    controllerAs: '$ctrl',
+    controller: 'HomeCtrl as $ctrl',
     templateUrl: 'home/home.html',
     title: 'Home',
     /*resolve: {

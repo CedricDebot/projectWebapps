@@ -10,6 +10,7 @@ var UserSchema = new mongoose.Schema({
 	email: String,
 	hash: String,
 	salt: String,
+	image: String,
 	firstName: String,
 	name: String,
 	djName: {type: String, unique: true, required: [true, 'Gelieve jouw dj naam op te geven']},
@@ -56,7 +57,8 @@ UserSchema.methods.toAuthJSON = function() {
 		price: this.price,
 		biography: this.biography,
 		genres: this.genres,
-		references: this.references
+		references: this.references,
+		image: this.image
 	};
 }
 

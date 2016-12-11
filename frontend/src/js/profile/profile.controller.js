@@ -1,9 +1,13 @@
 class ProfileCtrl {
-  constructor(profile) {
+  constructor(profile, $state) {
     'ngInject';
 
     this.profile = profile;
-    console.log(profile);
+    this._$state = $state;
+    }
+
+  book() {
+    this._$state.go("app.booking");
   }
 }
 export default ProfileCtrl;

@@ -22,5 +22,7 @@ componentsModule.component('listPagination', ListPagination);
 import ShowAuthed from './show-authed.directive';
 componentsModule.directive('showAuthed', ShowAuthed);
 
+import ShowImage from './show-image.directive';
+componentsModule.directive('showImage', ShowImage);
 
 export default componentsModule;

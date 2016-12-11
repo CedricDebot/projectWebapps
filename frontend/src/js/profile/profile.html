@@ -1,8 +1,9 @@
 <div class="profile">
 
   <div class="left_container">
-  <div class="profile_pic">
-    <img src="" alt="profiel foto">
+  <div class="profile_pic"
+    show-image
+    image="$ctrl.profile.image">
   </div>
 
   <div class="profile_genres">
@@ -35,7 +36,8 @@
 
   <div class="profile_button">
     <button class="btn btn-lg btn-primary pull-xs-right"
-      ui-sref="app.booking">
+      ui-sref="app.booking"
+      ng-submit="$ctrl.book()">
       Boeken
     </button>
   </div>

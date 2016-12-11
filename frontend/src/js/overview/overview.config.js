@@ -8,12 +8,12 @@ function OverviewConfig($stateProvider) {
     templateUrl: 'overview/overview.html',
     title: 'djs',
     resolve: {
-      profile: function(Profile, $state, $stateParams) {
+      /*overview: function(Profile, $state, $stateParams) {
         return Profile.searchDjs($stateParams.queryParams).then(
           (profile) => profile,
           (err) => $state.go('app.home')
         );
-      }
+      }*/
     }
   });
 }

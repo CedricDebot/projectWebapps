@@ -1,15 +1,17 @@
 class HomeCtrl {
-  constructor(AppConstants, profile, $state) {
+  constructor(AppConstants, Profile, profile, $state) {
     'ngInject';
 
     this.appName = AppConstants.appName;
-    this._profile = profile;
+    this._Profile = Profile;
+    this.profile = profile;
     this._$state = $state;
-    console.log(profile);
+    //console.log(profile);
   }
 
   submitForm() {
     this.isSubmitting = true;
+
     var queryParams = "";
     switch(true) {
       case this.formData.genre === 'undefined' && !this.formData.region && !this.formData.price:
@@ -47,7 +49,7 @@ class HomeCtrl {
 
     console.log(queryParams);
 
-    this._profile.searchDjs(queryParams).then(
+    this._Profile.searchDjs(queryParams).then(
       (res) => {
         console.log(res);
         this.isSubmitting = false;
@@ -62,7 +64,7 @@ class HomeCtrl {
   submitFormDjName() {
     this.isSubmitting = true;
 
-    this._profile.get(this.formDataName.djName).then(
+    this._Profile.get(this.formDataName.djName).then(
       (res) => {
         this.isSubmitting = false;
         this._$state.go('app.profile', {djName: this.formDataName.djName});
