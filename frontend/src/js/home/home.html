@@ -50,7 +50,17 @@
   </div>
 
   <div class="in_the_picture">
-    <h1>Artiesten in de kijker</h1>
+    <div class="in_the_picture_header">
+      <h1>Artiesten in de kijker</h1>
+    </div>
+    <div class="profile_preview"
+      ng-repeat="profile in $ctrl.profile"
+      show-image
+      image="profile.image">
+        <div class="name_block">
+          <h3 class="name" ng-bind="profile.djName"></h3>
+        </div>
+    </div>
   </div>
 
   <div class="form_search"

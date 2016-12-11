@@ -11,12 +11,12 @@ class AuthController {
 
   submitForm() {
     this.isSubmitting = true;
-
+    console.log(this.formData);
     this._User.attemptAuth(this.authType, this.formData).then(
       (res) => {
         this.isSubmitting = false;
-        console.log(this._User);
-        this._$state.go('app.profile', {djName: res.data.djName});
+        console.log(res);
+        //this._$state.go('app.profile', {djName: res.data.djName});
       },
       (err) => {
         this.isSubmitting = false;

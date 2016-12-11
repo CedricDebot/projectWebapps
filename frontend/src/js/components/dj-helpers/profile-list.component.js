@@ -35,11 +35,12 @@ class ProfileListCtrl {
 
     queryConfig.filters.offset = (this.limit * (this.listConfig.currentPage - 1));
 
-    this._Djs
-      .query(queryConfig)
+    this._Profiles
+      .getDjsInThePicture()
       .then((res) => {
+        console.log(res);
         this.loading = false;
-        this.list = res.djs;
+        this.list = res.profiles;
 
         this.listConfig.totalPages = Math.ceil(res.djsCount / this.limit);
       });

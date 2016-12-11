@@ -14,6 +14,8 @@ export default class User {
   }
 
   attemptAuth(type, credentials) {
+    console.log("credits");
+    console.log(credentials);
     let route = (type === 'login') ? '/login' : '';
 
     return this._$http({

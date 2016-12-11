@@ -35,9 +35,9 @@ export default class Profile {
     })
   }
 
-  get(djname) {
+  get(djName) {
     return this._$http({
-      url: this._AppConstants.api + '/profiles/djs/djname/' + djname,
+      url: this._AppConstants.api + '/profiles/djs/djName/' + djName,
       method: 'GET'
     }).then((res) => {
       return res.data;

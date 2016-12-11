@@ -86,10 +86,13 @@ router.post('/users', function(req, res, next) {
 
   user.email = req.body.email;
   user.setPassword(req.body.password);
+  user.firstName = req.body.firstName;
+  user.name = req.body.name;
   user.djName = req.body.djName;
   user.region = req.body.region;
   user.price = req.body.price;
   user.genres = req.body.genres;
+  user.image = req.body.image;
 
   if(typeof req.body.biography !== 'undefined') {
     user.biography = req.body.biography;

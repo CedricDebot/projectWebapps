@@ -125,6 +125,24 @@ body {
     width: 75%;
     margin-left: 12.5%;
     text-align: center; }
+    body .in_the_picture .in_the_picture_header {
+      width: 75%;
+      margin: auto;
+      margin-bottom: 2rem !important;
+      padding-top: 1.5%;
+      text-align: center; }
+    body .in_the_picture .profile_preview {
+      display: inline-block;
+      margin-right: 2%;
+      margin-bottom: 5%;
+      width: 300px;
+      height: 250px; }
+      body .in_the_picture .profile_preview .name_block {
+        margin-top: 220px;
+        text-decoration-color: #fff; }
+        body .in_the_picture .profile_preview .name_block h3 {
+          color: #fff;
+          text-decoration-color: #fff; }
 
 .form_auth {
   width: 75%;

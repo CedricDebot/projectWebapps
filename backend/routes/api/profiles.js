@@ -41,8 +41,8 @@ router.param('comment', function(req, res, next, id){
 	});
 });
 
-router.param('djname', function(req, res, next, djname){
-	var query = User.findOne({ djName: djname });
+router.param('djName', function(req, res, next, djName){
+	var query = User.findOne({ djName: djName });
 
 	query.exec(function(err, dj){
 		if(err) {
@@ -92,7 +92,7 @@ router.get('/djs/:id', function(req, res, next) {
 //	});
 });
 
-router.get('/djs/djname/:djname', function(req, res){
+router.get('/djs/djName/:djName', function(req, res){
 	res.json(req.dj);
 });
 
