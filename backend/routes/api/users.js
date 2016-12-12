@@ -17,6 +17,7 @@ router.get('/user', auth.required, function(req, res, next) {
 });
 
 router.put('/user', auth.required, function(req, res, next) {
+  console.log(req);
   User.findById(req.payload.id).then(function(user) {
     if(!user) {
       return res.sendStatus(401);
@@ -70,7 +71,7 @@ router.post('/users/login', function(req, res, next){
     }
 
     if(user) {
-      console.log(user);
+    //  console.log(user);
       user.token = user.generateJWT();
       return res.json({user: user.toAuthJSON()});
     } else {

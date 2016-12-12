@@ -15,7 +15,7 @@ export default class Profile {
     });
   }*/
 
-  query(config) {
+  /*query(config) {
     let request = {
       url: this._AppConstants.api + '/profiles/djs/',
       method: 'GET',
@@ -23,7 +23,7 @@ export default class Profile {
     };
 
     return this._$http(request).then((res) => res.data);
-  }
+  }*/
 
   searchDjs(queryParams) {
     return this._$http({
@@ -49,7 +49,6 @@ export default class Profile {
       url: this._AppConstants.api + '/profiles/inthepicture',
       method: 'GET'
     }).then((res) => {
-      console.log(res.data);
       return res.data;
     });
   }

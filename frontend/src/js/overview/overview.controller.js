@@ -4,8 +4,7 @@ class OverviewCtrl {
 
     this.profile = profile;
     console.log(this.profile);
-    
-  //  this.listConfig = {type: 'all'};
+
   }
 }
 

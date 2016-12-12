@@ -36379,7 +36379,7 @@ _angular2.default.bootstrap(document, ['app'], {
   strictDi: true
 });
 
-},{"./auth":7,"./booking":10,"./components":15,"./config/app.config":19,"./config/app.constants":20,"./config/app.run":21,"./config/app.templates":22,"./contact":26,"./home":29,"./layout":32,"./overview":33,"./profile":37,"./services":40,"./settings":44,"angular":3,"angular-ui-router":1}],5:[function(require,module,exports){
+},{"./auth":7,"./booking":10,"./components":11,"./config/app.config":15,"./config/app.constants":16,"./config/app.run":17,"./config/app.templates":18,"./contact":22,"./home":25,"./layout":28,"./overview":29,"./profile":33,"./services":36,"./settings":40,"angular":3,"angular-ui-router":1}],5:[function(require,module,exports){
 'use strict';
 
 AuthConfig.$inject = ["$stateProvider"];
@@ -36570,179 +36570,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var ListPaginationCtrl = function () {
-  ListPaginationCtrl.$inject = ["$scope"];
-  function ListPaginationCtrl($scope) {
-    'ngInject';
-
-    _classCallCheck(this, ListPaginationCtrl);
-
-    this._$scope = $scope;
-  }
-
-  _createClass(ListPaginationCtrl, [{
-    key: 'pageRange',
-    value: function pageRange(total) {
-      var pages = [];
-
-      for (var i = 0; i < total; i++) {
-        pages.push(i + 1);
-      }
-
-      return pages;
-    }
-  }, {
-    key: 'changePage',
-    value: function changePage(number) {
-      this._$scope.$emit('setPageTo', number);
-    }
-  }]);
-
-  return ListPaginationCtrl;
-}();
-
-var ListPagination = {
-  bindings: {
-    totalPages: '=',
-    currentPage: '='
-  },
-  controller: ListPaginationCtrl,
-  templateUrl: 'components/dj-helpers/list-pagination.html'
-};
-
-exports.default = ListPagination;
-
-},{}],12:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var ProfileListCtrl = function () {
-  ProfileListCtrl.$inject = ["Profiles", "$scope"];
-  function ProfileListCtrl(Profiles, $scope) {
-    'ngInject';
-
-    var _this = this;
-
-    _classCallCheck(this, ProfileListCtrl);
-
-    this._Profiles = Profiles;
-
-    this.setListTo(this.listConfig);
-
-    $scope.$on('setPageTo', function (ev, pageNumber) {
-      _this.setPageTo(pageNumber);
-    });
-  }
-
-  _createClass(ProfileListCtrl, [{
-    key: 'setListTo',
-    value: function setListTo(newList) {
-      this.list = [];
-
-      this.listConfig = newList;
-
-      this.runQuery();
-    }
-  }, {
-    key: 'runQuery',
-    value: function runQuery() {
-      var _this2 = this;
-
-      this.loading = true;
-
-      var queryConfig = {
-        type: this.listConfig.type,
-        filters: this.listConfig.filters || {}
-      };
-
-      queryConfig.filters.limit = this.limit;
-
-      if (!this.listConfig.currentPage) {
-        this.listConfig.currentPage = 1;
-      }
-
-      queryConfig.filters.offset = this.limit * (this.listConfig.currentPage - 1);
-
-      this._Profiles.getDjsInThePicture().then(function (res) {
-        console.log(res);
-        _this2.loading = false;
-        _this2.list = res.profiles;
-
-        _this2.listConfig.totalPages = Math.ceil(res.djsCount / _this2.limit);
-      });
-    }
-  }, {
-    key: 'setPageTo',
-    value: function setPageTo() {
-      this.listConfig.currentPage = pageNumber;
-
-      this.runQuery();
-    }
-  }]);
-
-  return ProfileListCtrl;
-}();
-
-var ProfileList = {
-  bindings: {
-    limit: '=',
-    listConfig: '='
-  },
-  controller: ProfileListCtrl,
-  templateUrl: 'components/dj-helpers/profile-list.html'
-};
-
-exports.default = ProfileList;
-
-},{}],13:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var ProfileMeta = {
-  bindings: {
-    profile: '='
-  },
-  transclude: true,
-  templateUrl: 'components/dj-helpers/profile-meta.html'
-};
-
-exports.default = ProfileMeta;
-
-},{}],14:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var ProfilePreview = {
-  bindings: {
-    profiles: '='
-  },
-  templateUrl: 'components/dj-helpers/profile-preview.html'
-};
-
-exports.default = ProfilePreview;
-
-},{}],15:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
 var _angular = require('angular');
 
 var _angular2 = _interopRequireDefault(_angular);
@@ -36750,22 +36577,6 @@ var _angular2 = _interopRequireDefault(_angular);
 var _listErrors = require('./list-errors.component');
 
 var _listErrors2 = _interopRequireDefault(_listErrors);
-
-var _profileMeta = require('./dj-helpers/profile-meta.component');
-
-var _profileMeta2 = _interopRequireDefault(_profileMeta);
-
-var _profilePreview = require('./dj-helpers/profile-preview.component');
-
-var _profilePreview2 = _interopRequireDefault(_profilePreview);
-
-var _profileList = require('./dj-helpers/profile-list.component');
-
-var _profileList2 = _interopRequireDefault(_profileList);
-
-var _listPagination = require('./dj-helpers/list-pagination.component');
-
-var _listPagination2 = _interopRequireDefault(_listPagination);
 
 var _showAuthed = require('./show-authed.directive');
 
@@ -36783,14 +36594,6 @@ var componentsModule = _angular2.default.module('app.components', []);
 
 componentsModule.component('listErrors', _listErrors2.default);
 
-componentsModule.component('profileMeta', _profileMeta2.default);
-
-componentsModule.component('profilePreview', _profilePreview2.default);
-
-componentsModule.component('profileList', _profileList2.default);
-
-componentsModule.component('listPagination', _listPagination2.default);
-
 // directives
 
 componentsModule.directive('showAuthed', _showAuthed2.default);
@@ -36799,7 +36602,7 @@ componentsModule.directive('showImage', _showImage2.default);
 
 exports.default = componentsModule;
 
-},{"./dj-helpers/list-pagination.component":11,"./dj-helpers/profile-list.component":12,"./dj-helpers/profile-meta.component":13,"./dj-helpers/profile-preview.component":14,"./list-errors.component":16,"./show-authed.directive":17,"./show-image.directive":18,"angular":3}],16:[function(require,module,exports){
+},{"./list-errors.component":12,"./show-authed.directive":13,"./show-image.directive":14,"angular":3}],12:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -36814,7 +36617,7 @@ var ListErrors = {
 
 exports.default = ListErrors;
 
-},{}],17:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 'use strict';
 
 ShowAuthed.$inject = ["User"];
@@ -36853,7 +36656,7 @@ function ShowAuthed(User) {
 
 exports.default = ShowAuthed;
 
-},{}],18:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -36881,7 +36684,7 @@ function ShowImage() {
 
 exports.default = ShowImage;
 
-},{}],19:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 'use strict';
 
 AppConfig.$inject = ["$httpProvider", "$stateProvider", "$locationProvider", "$urlRouterProvider"];
@@ -36921,7 +36724,7 @@ function AppConfig($httpProvider, $stateProvider, $locationProvider, $urlRouterP
 
 exports.default = AppConfig;
 
-},{"./auth.interceptor":23}],20:[function(require,module,exports){
+},{"./auth.interceptor":19}],16:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -36935,7 +36738,7 @@ var AppConstants = {
 
 exports.default = AppConstants;
 
-},{}],21:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 'use strict';
 
 AppRun.$inject = ["AppConstants", "$rootScope"];
@@ -36970,7 +36773,7 @@ function AppRun(AppConstants, $rootScope) {
 
 exports.default = AppRun;
 
-},{}],22:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 "use strict";
 
 angular.module("templates", []).run(["$templateCache", function ($templateCache) {
@@ -36978,21 +36781,17 @@ angular.module("templates", []).run(["$templateCache", function ($templateCache)
   $templateCache.put("components/list-errors.html", "<ul class=\"error-messages\" ng-show=\"$ctrl.errors\">\n  <div ng-repeat=\"(field, errors) in $ctrl.errors\">\n    <li ng-repeat=\"error in errors\">\n      {{field}} {{error}}\n    </li>\n  </div>\n</ul>\n");
   $templateCache.put("booking/booking.html", "<div class=\"bookings-page\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-6 offset-md-3 col-xs-12\">\n        <h1 class=\"text-xs-center\">Boek dj-naam</h1>\n\n        <list-errors errors=\"$ctrl.errors\"></list-errors>\n\n        <form ng-submit=\"$ctrl.submitForm()\">\n          <fieldset ng-disabled=\"$ctrl.isSubmitting\">\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"naam\"\n                ng-model=\"$ctrl.formData.name\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"voornaam\"\n                ng-model=\"$ctrl.formData.firstName\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"email\"\n                placeholder=\"email\"\n                ng-model=\"$ctrl.formData.email\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"tel of gsm\"\n                ng-model=\"$ctrl.formData.tel\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n              type=\"text\"\n              placeholder=\"naam van de activiteit\"\n              ng-model=\"$ctrl.formData.activity\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n              type=\"date\"\n              placeholder=\"Datum van de activiteit\"\n              ng-model=\"$ctrl.formData.date\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n              type=\"text\"\n              placeholder=\"adres\"\n              ng-model=\"$ctrl.formData.adres\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <input class=\"form-group\"\n              type=\"text\"\n              placeholder=\"locatie\"\n              ng-model=\"$ctrl.formData.location\"/>\n            </fieldset>\n\n            <fieldset class=\"form-group\">\n              <textarea class=\"form-control form-control-lg\"\n                rows=\"8\"\n                placeholder=\"Uw bericht \"\n                ng-model=\"$ctrl.formData.message\"/>\n            </fieldset>\n\n            <button class=\"btn btn-lg btn-primary pull-xs-right\"\n                type=\"submit\">\n                Boek\n            </button>\n          </fieldset>\n        </form>\n      </div>\n    </div>\n  </div>\n</div>\n");
   $templateCache.put("contact/contact.html", "<body>\n  <div class=\"form_contact\">\n    <div class=\"form_header\">\n    <h1>Vragen?</h1>\n    <p>\n      <a ui-sref=\"app.register\">\n        Een account aanmaken\n      </a>\n    </p>\n  </div>\n    <form>\n      <fieldset class=\"form_group\">\n          <input class=\"form-control\"\n            type=\"text\"\n            placeholder=\"Naam en voornaam\">\n      </fieldset>\n      <fieldset class=\"form_group\">\n          <input class=\"form-control\"\n            type=\"email\"\n            placehoder=\"E-mail\">\n      </fieldset>\n      <fieldset class=\"form_group\">\n          <input class=\"form-control\"\n            type=\"text\"\n            placeholder=\"Tel. of GSM\">\n      </fieldset>\n      <fieldset class=\"form_group\">\n          <textarea class=\"form-control\"\n            cols=\"25\"\n            rows=\"10\"/>\n      </fieldset>\n      <button class=\"btn btn-lg btn-primary pull-xs-right\"\n        type=\"submit\">Verzenden</button>\n    </form>\n  </div>\n</body>\n");
+  $templateCache.put("home/home.html", "<body>\n  <div class=\"form_search\">\n    <div>\n      <div class=\"form_header\">\n        <h1>Zoek de DJ die bij u past</h1>\n      </div>\n      <form ng-submit=\"$ctrl.submitForm()\">\n        <fieldset ng-disabled=\"$ctrl.isSubmitting\">\n          <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"Genre\"\n                list=\"datalistGenres\"\n                ng-model=\"$ctrl.formData.genre\"/>\n              <datalist id=\"datalistGenres\">\n              </datalist>\n          </fieldset>\n\n          <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"Regio\"\n                list=\"datalistRegions\"\n                ng-model=\"$ctrl.formData.region\"/>\n                <datalist id=\"datalistRegions\">\n                  <option value=\"Antwerpen\">Antwerpen</option>\n                  <option value=\"Henegouwen\">Henegouwen</option>\n                  <option value=\"Limburg\">Limburg</option>\n                  <option value=\"Luik\">Luik</option>\n                  <option value=\"Luxemburg\">Luxemburg</option>\n                  <option value=\"Namen\">Namen</option>\n                  <option value=\"Oost-Vlaanderen\">Oost-Vlaanderen</option>\n                  <option value=\"Vlaam-Brabant\">Vlaams-Brabant</option>\n                  <option value=\"Waals-Brabant\">Waals-Brabant</option>\n                  <option value=\"West-Vlaanderen\">West-Vlaanderen</option>\n                </datalist>\n          </fieldset>\n\n          <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"Prijs\"\n                ng-model=\"$ctrl.formData.price\"/>\n          </fieldset>\n      </fieldset>\n        <button class=\"btn btn-lg btn-primary pull-xs-right\"\n          type=\"submit\">Zoek</button>\n      </form>\n    </div>\n  </div>\n\n  <div class=\"in_the_picture\">\n    <div class=\"in_the_picture_header\">\n      <h1>Artiesten in de kijker</h1>\n    </div>\n    <div class=\"profile_preview\"\n      ng-repeat=\"profile in $ctrl.profile\"\n      show-image\n      image=\"profile.image\">\n        <div class=\"name_block\">\n          <h3 class=\"name\" ng-bind=\"profile.djName\"></h3>\n        </div>\n    </div>\n  </div>\n\n  <div class=\"form_search\"\n    id=\"last_form\">\n    <div class=\"form_header\">\n    <h1>Zoek een DJ bij naam</h1>\n  </div>\n    <form ng-submit=\"$ctrl.submitFormDjName()\">\n      <fieldset class=\"form-group\" ng-disabled=\"$ctrl.isSubmitting\">\n        <input class=\"form-control\"\n          type=\"text\"\n          placeholder=\"Naam\"\n          ng-model=\"$ctrl.formDataName.djName\"/>\n      </fieldset>\n      <button class=\"btn btn-lg btn-primary pull-xs-right\"\n        type=\"submit\">Zoek</button>\n    </form>\n  </div>\n</body>\n");
   $templateCache.put("layout/app-view.html", "<app-header></app-header>\n\n<div ui-view></div>\n\n<app-footer></app-footer>\n");
   $templateCache.put("layout/footer.html", "<footer>\n  <div class=\"footer_content\">\n    <img src=\"../../images/logo.png\" alt=\"logo\"/>\n  </div>\n  <div class=\"footer_poweredBy\">\n    <span class=\"attribution\">\n      &copy; {{::$ctrl.date | date:\'yyyy\'}} {{$ctrl.appName}}.\n      powered by Cédric Debot.\n    </span>\n  </div>\n</footer>\n");
   $templateCache.put("layout/header.html", "<header>\n  <div class=\"logo\">\n    <img src=\"../../images/logo.png\" alt=\"logo\"/>\n  </div>\n  <div class=\"login-link\">\n    <!--ik ben een dj link (niet-ingelogde gebruiker) -->\n    <a ui-sref=\"app.login\"\n      show-authed=\"false\">\n      Ik ben een dj\n    </a>\n\n    <!-- log out (ingelogde gebruiker)-->\n    <a ui-sref=\"app.login\"\n      ng-click=\"$ctrl.logout()\"\n    show-authed=\"true\">\n      Uitloggen\n    </a>\n  </div>\n\n  <div class=\"navigation\">\n  <nav class=\"navbar\">\n    <!-- nav voor niet-ingelogde gebruikers -->\n      <ul show-authed=\"false\">\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.home\">\n            Home\n          </a>\n        </li>\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.overview\">\n            DJ\'s\n          </a>\n        </li>\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.contact\">\n            Contact\n          </a>\n        </li>\n      </ul>\n\n      <ul show-authed=\"true\">\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.home\">\n            Home\n          </a>\n        </li>\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.djs\">\n            DJ\'s\n          </a>\n        </li>\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.profile\">\n            Mijn Profiel\n          </a>\n        </li>\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.settings\">\n            Settings\n          </a>\n        </li>\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.contact\">\n            Contact\n          </a>\n        </li>\n      </ul>\n  </nav>\n</div>\n</header>\n");
   $templateCache.put("overview/overview-profiles.html", "<dj-list limit=\"15\" list-config=\"$ctrl.listConfig\"></dj-list>\n");
-  $templateCache.put("overview/overview.html", "<div class=\"overview\">\n  <div class=\"overview_dj\">\n    <p ng-repeat=\"djName in $ctrl.proifle.djName\">{{}}</p>\n  </div>\n</div>\n");
-  $templateCache.put("home/home.html", "<body>\n  <div class=\"form_search\">\n    <div>\n      <div class=\"form_header\">\n        <h1>Zoek de DJ die bij u past</h1>\n      </div>\n      <form ng-submit=\"$ctrl.submitForm()\">\n        <fieldset ng-disabled=\"$ctrl.isSubmitting\">\n          <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"Genre\"\n                list=\"datalistGenres\"\n                ng-model=\"$ctrl.formData.genre\"/>\n              <datalist id=\"datalistGenres\">\n              </datalist>\n          </fieldset>\n\n          <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"Regio\"\n                list=\"datalistRegions\"\n                ng-model=\"$ctrl.formData.region\"/>\n                <datalist id=\"datalistRegions\">\n                  <option value=\"Antwerpen\">Antwerpen</option>\n                  <option value=\"Henegouwen\">Henegouwen</option>\n                  <option value=\"Limburg\">Limburg</option>\n                  <option value=\"Luik\">Luik</option>\n                  <option value=\"Luxemburg\">Luxemburg</option>\n                  <option value=\"Namen\">Namen</option>\n                  <option value=\"Oost-Vlaanderen\">Oost-Vlaanderen</option>\n                  <option value=\"Vlaam-Brabant\">Vlaams-Brabant</option>\n                  <option value=\"Waals-Brabant\">Waals-Brabant</option>\n                  <option value=\"West-Vlaanderen\">West-Vlaanderen</option>\n                </datalist>\n          </fieldset>\n\n          <fieldset class=\"form-group\">\n              <input class=\"form-control\"\n                type=\"text\"\n                placeholder=\"Prijs\"\n                ng-model=\"$ctrl.formData.price\"/>\n          </fieldset>\n      </fieldset>\n        <button class=\"btn btn-lg btn-primary pull-xs-right\"\n          type=\"submit\">Zoek</button>\n      </form>\n    </div>\n  </div>\n\n  <div class=\"in_the_picture\">\n    <div class=\"in_the_picture_header\">\n      <h1>Artiesten in de kijker</h1>\n    </div>\n    <div class=\"profile_preview\"\n      ng-repeat=\"profile in $ctrl.profile\"\n      show-image\n      image=\"profile.image\">\n        <div class=\"name_block\">\n          <h3 class=\"name\" ng-bind=\"profile.djName\"></h3>\n        </div>\n    </div>\n  </div>\n\n  <div class=\"form_search\"\n    id=\"last_form\">\n    <div class=\"form_header\">\n    <h1>Zoek een DJ bij naam</h1>\n  </div>\n    <form ng-submit=\"$ctrl.submitFormDjName()\">\n      <fieldset class=\"form-group\" ng-disabled=\"$ctrl.isSubmitting\">\n        <input class=\"form-control\"\n          type=\"text\"\n          placeholder=\"Naam\"\n          ng-model=\"$ctrl.formDataName.djName\"/>\n      </fieldset>\n      <button class=\"btn btn-lg btn-primary pull-xs-right\"\n        type=\"submit\">Zoek</button>\n    </form>\n  </div>\n</body>\n");
+  $templateCache.put("overview/overview.html", "<div class=\"overview\">\n  <div class=\"overview_header\">\n    <h1>Gevonden DJ\'s</h1>\n    <div class=\"overview_profile_preview\"\n      ng-repeat=\"profile in $ctrl.profile\"\n      show-image\n      image=\"profile.image\">\n      <div class=\"overview_name_block\">\n        <h3 class=\"name\" ng-bind=\"profile.djName\"></h3>\n      </div>\n    </div>\n  </div>\n</div>\n");
   $templateCache.put("profile/profile.html", "<div class=\"profile\">\n\n  <div class=\"left_container\">\n  <div class=\"profile_pic\"\n    show-image\n    image=\"$ctrl.profile.image\">\n  </div>\n\n  <div class=\"profile_genres\">\n    <ul>\n      <li ng-repeat=\"genre in $ctrl.profile.genres\">\n          {{genre}}\n      </li>\n    </ul>\n  </div>\n</div>\n\n<h1 class=\"profile_djName\" ng-bind=\"::$ctrl.profile.djName\"></h1>\n\n  <div class=\"profile_price_tag\">\n    <span id=\"test\" class=\"pricetag\" ng-bind=\"::$ctrl.profile.price\"></span>\n  </div>\n\n  <div class=\"profile_bio\">\n    <p ng-bind=\"::$ctrl.profile.biography\"></p>\n  </div>\n\n  <div class=\"profile_references\">\n    <h2>Referenties</h2>\n    <ul>\n      <li ng-repeat=\"reference in $ctrl.profile.references\">\n        {{reference}}\n      </li>\n    </ul>\n  </div>\n\n  <div class=\"profile_button\">\n    <button class=\"btn btn-lg btn-primary pull-xs-right\"\n      ui-sref=\"app.booking\"\n      ng-submit=\"$ctrl.book()\">\n      Boeken\n    </button>\n  </div>\n</div>\n");
   $templateCache.put("settings/settings.html", "<div class=\"form_settings\">\n  <div class=\"form_header\">\n    <h1>Your settings</h1>\n  </div>\n\n  <list-errors errors=\"$ctrl.errors\"></list-errors>\n\n  <form ng-submit=\"$ctrl.submitForm()\">\n    <fieldset ng-disabled=\"$ctrl.isSubmitting\">\n\n      <fieldset class=\"form-group\">\n        <p>Profiel foto</p>\n        <input class=\"form-control\"\n          type=\"text\"\n          placeholder=\"URL of profile picture\"\n          ng-model=\"$ctrl.formData.image\"/>\n      </fieldset>\n\n      <fieldset class=\"form-group\">\n        <p>DJ-naam\n        <input class=\"form-control\"\n          type=\"text\"\n          placeholder=\"dj-naam\"\n          ng-model=\"$ctrl.formData.djName\"/>\n      </fieldset>\n\n      <fieldset class=\"form-group\">\n        <p>Regio</p>\n        <input class=\"form-control\"\n          type=\"text\"\n          placeholder=\"regio\"\n          list=\"datalistRegions\"\n          ng-model=\"$ctrl.formData.region\"/>\n          <datalist id=\"datalistRegions\">\n            <option value=\"Antwerpen\">Antwerpen</option>\n            <option value=\"Henegouwen\">Henegouwen</option>\n            <option value=\"Limburg\">Limburg</option>\n            <option value=\"Luik\">Luik</option>\n            <option value=\"Luxemburg\">Luxemburg</option>\n            <option value=\"Namen\">Namen</option>\n            <option value=\"Oost-Vlaanderen\">Oost-Vlaanderen</option>\n            <option value=\"Vlaam-Brabant\">Vlaams-Brabant</option>\n            <option value=\"Waals-Brabant\">Waals-Brabant</option>\n            <option value=\"West-Vlaanderen\">West-Vlaanderen</option>\n          </datalist>\n      </fieldset>\n\n      <fieldset class=\"form-group\">\n        <p>Prijs per uur</p>\n        <input class=\"form-control\"\n          type=\"number\"\n          placeholder=\"prijs per uur\"\n          ng-model=\"$ctrl.formData.price\"/>\n      </fieldset>\n\n      <fieldset class=\"form-group\">\n        <p>Korte biografie</p>\n        <textarea class=\"form-control form-control-lg\"\n          rows=\"8\"\n          placeholder=\"Korte biografie\"\n          ng-model=\"$ctrl.formData.biography\"/>\n      </fieldset>\n\n      <fieldset class=\"form-group\">\n        <p>Genres</p>\n        <input class=\"form-control\"\n          type=\"text\"\n          placeholder=\"genre\"\n          ng-model=\"$ctrl.formData.genres\"/>\n      </fieldset>\n\n      <fieldset class=\"form-group\">\n        <p>Referenties</p>\n        <input class=\"form-control\"\n          type=\"text\"\n          placeholder=\"referentie\"\n          ng-model=\"$ctrl.formData.references\"/>\n      </fieldset>\n\n      <button class=\"btn btn-lg btn-primary pull-xs-right\"\n          type=\"submit\">\n          Update profiel\n      </button>\n    </fieldset>\n  </form>\n</div>\n");
-  $templateCache.put("components/dj-helpers/list-pagination.html", "<nav>\n  <ul class=\"pagination\">\n\n    <li class=\"page-item\"\n      ng-class=\"{active: pageNumber === $ctrl.currentPage }\"\n      ng-repeat=\"pageNumber in $ctrl.pageRange($ctrl.totalPages)\"\n      ng-click=\"$ctrl.changePage(pageNumber)\">\n\n      <a class=\"page-link\" href=\"\">{{ pageNumber }}</a>\n\n    </li>\n\n  </ul>\n</nav>\n");
-  $templateCache.put("components/dj-helpers/profile-list.html", "<profile-preview\n  profile=\"profile\"\n  ng-repeat=\"profile in $ctrl.list\">\n</profile-preview>\n\n<div class=\"profile-preview\"\n  ng-hide=\"!ctrl.loading\">\n    Loading profiles ...\n</div>\n\n<div class=\"profile-preview\"\n  ng-show=\"!$ctrl.loading && !$ctrl.list.length\">\n  Er zijn nog geen djs gevonden met opgegeven categorieën\n</div>\n\n<list-pagination\n  total-pages=\"$ctrl.listConfig.totalPages\"\n  current-page=\"$ctrl.listConfig.currentPage\"\n  ng-hide=\"$ctrl.listConfig.totalPages <= 1\">\n</list-pagination>\n");
-  $templateCache.put("components/dj-helpers/profile-meta.html", "<div class=\"profile-meta\">\n  <div class=\"info\">\n    <a class=\"dj\"\n      ui-sref=\"app.profile({ djName:$ctrl.profile.djName })\">\n      <img class=\"dj_image\"\n        ng-src=\"{{$ctrl.profile.image}}\"/>\n    </a>\n  </div>\n\n  <ng-transclude></ng-transclude>\n</div>\n");
-  $templateCache.put("components/dj-helpers/profile-preview.html", "<div class=\"profile-preview\">\n  <div class=\"profile_pic\" ng-repeat=\"profiles in $ctrl.profiles\">\n    <img src=\"$ctrl.profile.image\" alt=\"profile pic\"/>\n    <h3 ng-bind:\"::$ctrl.profile.djName\"></h3>\n  </div>\n</div>\n");
 }]);
 
-},{}],23:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 'use strict';
 
 authInterceptor.$inject = ["JWT", "AppConstants", "$window", "$q"];
@@ -37027,7 +36826,7 @@ function authInterceptor(JWT, AppConstants, $window, $q) {
 
 exports.default = authInterceptor;
 
-},{}],24:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 'use strict';
 
 ContactConfig.$inject = ["$stateProvider"];
@@ -37047,7 +36846,7 @@ function ContactConfig($stateProvider) {
 
 exports.default = ContactConfig;
 
-},{}],25:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -37064,7 +36863,7 @@ var ContactCtrl = function ContactCtrl() {
 
 exports.default = ContactCtrl;
 
-},{}],26:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -37093,7 +36892,7 @@ contactModule.controller('ContactCtrl', _contact4.default);
 
 exports.default = contactModule;
 
-},{"./contact.config":24,"./contact.controller":25,"angular":3}],27:[function(require,module,exports){
+},{"./contact.config":20,"./contact.controller":21,"angular":3}],23:[function(require,module,exports){
 'use strict';
 
 HomeConfig.$inject = ["$stateProvider"];
@@ -37123,8 +36922,8 @@ function HomeConfig($stateProvider) {
 
 exports.default = HomeConfig;
 
-},{}],28:[function(require,module,exports){
-'use strict';
+},{}],24:[function(require,module,exports){
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -37145,64 +36944,61 @@ var HomeCtrl = function () {
     this._Profile = Profile;
     this.profile = profile;
     this._$state = $state;
-    //console.log(profile);
+    this._queryParams = "";
   }
 
   _createClass(HomeCtrl, [{
-    key: 'submitForm',
+    key: "submitForm",
     value: function submitForm() {
       var _this = this;
 
       this.isSubmitting = true;
 
-      var queryParams = "";
       switch (true) {
-        case this.formData.genre === 'undefined' && !this.formData.region && !this.formData.price:
-          queryParams = "";
+        case !this.formData.genre && !this.formData.region && !this.formData.price:
+          this._queryParams = "";
           break;
         case !this.formData.genre && !this.formData.region:
           //  this.listConfig.filters = { price : this.formData.price };
-          queryParams = "?price=" + this.formData.price;
+          this._queryParams = "?price=" + this.formData.price;
           break;
         case !this.formData.genre && !this.formData.price:
           //this.listConfig.filters = { region: this.formData.region };
-          queryParams = "?region=" + this.formData.region;
+          this._queryParams = "?region=" + this.formData.region;
           break;
         case !this.formData.region && !this.formData.price:
           //this.listConfig.filters = { genre: this.formData.genre };
-          queryParams = "?genre=" + this.formData.genre;
+          this._queryParams = "?genre=" + this.formData.genre;
           break;
         case !this.formData.genre:
           //this.listConfig.filters = { region: this.formData.region, price: this.formData.price };
-          queryParams = "?region=" + this.formData.region + "&price=" + this.formData.price;
+          this._queryParams = "?region=" + this.formData.region + "&price=" + this.formData.price;
           break;
         case !this.formData.region:
           //this.listConfig.filters = { genre: this.formData.genre, price: this.formData.price };
-          queryParams = "?genre=" + this.formData.genre + "&price=" + this.formData.price;
+          this._queryParams = "?genre=" + this.formData.genre + "&price=" + this.formData.price;
           break;
         case !this.formData.price:
           //this.listConfig.filters = { genre: this.formData.genre, region: this.formData.region };
-          queryParams = "&region=" + this.formData.region + "?genre=" + this.formData.genre;
+          this._queryParams = "&region=" + this.formData.region + "?genre=" + this.formData.genre;
           break;
         default:
           //this.listConfig.filters = { genre: this.formData.genre, region: this.formData.region, price:  this.formData.price };
-          queryParams = "?region=" + this.formData.region + "&genre=" + this.formData.genre + "&price=" + this.formData.price;
+          this._queryParams = "?region=" + this.formData.region + "&genre=" + this.formData.genre + "&price=" + this.formData.price;
           break;
       }
 
-      console.log(queryParams);
-
-      this._Profile.searchDjs(queryParams).then(function (res) {
+      this._Profile.searchDjs(this._queryParams).then(function (res) {
         console.log(res);
         _this.isSubmitting = false;
-        _this._$state.go('app.overview', queryParams);
+        _this._$state.go('app.overview', _this._queryParams);
       }, function (err) {
         _this.isSubmitting = false;
         _this.errors = err.data.errors;
       });
     }
   }, {
-    key: 'submitFormDjName',
+    key: "submitFormDjName",
     value: function submitFormDjName() {
       var _this2 = this;
 
@@ -37223,7 +37019,7 @@ var HomeCtrl = function () {
 
 exports.default = HomeCtrl;
 
-},{}],29:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -37257,7 +37053,7 @@ homeModule.controller('HomeCtrl', _home4.default);
 
 exports.default = homeModule;
 
-},{"./home.config":27,"./home.controller":28,"angular":3}],30:[function(require,module,exports){
+},{"./home.config":23,"./home.controller":24,"angular":3}],26:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -37285,7 +37081,7 @@ var AppFooter = {
 
 exports.default = AppFooter;
 
-},{}],31:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -37312,7 +37108,7 @@ var AppHeader = {
 
 exports.default = AppHeader;
 
-},{}],32:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -37344,7 +37140,7 @@ layoutModule.component('appFooter', _footer2.default);
 
 exports.default = layoutModule;
 
-},{"./footer.component":30,"./header.component":31,"angular":3}],33:[function(require,module,exports){
+},{"./footer.component":26,"./header.component":27,"angular":3}],29:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -37379,7 +37175,7 @@ overviewModule.controller('OverviewProfilesCtrl', _overviewProfiles2.default);
 
 exports.default = overviewModule;
 
-},{"./overview-profiles.controller":34,"./overview.config":35,"./overview.controller":36,"angular":3}],34:[function(require,module,exports){
+},{"./overview-profiles.controller":30,"./overview.config":31,"./overview.controller":32,"angular":3}],30:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -37397,7 +37193,7 @@ OverviewProfilesCtrl.$inject = ["$state", "$rootScope"];
 
 exports.default = OverviewProfilesCtrl;
 
-},{}],35:[function(require,module,exports){
+},{}],31:[function(require,module,exports){
 'use strict';
 
 OverviewConfig.$inject = ["$stateProvider"];
@@ -37413,19 +37209,25 @@ function OverviewConfig($stateProvider) {
     templateUrl: 'overview/overview.html',
     title: 'djs',
     resolve: {
-      /*overview: function(Profile, $state, $stateParams) {
-        return Profile.searchDjs($stateParams.queryParams).then(
+      /*profile: function(Profile, $stateParams, $state) {
+        return Profile.searchDjs($stateParams.this._queryParams).then(
           (profile) => profile,
           (err) => $state.go('app.home')
         );
       }*/
+      /*    profile: function(Profile, $state, $stateParams) {
+            return Profile.searchDjs($stateParams.this._queryParams).then(
+              (profile) => profile,
+              (err) => $state.go('app.home')
+            );
+          }*/
     }
   });
 }
 
 exports.default = OverviewConfig;
 
-},{}],36:[function(require,module,exports){
+},{}],32:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -37441,14 +37243,12 @@ var OverviewCtrl = function OverviewCtrl(profile) {
 
   this.profile = profile;
   console.log(this.profile);
-
-  //  this.listConfig = {type: 'all'};
 };
 OverviewCtrl.$inject = ["profile"];
 
 exports.default = OverviewCtrl;
 
-},{}],37:[function(require,module,exports){
+},{}],33:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -37477,7 +37277,7 @@ profileModule.controller('ProfileCtrl', _profile4.default);
 
 exports.default = profileModule;
 
-},{"./profile.config":38,"./profile.controller":39,"angular":3}],38:[function(require,module,exports){
+},{"./profile.config":34,"./profile.controller":35,"angular":3}],34:[function(require,module,exports){
 'use strict';
 
 ProfileConfig.$inject = ["$stateProvider"];
@@ -37506,7 +37306,7 @@ function ProfileConfig($stateProvider) {
 
 exports.default = ProfileConfig;
 
-},{}],39:[function(require,module,exports){
+},{}],35:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -37540,7 +37340,7 @@ var ProfileCtrl = function () {
 
 exports.default = ProfileCtrl;
 
-},{}],40:[function(require,module,exports){
+},{}],36:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -37578,7 +37378,7 @@ servicesModule.service('Profile', _profiles2.default);
 
 exports.default = servicesModule;
 
-},{"./jwt.service":41,"./profiles.service":42,"./user.service":43,"angular":3}],41:[function(require,module,exports){
+},{"./jwt.service":37,"./profiles.service":38,"./user.service":39,"angular":3}],37:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -37622,7 +37422,7 @@ var JWT = function () {
 
 exports.default = JWT;
 
-},{}],42:[function(require,module,exports){
+},{}],38:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -37653,20 +37453,16 @@ var Profile = function () {
     });
   }*/
 
-  _createClass(Profile, [{
-    key: 'query',
-    value: function query(config) {
-      var request = {
-        url: this._AppConstants.api + '/profiles/djs/',
-        method: 'GET',
-        params: config.filters ? config.filters : null
-      };
+  /*query(config) {
+    let request = {
+      url: this._AppConstants.api + '/profiles/djs/',
+      method: 'GET',
+      params: config.filters ? config.filters : null
+    };
+     return this._$http(request).then((res) => res.data);
+  }*/
 
-      return this._$http(request).then(function (res) {
-        return res.data;
-      });
-    }
-  }, {
+  _createClass(Profile, [{
     key: 'searchDjs',
     value: function searchDjs(queryParams) {
       return this._$http({
@@ -37694,7 +37490,6 @@ var Profile = function () {
         url: this._AppConstants.api + '/profiles/inthepicture',
         method: 'GET'
       }).then(function (res) {
-        console.log(res.data);
         return res.data;
       });
     }
@@ -37705,7 +37500,7 @@ var Profile = function () {
 
 exports.default = Profile;
 
-},{}],43:[function(require,module,exports){
+},{}],39:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -37848,7 +37643,7 @@ var User = function () {
 
 exports.default = User;
 
-},{}],44:[function(require,module,exports){
+},{}],40:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -37882,7 +37677,7 @@ settingsModule.controller('SettingsController', _settings4.default);
 
 exports.default = settingsModule;
 
-},{"./settings.config":45,"./settings.controller":46,"angular":3}],45:[function(require,module,exports){
+},{"./settings.config":41,"./settings.controller":42,"angular":3}],41:[function(require,module,exports){
 'use strict';
 
 SettingsConfig.$inject = ["$stateProvider", "$httpProvider"];
@@ -37909,7 +37704,7 @@ function SettingsConfig($stateProvider, $httpProvider) {
 
 exports.default = SettingsConfig;
 
-},{}],46:[function(require,module,exports){
+},{}],42:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
