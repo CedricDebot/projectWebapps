@@ -4,7 +4,8 @@
     <div class="overview_profile_preview"
       ng-repeat="profile in $ctrl.profile"
       show-image
-      image="profile.image">
+      image="profile.image"
+      ng-click="$ctrl.clickDj(profile.djName)">
       <div class="overview_name_block">
         <h3 class="name" ng-bind="profile.djName"></h3>
       </div>

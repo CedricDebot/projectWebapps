@@ -71,6 +71,10 @@ class HomeCtrl {
         this.errors = err.data.errors;
       });
   }
+
+  clickDj(djName) {
+    this._$state.go('app.profile', {djName: djName});
+  }
 }
 
 export default HomeCtrl;
