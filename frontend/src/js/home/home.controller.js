@@ -50,7 +50,7 @@ class HomeCtrl {
       (res) => {
         console.log(res);
         this.isSubmitting = false;
-        this._$state.go('app.overview', this._queryParams);
+        this._$state.go('app.overview', {queryParams: this._queryParams});
       },
       (err) => {
         this.isSubmitting = false;

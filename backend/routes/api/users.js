@@ -85,22 +85,25 @@ router.post('/users', function(req, res, next) {
 
   console.log(req.body);
 
-  user.email = req.body.email;
-  user.setPassword(req.body.password);
-  user.firstName = req.body.firstName;
-  user.name = req.body.name;
-  user.djName = req.body.djName;
-  user.region = req.body.region;
-  user.price = req.body.price;
-  user.genres = req.body.genres;
-  user.image = req.body.image;
+  user.email = req.body.user.email;
+  user.setPassword(req.body.user.password);
+  user.firstName = req.body.user.firstName;
+  user.name = req.body.user.name;
+  user.region = req.body.user.region;
+  user.djName = req.body.user.djName;
+  user.price = req.body.user.price;
+  user.genres = req.body.user.genres;
 
-  if(typeof req.body.biography !== 'undefined') {
-    user.biography = req.body.biography;
+  if(typeof req.body.user.image !== 'undefined') {
+    user.image = req.body.user.image;
   }
 
-  if(typeof req.body.references !== 'undefined') {
-    user.references = req.body.references;
+  if(typeof req.body.user.biography !== 'undefined') {
+    user.biography = req.body.user.biography;
+  }
+
+  if(typeof req.body.user.references !== 'undefined') {
+    user.references = req.body.user.references;
   }
 
   user.save().then(function() {

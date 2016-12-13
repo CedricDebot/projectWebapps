@@ -3,7 +3,6 @@ class OverviewCtrl {
     'ngInject';
 
     this.profile = profile;
-    console.log(this.profile);
 
   }
 }

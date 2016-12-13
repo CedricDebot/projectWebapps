@@ -3,7 +3,7 @@ function ProfileConfig($stateProvider) {
 
   $stateProvider
   .state('app.profile', {
-    url: '/djs/:djName',
+    url: '/djs/profile/:djName',
     controller: 'ProfileCtrl as $ctrl',
     templateUrl: 'profile/profile.html',
     //title: "profile",
