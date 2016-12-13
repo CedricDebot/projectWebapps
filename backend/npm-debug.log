@@ -7,7 +7,7 @@
 6 silly lifecycle backend@0.0.0~prestart: no script for prestart, continuing
 7 info lifecycle backend@0.0.0~start: backend@0.0.0
 8 verbose lifecycle backend@0.0.0~start: unsafe-perm in lifecycle true
-9 verbose lifecycle backend@0.0.0~start: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/cedricdebot/Documents/HoGent/webapps/Project_DjApp/backend/node_modules/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/DevDesktop/tools
+9 verbose lifecycle backend@0.0.0~start: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/cedricdebot/Documents/HoGent/webapps/Project_DjApp/backend/node_modules/.bin:/Applications/DevDesktop/php5_5/bin:/Applications/DevDesktop/mysql/bin:/Applications/DevDesktop/tools:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/DevDesktop/tools
 10 verbose lifecycle backend@0.0.0~start: CWD: /Users/cedricdebot/Documents/HoGent/webapps/Project_DjApp/backend
 11 silly lifecycle backend@0.0.0~start: Args: [ '-c', 'node ./bin/www' ]
 12 silly lifecycle backend@0.0.0~start: Returned: code: 1  signal: null

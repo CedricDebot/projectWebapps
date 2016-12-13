@@ -1,11 +1,13 @@
 class OverviewCtrl {
-  constructor(profile) {
+  constructor(profile, $state) {
     'ngInject';
 
     this.profile = profile;
-    console.log(this.profile);
-    
-  //  this.listConfig = {type: 'all'};
+    this._$state = $state;
+  }
+
+  clickDj(djName) {
+    this._$state.go('app.profile', {djName: djName});
   }
 }
 

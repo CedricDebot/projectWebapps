@@ -30,24 +30,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
-app.get('/*', function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:4000');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-type');
-  res.setHeader('Access-Control-Allow-Credentials', true);
-
-  next();
-});
-
-app.get('/api/*', function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:4000');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS, PUT, PATCH, DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-type');
-  res.setHeader('Access-Control-Allow-Credentials', true);
-
-  next();
-})
-
 //.use('/', index);
 //app.use('/users', users);
 

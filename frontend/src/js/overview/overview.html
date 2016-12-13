@@ -1,5 +1,14 @@
 <div class="overview">
-  <div class="overview_dj">
-    <p ng-repeat="djName in $ctrl.proifle.djName">{{}}</p>
+  <div class="overview_header">
+    <h1>Gevonden DJ's</h1>
+    <div class="overview_profile_preview"
+      ng-repeat="profile in $ctrl.profile"
+      show-image
+      image="profile.image"
+      ng-click="$ctrl.clickDj(profile.djName)">
+      <div class="overview_name_block">
+        <h3 class="name" ng-bind="profile.djName"></h3>
+      </div>
+    </div>
   </div>
 </div>

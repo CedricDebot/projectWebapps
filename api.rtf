@@ -1,0 +1,402 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf470
+{\fonttbl\f0\fswiss\fcharset0 ArialMT;\f1\froman\fcharset0 Times-Roman;\f2\fnil\fcharset0 Menlo-Regular;
+\f3\froman\fcharset0 TimesNewRomanPSMT;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red255\green255\blue0;\red0\green255\blue0;
+\red255\green128\blue0;\red255\green128\blue0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww28600\viewh15280\viewkind0
+\deftab720
+\pard\pardeftab720\sl840\partightenfactor0
+
+\f0\b\fs62 \cf2 \expnd0\expndtw0\kerning0
+\ul \ulc2 \outl0\strokewidth0 \strokec2 API
+\f1\b0\fs24 \ulnone \
+\pard\pardeftab720\sl620\sa106\partightenfactor0
+
+\f0\i\b\fs46 \cf2 Profiles
+\f1\i0\fs36 \
+\pard\pardeftab720\sl400\partightenfactor0
+
+\f0\b0\fs30 \cf2  
+\f1\fs24 \
+\pard\pardeftab720\fi-480\sl400\partightenfactor0
+
+\f0\fs30 \cf2 -
+\fs18  \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cb3 \'a0
+\fs30 GET \'a0\'a0	api/profiles/inthepicture
+\f1\fs24 \cb1 \
+	\'97>
+\f0\fs30 Geeft 3 willekeurige profielen terug\
+
+\f1\fs24 \
+\pard\pardeftab720\li933\sl400\partightenfactor0
+
+\f0\b\fs30 \cf2 Response:
+\f1\b0\fs24 \
+
+\f2\fs22  [\
+  \{\
+    "_id": "584afeef9698800543bccaf3",\
+    "price": 30,\
+    "region": "Vlaams-Brabant",\
+    "djName": \'93Mike Summer\'94,\
+    "hash": "3d6b1acd93ccb89853b4a25cf61bb01dad80c21833ddfce",\
+    "salt": "ff08fda4ff32ad88b",\
+    "email": \'93mike.summer.bookings@gmail.com",\
+    "__v": 0,\
+    "r": \{\
+      "coordinates": [\
+        0.7996200926016515,\
+        0.49600821478397616\
+      ],\
+      "type": "Point"\
+    \},\
+    "comments": [],\
+    "upvotes": 0,\
+    "references": [\
+      "Jospop",\
+      "ADE"\
+    ],\
+    "genres": [\
+      "EDM",\
+      "R&B",\
+    ]\
+  \},\
+  \{\
+    "_id": "5841c4b8b0aca808df58ab4d",\
+    "price": 90,\
+    "region": \'93Antwerpen\'94,\
+    "djName": \'93dj Ace\'93,\
+    "hash": "d41d5c22952a11ce760c251e6db177f23dc728ac3330d0b,\
+    "salt": "6543db4aeec706b9af459147",\
+    "email": \'93djAcebooking@gmail.com\'94,\
+    "__v": 1,\
+    "biography": "A new guy's in town, ready to turn heads. Belgium's got a 19 year old talent to share, and he goes by the name of DJ Ace. With full of talent, never-ending energy and many many more he is coming straight to you. Yannick Bevers, better known as DJ Ace, has always been drawn to electronic dance music, but it was the sound of Martin Garrix that inspired him to start creating his own. Learning the DJ ropes in various clubs across his home country, including the well-known Versuz, he became more and more inspired to bring a taste of his own. When you listen to him the replay button will become you're best friend!",\
+    "r": \{\
+      "coordinates": [\
+        0.2657685556805516,\
+        0.4895315092744972\
+      ],\
+      "type": "Point"\
+    \},\
+    "comments": [],\
+    "upvotes": 0,\
+    "references": [],\
+    "genres": [\
+      \'93EDM\'94\
+    ]\
+  \},\
+  \{\
+    "_id": "584dbd1a0e6ccb047151f2db",\
+    "image": "https://cds.mnm.be/sites/mnm/files/styles/1600x800/public/article/2016_08/fj8a2012.jpg?itok=VrwDxeQJ",\
+    "price": 60,\
+    "region": "Vlaams-Brabant",\
+    "djName": \'93Cigorious\'94,\
+    "hash": "8daaa5ab204a9d8a0e9437ac041df3188080ac059ce75e837f7978b97b",\
+    "salt": "8b832e4ea9ca60390951368",\
+    "email": \'93cigoriousbooking@gmail.com",\
+    "__v": 0,\
+    "r": \{\
+      "coordinates": [\
+        0.4384459420566462,\
+        0.6225678515988653\
+      ],\
+      "type": "Point"\
+    \},\
+    "comments": [],\
+    "upvotes": 0,\
+    "references": [\
+      "Versuz",\
+      "Summerfestival",\
+      "Jospop",\
+      "ADE"\
+    ],\
+    "genres": [\
+      "Future House",\
+      "EDM",\
+      "R&B",\
+      "Moombahton"\
+    ]\
+  \}\
+]\
+
+\f1\fs24 \
+
+\f0\b\fs30 Statuscodes:
+\b0  \cf4 200 OK
+\f1\fs24 \cf2 \
+\pard\pardeftab720\sl400\partightenfactor0
+
+\f0\fs30 \cf2  
+\f1\fs24 \
+\pard\pardeftab720\fi-480\sl400\partightenfactor0
+
+\f0\fs30 \cf2 -
+\fs18  \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\fs30 \cb3 GET api/profiles/djs/djName/:djName
+\f1\fs24 \cb1 \
+	\'97>
+\f0\fs30 Geeft 1 profiel terug waarvan de dj-naam overeenkomt met de input
+\f1\fs24 \
+\pard\pardeftab720\li960\sl400\partightenfactor0
+
+\f0\fs30 \cf2  
+\f1\fs24 \
+
+\f0\b\fs30 Response:
+\f1\b0\fs24 \
+
+\f0\fs30  
+\f2\fs22 \cf0 \outl0\strokewidth0 \{\
+\pard\pardeftab720\li933\sl400\partightenfactor0
+\cf0     "_id": "584dbd1a0e6ccb047151f2db",\
+    "image": "https://cds.mnm.be/sites/mnm/files/styles/1600x800/public/article/2016_08/fj8a2012.jpg?itok=VrwDxeQJ",\
+    "price": 60,\
+    "region": "Vlaams-Brabant",\
+    "djName": \'93Cigorious\'94,\
+    "hash": "8daaa5ab204a9d8a0e9437ac041df3188080ac059ce75e837f7978b97b",\
+    "salt": "8b832e4ea9ca60390951368",\
+    "email": \'93cigoriousbooking@gmail.com",\
+    "__v": 0,\
+    "r": \{\
+      "coordinates": [\
+        0.4384459420566462,\
+        0.6225678515988653\
+      ],\
+      "type": "Point"\
+    \},\
+    "comments": [],\
+    "upvotes": 0,\
+    "references": [\
+      "Versuz",\
+      "Summerfestival",\
+      "Jospop",\
+      "ADE"\
+    ],\
+    "genres": [\
+      "Future House",\
+      "EDM",\
+      "R&B",\
+      "Moombahton"\
+    ]\
+  \}\
+
+\f1\fs24 \cf2 \outl0\strokewidth0 \strokec2 \
+\pard\pardeftab720\li960\sl400\partightenfactor0
+
+\f0\b\fs30 \cf2 Statuscodes:
+\b0  	\cf4 200 OK\cf2 ,\
+				\cf5 404 NOT FOUND
+\f1\fs24 \cf2 \
+\pard\pardeftab720\sl400\partightenfactor0
+
+\f0\fs30 \cf2  
+\f1\fs24 \
+\pard\pardeftab720\fi-480\sl400\partightenfactor0
+
+\f0\fs30 \cf2 -
+\fs18  \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\fs30 GET 	\cb3 api/profiles/djs\cb1  \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0	(vb queryParameters: ?region=Antwerpen&genre=house&price=150)
+\f1\fs24 \
+	\'97>
+\f3\fs18  
+\f0\fs30 Geeft de profielen terug die voldoen aan de opgegeven query-parameters, indien geen query-parameters 			opgegeven, dan worden alle profielen teruggegeven.
+\f1\fs24 \
+\pard\pardeftab720\li960\sl400\partightenfactor0
+
+\f0\fs30 \cf2  
+\f1\fs24 \
+
+\f0\b\fs30 Response:
+\f1\b0\fs24 \
+
+\f2\fs22  [\cf0 \outl0\strokewidth0   \
+\{\
+\pard\pardeftab720\li933\sl400\partightenfactor0
+\cf0     "_id": "5841c4b8b0aca808df58ab4d",\
+    "price": 90,\
+    "region": \'93Antwerpen\'94,\
+    "djName": \'93dj Ace\'93,\
+    "hash": "d41d5c22952a11ce760c251e6db177f23dc728ac3330d0b,\
+    "salt": "6543db4aeec706b9af459147",\
+    "email": \'93djAcebooking@gmail.com\'94,\
+    "__v": 1,\
+    "biography": "A new guy's in town, ready to turn heads. Belgium's got a 19 year old talent to share, and he goes by the name of DJ Ace. With full of talent, never-ending energy and many many more he is coming straight to you. Yannick Bevers, better known as DJ Ace, has always been drawn to electronic dance music, but it was the sound of Martin Garrix that inspired him to start creating his own. Learning the DJ ropes in various clubs across his home country, including the well-known Versuz, he became more and more inspired to bring a taste of his own. When you listen to him the replay button will become you're best friend!",\
+    "r": \{\
+      "coordinates": [\
+        0.2657685556805516,\
+        0.4895315092744972\
+      ],\
+      "type": "Point"\
+    \},\
+    "comments": [],\
+    "upvotes": 0,\
+    "references": [],\
+    "genres": [\
+      \'93EDM\'94\
+    ]\
+  \},\
+  \{\
+    "_id": "584dbd1a0e6ccb047151f2db",\
+    "image": "https://cds.mnm.be/sites/mnm/files/styles/1600x800/public/article/2016_08/fj8a2012.jpg?itok=VrwDxeQJ",\
+    "price": 60,\
+    "region": "Vlaams-Brabant",\
+    "djName": \'93Cigorious\'94,\
+    "hash": "8daaa5ab204a9d8a0e9437ac041df3188080ac059ce75e837f7978b97b",\
+    "salt": "8b832e4ea9ca60390951368",\
+    "email": \'93cigoriousbooking@gmail.com",\
+    "__v": 0,\
+    "r": \{\
+      "coordinates": [\
+        0.4384459420566462,\
+        0.6225678515988653\
+      ],\
+      "type": "Point"\
+    \},\
+    "comments": [],\
+    "upvotes": 0,\
+    "references": [\
+      "Versuz",\
+      "Summerfestival",\
+      "Jospop",\
+      "ADE"\
+    ],\
+    "genres": [\
+      "Future House",\
+      "EDM",\
+      "R&B",\
+      "Moombahton"\
+    ]\
+  \}\
+]\
+
+\f1\fs24 \cf2 \outl0\strokewidth0 \strokec2 \
+\pard\pardeftab720\li960\sl400\partightenfactor0
+
+\f0\b\fs30 \cf2 Statuscodes:
+\b0  \cf4 	200 OK\cf2 ,\
+				\cf5 404 NOT FOUND
+\f1\fs24 \cf2 \
+\pard\pardeftab720\sl400\partightenfactor0
+
+\f0\fs30 \cf2  
+\f1\fs24 \
+
+\f0\fs30  
+\f1\fs24 \
+\pard\pardeftab720\sl620\sa106\partightenfactor0
+
+\f0\i\b\fs46 \cf2 USERS
+\f1\i0\fs36 \
+\pard\pardeftab720\fi-480\sl400\partightenfactor0
+
+\f0\b0\fs30 \cf2 -
+\fs18  \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\fs30 \cb3 POST api/users
+\f1\fs24 \cb1 \
+	\'97>
+\f0\fs30 Account aanmaken\
+
+\f1\fs24 \
+\pard\pardeftab720\li960\sl400\partightenfactor0
+
+\f0\b\fs30 \cf2 Request
+\b0 :
+\f1\fs24 \
+
+\f2\fs22  \{\
+	"email" : "snapback@gmail.com",\
+	"password" : "image",\
+	"djName" : "snapback", \
+	"region" : "Vlaams-Brabant", \
+	"price" : 30,\
+	"genres": ["Future House", "EDM", "R&B", "Moombahton"],\
+	"references": ["Versuz", "Summerfestival", "Jospop", "ADE"], \
+	"image": "https://cds.mnm.be/sites/mnm/files/styles/1600x800/public/article/2016_08/fj8a2012.jpg?itok=VrwDxeQJ"\
+\}\
+
+\f1\fs24 \
+
+\f0\b\fs30 Statuscodes: 	
+\b0 \cf4 200 OK
+\b \cf2 \
+				
+\b0 \cf5 422 Unprocessable Entity
+\f1\fs24 \cf2 \
+\pard\pardeftab720\sl400\partightenfactor0
+
+\f0\fs30 \cf2  
+\f1\fs24 \
+\pard\pardeftab720\fi-480\sl400\partightenfactor0
+
+\f0\fs30 \cf2 -
+\fs18  \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\fs30 \cb3 POST api/users/login
+\f1\fs24 \cb1 \
+	\'97>
+\f3\fs18  
+\f0\fs30 Inloggen
+\f1\fs24 \
+\pard\pardeftab720\li960\sl400\partightenfactor0
+
+\f0\fs30 \cf2  
+\f1\fs24 \
+
+\f0\b\fs30 Request:
+\f1\b0\fs24 \
+
+\f2\fs22  \cf0 \kerning1\expnd0\expndtw0 \CocoaLigature0 \outl0\strokewidth0 \{ user: \
+	\{ 	email: 'test@test.be', \
+		password: 'test' \
+	\} \
+\}\cf2 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \outl0\strokewidth0 \strokec2 \
+ 
+\f1\fs24 \
+
+\f0\b\fs30 Statuscodes: 
+\b0 	\cf4 200 OK\
+				\cf6 \outl0\strokewidth0 422 Unprocessable Entity\cf2 \outl0\strokewidth0 \strokec2 \
+				
+\f1\fs24 \
+\pard\pardeftab720\sl400\partightenfactor0
+
+\f0\fs30 \cf2  
+\f1\fs24 \
+\pard\pardeftab720\fi-480\sl400\partightenfactor0
+
+\f0\fs30 \cf2 -
+\fs18  \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\fs30 \cb3 PUT api/user
+\f1\fs24 \cb1 \
+	\'97>
+\f3\fs18  
+\f0\fs30 aanpassen van een bestaande user
+\f1\fs24 \
+\pard\pardeftab720\li960\sl400\partightenfactor0
+
+\f0\fs30 \cf2  
+\f1\fs24 \
+
+\f0\b\fs30 Request:\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f2\b0\fs22 \cf0 \kerning1\expnd0\expndtw0 \CocoaLigature0 \outl0\strokewidth0 		\{ user: \
+      		\{ 	djName: 'test',\
+       			region: 'test',\
+        			price: 90,\
+        			biography: 'A new guy\\'s in town, ready to turn heads. Belgium\\'s got a 19 year old talent to share, and he goes by the name of DJ Ace. With full of talent, never-ending energy and many many more he 							is coming straight to you. Yannick Bevers, better known as DJ Ace, has always been drawn to electronic dance music, but it was the sound of Martin Garrix that inspired him to start 							creating his own. Learning the DJ ropes in various clubs across his home country, including the well-known Versuz, he became more and more inspired to bring a taste of his own. When you 							listen to him the replay button will become you\\'re best friend!',\
+        			genres: [Object],\
+        			references: 'Summerfestival' \
+			\} \
+		\}
+\f1\fs24 \cf2 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \outl0\strokewidth0 \strokec2 \
+\pard\pardeftab720\li960\sl400\partightenfactor0
+
+\f0\fs30 \cf2  
+\f1\fs24 \
+\pard\pardeftab720\sl340\partightenfactor0
+
+\f0\fs30 \cf2 	  
+\b Statuscodes: 	
+\b0 \cf4 200 OK}

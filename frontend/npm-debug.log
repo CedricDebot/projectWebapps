@@ -9,11 +9,10 @@
 4 verbose stack     at checkBinReferences_ (/usr/local/lib/node_modules/npm/node_modules/read-package-json/read-json.js:320:45)
 4 verbose stack     at final (/usr/local/lib/node_modules/npm/node_modules/read-package-json/read-json.js:354:3)
 4 verbose stack     at then (/usr/local/lib/node_modules/npm/node_modules/read-package-json/read-json.js:124:5)
-4 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-package-json/read-json.js:311:12
-4 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/graceful-fs/graceful-fs.js:78:16
-4 verbose stack     at tryToString (fs.js:455:3)
-4 verbose stack     at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:442:12)
-5 verbose cwd /Users/cedricdebot/Documents/HoGent/webapps/Project_DjApp
+4 verbose stack     at ReadFileContext.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/read-package-json/read-json.js:295:20)
+4 verbose stack     at ReadFileContext.callback (/usr/local/lib/node_modules/npm/node_modules/graceful-fs/graceful-fs.js:78:16)
+4 verbose stack     at FSReqWrap.readFileAfterOpen [as oncomplete] (fs.js:365:13)
+5 verbose cwd /Users/cedricdebot/Documents/HoGent/webapps/Project_DjApp/frontend
 6 error Darwin 15.6.0
 7 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "start"
 8 error node v6.9.1
