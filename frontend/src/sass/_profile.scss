@@ -11,12 +11,21 @@
     float: left;
     max-width: 25%;
 
-
   .profile_pic {
+    display: inline-block;
     width: 250px;
     height: 250px;
     margin: auto;
     margin-top: 2%;
+
+    .profile_name_block {
+      margin-top: 220px;
+
+      h3 {
+        text-align: center;
+        color: $color-white;
+      }
+    }
   }
 
   .profile_genres {
@@ -39,67 +48,40 @@
 
     }
   }
-}
 
-  .profile_djName {
-    margin-left: 270px;
+  .profile_price {
+    background-color: $color-veryLightGray;
+    width: 250px;
+    margin: auto;
+
+    h3 {
+      text-align: center;
+      margin-bottom: 10%;
+    }
   }
-
-  .profile_price_tag {
-    position: relative;
-    float: right;
-    margin-top: -45px;
-    margin-right: 30px;
-
-    .pricetag{
-      background: $color-darkGreen;
-      color: $color-white;
-      font-size: 18px;
-      font-size: 1.8rem;
-      text-decoration: none;
-      -webkit-border-top-right-radius: 6px;
-      -webkit-border-bottom-right-radius: 6px;
-      -moz-border-radius-topright: 6px;
-      -moz-border-radius-bottomright: 6px;
-      border-top-right-radius: 6px;
-      border-bottom-right-radius: 6px;
-      padding: 18px 20px;
 }
-.pricetag:before{
-  content: "";
-  float: left;
-  width: 0;
-  height: 0;
-  border-top: 30px solid transparent;
-  border-right: 30px solid $color-darkGreen;
-  border-bottom: 30px solid transparent;
-}
-
-.pricetag:after{
-  content: "";
-  position: absolute;
-  top: 27px;
-  left: 14px;
-  width: 8px;
-  height: 8px;
-  -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
-  border-radius: 4px;
-  background: $color-white;
-  -moz-box-shadow: -1px -1px 1px #424444;
-  -webkit-box-shadow: -1px -1px 1px #424444;
-  box-shadow: -1px -1px 1px #424444;
-}
-  }
 
   .profile_references {
+    background-color: $color-veryLightGray;
+    position: relative;
+    width: 50%;
+    margin: auto;
+    top: 200px;
+    left: 125px;
+
+    h2 {
+      text-align: center;
+      padding-top: 2%;
+    }
     ul {
-      list-style-type: none;
+    //  list-style-type: none;
+    padding-bottom: 2%;
     }
   }
 
   .profile_button {
     float: right;
     margin-right: 2%;
+    margin-top: 20%;
   }
 }

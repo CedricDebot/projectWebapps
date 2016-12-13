@@ -44,15 +44,15 @@ router.param('comment', function(req, res, next, id){
 router.param('djName', function(req, res, next, djName){
 	var query = User.findOne({ djName: djName });
 
-	query.exec(function(err, dj){
+	query.exec(function(err, user){
 		if(err) {
 			return next(err);
 					}
-		if(!dj) {
+		if(!user) {
 				return next(new Error('Can\'t find dj'));
 					}
 
-		req.dj = dj;
+		req.dj = user;
 		return next();
 	});
 });

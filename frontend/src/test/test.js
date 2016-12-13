@@ -1,7 +1,7 @@
-var except = require('chai').except;
+var expect = require('chai').expect;
 var inject = require('angular-mocks');
 
-describe('Homecontroller', function() {
+describe('Homectrl', function() {
   var scope;
   var controller;
 

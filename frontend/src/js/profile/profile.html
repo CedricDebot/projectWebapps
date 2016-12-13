@@ -1,9 +1,11 @@
 <div class="profile">
-
   <div class="left_container">
   <div class="profile_pic"
     show-image
     image="$ctrl.profile.image">
+    <div class="profile_name_block">
+      <h3 class="name" ng-bind="$ctrl.profile.djName"></h3>
+    </div>
   </div>
 
   <div class="profile_genres">
@@ -13,13 +15,10 @@
       </li>
     </ul>
   </div>
-</div>
-
-<h1 class="profile_djName" ng-bind="::$ctrl.profile.djName"></h1>
-
-  <div class="profile_price_tag">
-    <span id="test" class="pricetag" ng-bind="::$ctrl.profile.price"></span>
+  <div class="profile_price">
+    <h3>€ {{::$ctrl.profile.price}} / uur</h3>
   </div>
+</div>
 
   <div class="profile_bio">
     <p ng-bind="::$ctrl.profile.biography"></p>
@@ -37,8 +36,8 @@
   <div class="profile_button">
     <button class="btn btn-lg btn-primary pull-xs-right"
       ui-sref="app.booking"
-      ng-submit="$ctrl.book()">
+      ng-submit="$ctrl.book($ctrl.profile)">
       Boeken
     </button>
-  </div>
+</div>
 </div>

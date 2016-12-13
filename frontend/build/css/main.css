@@ -209,10 +209,16 @@ body {
     float: left;
     max-width: 25%; }
     .profile .left_container .profile_pic {
+      display: inline-block;
       width: 250px;
       height: 250px;
       margin: auto;
       margin-top: 2%; }
+      .profile .left_container .profile_pic .profile_name_block {
+        margin-top: 220px; }
+        .profile .left_container .profile_pic .profile_name_block h3 {
+          text-align: center;
+          color: #fff; }
     .profile .left_container .profile_genres {
       margin: auto;
       margin-top: 5%; }
@@ -227,53 +233,29 @@ body {
           padding: 1% 3% 1% 3%;
           border-radius: 20px;
           text-align: center; }
-  .profile .profile_djName {
-    margin-left: 270px; }
-  .profile .profile_price_tag {
+    .profile .left_container .profile_price {
+      background-color: #f3f3f3;
+      width: 250px;
+      margin: auto; }
+      .profile .left_container .profile_price h3 {
+        text-align: center;
+        margin-bottom: 10%; }
+  .profile .profile_references {
+    background-color: #f3f3f3;
     position: relative;
-    float: right;
-    margin-top: -45px;
-    margin-right: 30px; }
-    .profile .profile_price_tag .pricetag {
-      background: #449d44;
-      color: #fff;
-      font-size: 18px;
-      font-size: 1.8rem;
-      text-decoration: none;
-      -webkit-border-top-right-radius: 6px;
-      -webkit-border-bottom-right-radius: 6px;
-      -moz-border-radius-topright: 6px;
-      -moz-border-radius-bottomright: 6px;
-      border-top-right-radius: 6px;
-      border-bottom-right-radius: 6px;
-      padding: 18px 20px; }
-    .profile .profile_price_tag .pricetag:before {
-      content: "";
-      float: left;
-      width: 0;
-      height: 0;
-      border-top: 30px solid transparent;
-      border-right: 30px solid #449d44;
-      border-bottom: 30px solid transparent; }
-    .profile .profile_price_tag .pricetag:after {
-      content: "";
-      position: absolute;
-      top: 27px;
-      left: 14px;
-      width: 8px;
-      height: 8px;
-      -moz-border-radius: 4px;
-      -webkit-border-radius: 4px;
-      border-radius: 4px;
-      background: #fff;
-      -moz-box-shadow: -1px -1px 1px #424444;
-      -webkit-box-shadow: -1px -1px 1px #424444;
-      box-shadow: -1px -1px 1px #424444; }
-  .profile .profile_references ul {
-    list-style-type: none; }
+    width: 50%;
+    margin: auto;
+    top: 200px;
+    left: 125px; }
+    .profile .profile_references h2 {
+      text-align: center;
+      padding-top: 2%; }
+    .profile .profile_references ul {
+      padding-bottom: 2%; }
   .profile .profile_button {
     float: right;
-    margin-right: 2%; }
+    margin-right: 2%;
+    margin-top: 20%; }
 
 /** */
 /*  Primary button colors */
