@@ -14,8 +14,6 @@ export default class User {
   }
 
   attemptAuth(type, credentials) {
-    console.log("credits");
-    console.log(credentials);
     let route = (type === 'login') ? '/login' : '';
 
     return this._$http({
@@ -24,7 +22,7 @@ export default class User {
       data: {
         user: credentials
       }
-    }).then( (res) => {
+    }).then((res) => {
       this._JWT.save(res.data.user.token);
       this.current = res.data.user;
       console.log(res.data.user);
