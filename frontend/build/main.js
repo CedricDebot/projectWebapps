@@ -37514,10 +37514,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 function AuthConfig($stateProvider) {
-  //$httpProvider
   'ngInject';
-
-  // Define the routes
 
   $stateProvider.state('app.login', {
     url: '/login',
@@ -37576,7 +37573,7 @@ var AuthController = function () {
       this.isSubmitting = true;
       this._User.attemptAuth(this.authType, this.formData).then(function (res) {
         _this.isSubmitting = false;
-        _this._$state.go('app.profile', { djName: res.data.djName });
+        _this._$state.go('app.settings');
       }, function (err) {
         _this.isSubmitting = false;
         _this.errors = err.data.errors;
@@ -37610,14 +37607,9 @@ var _auth4 = _interopRequireDefault(_auth3);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// Create the home module where our functionality can attach to
 var authModule = _angular2.default.module('app.auth', []);
 
-// Include our UI-Router config settings
-
 authModule.config(_auth2.default);
-
-// Controllers
 
 authModule.controller('AuthController', _auth4.default);
 
@@ -37925,7 +37917,7 @@ angular.module("templates", []).run(["$templateCache", function ($templateCache)
   $templateCache.put("layout/header.html", "<header>\n  <div class=\"logo\">\n    <img src=\"../../images/logo.png\" alt=\"logo\"/>\n  </div>\n  <div class=\"login-link\">\n    <!--ik ben een dj link (niet-ingelogde gebruiker) -->\n    <a ui-sref=\"app.login\"\n      show-authed=\"false\">\n      Ik ben een dj\n    </a>\n\n    <!-- log out (ingelogde gebruiker)-->\n    <a ui-sref=\"app.login\"\n      ng-click=\"$ctrl.logout()\"\n    show-authed=\"true\">\n      Uitloggen\n    </a>\n  </div>\n\n  <div class=\"navigation\">\n  <nav class=\"navbar\">\n    <!-- nav voor niet-ingelogde gebruikers -->\n      <ul show-authed=\"false\">\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.home\">\n            Home\n          </a>\n        </li>\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.overview\">\n            DJ\'s\n          </a>\n        </li>\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.contact\">\n            Contact\n          </a>\n        </li>\n      </ul>\n\n      <ul show-authed=\"true\">\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.profile({djName: $ctrl.currentUser.djName})\">\n            Mijn Profiel\n          </a>\n        </li>\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.settings\">\n            Settings\n          </a>\n        </li>\n        <li>\n          <a class=\"nav-link\"\n            ui-sref-active=\"active\"\n            ui-sref=\"app.contact\">\n            Contact\n          </a>\n        </li>\n      </ul>\n  </nav>\n</div>\n</header>\n");
   $templateCache.put("overview/overview.html", "<div class=\"overview\">\n  <div class=\"overview_header\">\n    <h1>Gevonden DJ\'s</h1>\n    <div class=\"overview_profile_preview\"\n      ng-repeat=\"profile in $ctrl.profile\"\n      show-image\n      image=\"profile.image\"\n      ng-click=\"$ctrl.clickDj(profile.djName)\">\n      <div class=\"overview_name_block\">\n        <h3 class=\"name\" ng-bind=\"profile.djName\"></h3>\n      </div>\n    </div>\n  </div>\n</div>\n");
   $templateCache.put("profile/profile.html", "<div class=\"profile\">\n  <div class=\"left_container\">\n  <div class=\"profile_pic\"\n    show-image\n    image=\"$ctrl.profile.image\">\n    <div class=\"profile_name_block\">\n      <h3 class=\"name\" ng-bind=\"$ctrl.profile.djName\"></h3>\n    </div>\n  </div>\n\n  <div class=\"profile_genres\">\n    <ul>\n      <li ng-repeat=\"genre in $ctrl.profile.genres\">\n          {{genre}}\n      </li>\n    </ul>\n  </div>\n  <div class=\"profile_price\">\n    <h3>€ {{::$ctrl.profile.price}} / uur</h3>\n  </div>\n</div>\n\n  <div class=\"profile_bio\">\n    <p ng-bind=\"::$ctrl.profile.biography\"></p>\n  </div>\n\n  <div class=\"profile_references\">\n    <h2>Referenties</h2>\n    <ul>\n      <li ng-repeat=\"reference in $ctrl.profile.references\">\n        {{reference}}\n      </li>\n    </ul>\n  </div>\n\n  <div class=\"profile_button\">\n    <button class=\"btn btn-lg btn-primary pull-xs-right\"\n      ng-click=\"$ctrl.book()\">\n      Boeken\n    </button>\n</div>\n</div>\n");
-  $templateCache.put("settings/settings.html", "<div class=\"form_settings\">\n  <div class=\"form_header\">\n    <h1>Your settings</h1>\n  </div>\n\n  <list-errors errors=\"$ctrl.errors\"></list-errors>\n\n  <form ng-submit=\"$ctrl.submitForm()\">\n    <fieldset ng-disabled=\"$ctrl.isSubmitting\">\n\n      <fieldset class=\"form-group\">\n        <p>Profiel foto</p>\n        <input class=\"form-control\"\n          type=\"text\"\n          placeholder=\"URL of profile picture\"\n          ng-model=\"$ctrl.formData.image\"/>\n      </fieldset>\n\n      <fieldset class=\"form-group\">\n        <p>DJ-naam\n        <input class=\"form-control\"\n          type=\"text\"\n          placeholder=\"dj-naam\"\n          ng-model=\"$ctrl.formData.djName\"/>\n      </fieldset>\n\n      <fieldset class=\"form-group\">\n        <p>Regio</p>\n        <input class=\"form-control\"\n          type=\"text\"\n          placeholder=\"regio\"\n          list=\"datalistRegions\"\n          ng-model=\"$ctrl.formData.region\"/>\n          <datalist id=\"datalistRegions\">\n            <option value=\"Antwerpen\">Antwerpen</option>\n            <option value=\"Henegouwen\">Henegouwen</option>\n            <option value=\"Limburg\">Limburg</option>\n            <option value=\"Luik\">Luik</option>\n            <option value=\"Luxemburg\">Luxemburg</option>\n            <option value=\"Namen\">Namen</option>\n            <option value=\"Oost-Vlaanderen\">Oost-Vlaanderen</option>\n            <option value=\"Vlaam-Brabant\">Vlaams-Brabant</option>\n            <option value=\"Waals-Brabant\">Waals-Brabant</option>\n            <option value=\"West-Vlaanderen\">West-Vlaanderen</option>\n          </datalist>\n      </fieldset>\n\n      <fieldset class=\"form-group\">\n        <p>Prijs per uur</p>\n        <input class=\"form-control\"\n          type=\"number\"\n          placeholder=\"prijs per uur\"\n          ng-model=\"$ctrl.formData.price\"/>\n      </fieldset>\n\n      <fieldset class=\"form-group\">\n        <p>Korte biografie</p>\n        <textarea class=\"form-control form-control-lg\"\n          rows=\"8\"\n          placeholder=\"Korte biografie\"\n          ng-model=\"$ctrl.formData.biography\"/>\n      </fieldset>\n\n      <fieldset class=\"form-group\">\n        <p>Genres</p>\n        <input class=\"form-control\"\n          type=\"text\"\n          placeholder=\"genre\"\n          ng-model=\"$ctrl.formData.genres\"/>\n      </fieldset>\n\n      <fieldset class=\"form-group\">\n        <p>Referenties</p>\n        <input class=\"form-control\"\n          type=\"text\"\n          placeholder=\"referentie\"\n          ng-model=\"$ctrl.formData.references\"/>\n      </fieldset>\n\n      <button class=\"btn btn-lg btn-primary pull-xs-right\"\n          type=\"submit\">\n          Update profiel\n      </button>\n    </fieldset>\n  </form>\n</div>\n");
+  $templateCache.put("settings/settings.html", "<div class=\"form_settings\">\n  <div class=\"form_header\">\n    <h1>Your settings</h1>\n  </div>\n\n  <list-errors errors=\"$ctrl.errors\"></list-errors>\n\n  <form ng-submit=\"$ctrl.submitForm()\">\n    <fieldset ng-disabled=\"$ctrl.isSubmitting\">\n\n      <fieldset class=\"form-group\">\n        <p class=\"form_label\">Profiel foto</p>\n        <input class=\"form-control\"\n          type=\"text\"\n          placeholder=\"URL of profile picture\"\n          ng-model=\"$ctrl.formData.image\"/>\n      </fieldset>\n\n      <fieldset class=\"form-group\">\n        <p class=\"form_label\">DJ-naam<p>\n        <input class=\"form-control\"\n          type=\"text\"\n          placeholder=\"dj-naam\"\n          ng-model=\"$ctrl.formData.djName\"/>\n      </fieldset>\n\n      <fieldset class=\"form-group\">\n        <p class=\"form_label\">Regio</p>\n        <input class=\"form-control\"\n          type=\"text\"\n          placeholder=\"regio\"\n          list=\"datalistRegions\"\n          ng-model=\"$ctrl.formData.region\"/>\n          <datalist id=\"datalistRegions\">\n            <option value=\"Antwerpen\">Antwerpen</option>\n            <option value=\"Henegouwen\">Henegouwen</option>\n            <option value=\"Limburg\">Limburg</option>\n            <option value=\"Luik\">Luik</option>\n            <option value=\"Luxemburg\">Luxemburg</option>\n            <option value=\"Namen\">Namen</option>\n            <option value=\"Oost-Vlaanderen\">Oost-Vlaanderen</option>\n            <option value=\"Vlaam-Brabant\">Vlaams-Brabant</option>\n            <option value=\"Waals-Brabant\">Waals-Brabant</option>\n            <option value=\"West-Vlaanderen\">West-Vlaanderen</option>\n          </datalist>\n      </fieldset>\n\n      <fieldset class=\"form-group\">\n        <p class=\"form_label\">Prijs per uur</p>\n        <input class=\"form-control\"\n          type=\"number\"\n          placeholder=\"prijs per uur\"\n          ng-model=\"$ctrl.formData.price\"/>\n      </fieldset>\n\n      <fieldset class=\"form-group\">\n        <p class=\"form_label\">Korte biografie</p>\n        <textarea class=\"form-control form-control-lg\"\n          rows=\"8\"\n          placeholder=\"Korte biografie\"\n          ng-model=\"$ctrl.formData.biography\"/>\n      </fieldset>\n\n      <fieldset class=\"form-group\">\n        <p class=\"form_label\">Genres</p>\n        <input class=\"form-control\"\n          type=\"text\"\n          placeholder=\"genre\"\n          ng-model=\"$ctrl.formData.genres\"/>\n      </fieldset>\n\n      <fieldset class=\"form-group\">\n        <p class=\"form_label\">Referenties</p>\n        <input class=\"form-control\"\n          type=\"text\"\n          placeholder=\"referentie\"\n          ng-model=\"$ctrl.formData.references\"/>\n      </fieldset>\n\n      <button class=\"btn btn-lg btn-primary pull-xs-right\"\n          type=\"submit\">\n          Update profiel\n      </button>\n    </fieldset>\n  </form>\n</div>\n");
 }]);
 
 },{}],19:[function(require,module,exports){
@@ -38121,7 +38113,6 @@ var HomeCtrl = function () {
       }
 
       this._Profile.searchDjs(this._queryParams).then(function (res) {
-        console.log(res);
         _this.isSubmitting = false;
         _this._$state.go('app.overview', { queryParams: _this._queryParams });
       }, function (err) {
@@ -38177,14 +38168,9 @@ var _home4 = _interopRequireDefault(_home3);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// Create the module where our functionality can attach to
 var homeModule = _angular2.default.module('app.home', []);
 
-// Include our UI-Router config settings
-
 homeModule.config(_home2.default);
-
-// Controllers
 
 homeModule.controller('HomeCtrl', _home4.default);
 
@@ -38206,7 +38192,6 @@ var AppFooterCtrl = function AppFooterCtrl(AppConstants) {
 
   this.appName = AppConstants.appName;
 
-  // Get today's date to generate the year
   this.date = new Date();
 };
 AppFooterCtrl.$inject = ["AppConstants"];
@@ -38227,7 +38212,7 @@ Object.defineProperty(exports, "__esModule", {
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var AppHeaderCtrl = function AppHeaderCtrl(AppConstants, User, $scope) {
+var AppHeaderCtrl = function AppHeaderCtrl(AppConstants, User) {
   'ngInject';
 
   _classCallCheck(this, AppHeaderCtrl);
@@ -38235,13 +38220,9 @@ var AppHeaderCtrl = function AppHeaderCtrl(AppConstants, User, $scope) {
   this.appName = AppConstants.appName;
   this.currentUser = User.current;
 
-  /*$scope.watch('User.current', (newUser) => {
-    this.currentUser = User.current;
-  });*/
-
   this.logout = User.logout.bind(User);
 };
-AppHeaderCtrl.$inject = ["AppConstants", "User", "$scope"];
+AppHeaderCtrl.$inject = ["AppConstants", "User"];
 
 var AppHeader = {
   controller: AppHeaderCtrl,
@@ -38271,10 +38252,7 @@ var _footer2 = _interopRequireDefault(_footer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// Create the module where our functionality can attach to
 var layoutModule = _angular2.default.module('app.layout', []);
-
-// Components
 
 layoutModule.component('appHeader', _header2.default);
 
@@ -38328,8 +38306,6 @@ function OverviewConfig($stateProvider) {
     title: 'djs',
     resolve: {
       profile: ["Profile", "$stateParams", "$state", function profile(Profile, $stateParams, $state) {
-        console.log("queryParams");
-        console.log($stateParams.queryParams);
         return Profile.searchDjs($stateParams.queryParams).then(function (profile) {
           return profile;
         }, function (err) {
@@ -38419,7 +38395,6 @@ function ProfileConfig($stateProvider) {
     url: '/djs/profile/:djName',
     controller: 'ProfileCtrl as $ctrl',
     templateUrl: 'profile/profile.html',
-    //title: "profile",
     resolve: {
       profile: ["Profile", "$state", "$stateParams", function profile(Profile, $state, $stateParams) {
         return Profile.get($stateParams.djName).then(function (profile) {
@@ -38459,7 +38434,6 @@ var ProfileCtrl = function () {
   _createClass(ProfileCtrl, [{
     key: 'book',
     value: function book() {
-      console.log(this.profile.djName);
       this._$state.go('app.booking', { djName: this.profile.djName });
     }
   }]);
@@ -38494,10 +38468,7 @@ var _profiles2 = _interopRequireDefault(_profiles);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// Create the module where our functionality can attach to
 var servicesModule = _angular2.default.module('app.services', []);
-
-// services
 
 servicesModule.service('JWT', _jwt2.default);
 
@@ -38654,7 +38625,6 @@ var User = function () {
       }).then(function (res) {
         _this._JWT.save(res.data.user.token);
         _this.current = res.data.user;
-        console.log(res.data.user);
         return res;
       }, function (err) {
         console.log(err);
@@ -38772,14 +38742,9 @@ var _settings4 = _interopRequireDefault(_settings3);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// Create the home module where our functionality can attach to
 var settingsModule = _angular2.default.module('app.settings', []);
 
-// Include our UI-Router config settings
-
 settingsModule.config(_settings2.default);
-
-// Controllers
 
 settingsModule.controller('SettingsController', _settings4.default);
 
@@ -38788,14 +38753,12 @@ exports.default = settingsModule;
 },{"./settings.config":40,"./settings.controller":41,"angular":3}],40:[function(require,module,exports){
 'use strict';
 
-SettingsConfig.$inject = ["$stateProvider", "$httpProvider"];
+SettingsConfig.$inject = ["$stateProvider"];
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-function SettingsConfig($stateProvider, $httpProvider) {
+function SettingsConfig($stateProvider) {
   'ngInject';
-
-  // Define the routes
 
   $stateProvider.state('app.settings', {
     url: '/settings',
@@ -38833,8 +38796,6 @@ var SettingsController = function () {
     this._User = User;
     this._$state = $state;
 
-    console.log(this._User);
-
     this.formData = {
       djName: User.current.djName,
       region: User.current.region,
@@ -38843,8 +38804,6 @@ var SettingsController = function () {
       genres: User.current.genres,
       references: User.current.references
     };
-
-    console.log(this.formData);
   }
 
   _createClass(SettingsController, [{
@@ -38854,7 +38813,6 @@ var SettingsController = function () {
 
       this.isSubmitting = true;
       this._User.update(this.formData).then(function (user) {
-        console.log('succes!');
         _this.isSubmitting = false;
         _this._$state.go('app.profile', { djName: user.djName });
       }, function (err) {

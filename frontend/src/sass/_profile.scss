@@ -60,13 +60,18 @@
     }
   }
 }
+  .profile_bio {
+    margin-left: 25%;
+    padding-top: 2%;
+    width: 75%;
+  }
 
   .profile_references {
     background-color: $color-veryLightGray;
     position: relative;
     width: 50%;
     margin: auto;
-    top: 200px;
+    top: 175px;
     left: 125px;
 
     h2 {
@@ -82,6 +87,6 @@
   .profile_button {
     float: right;
     margin-right: 2%;
-    margin-top: 20%;
+    margin-top: 15%;
   }
 }

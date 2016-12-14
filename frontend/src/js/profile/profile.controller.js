@@ -7,7 +7,6 @@ class ProfileCtrl {
     }
 
   book() {
-    console.log(this.profile.djName);
     this._$state.go('app.booking',  {djName: this.profile.djName});
   }
 }

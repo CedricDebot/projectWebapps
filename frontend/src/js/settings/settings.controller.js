@@ -6,8 +6,6 @@ class SettingsController {
     this._User = User;
     this._$state = $state;
 
-    console.log(this._User);
-
     this.formData = {
       djName: User.current.djName,
       region: User.current.region,
@@ -17,13 +15,11 @@ class SettingsController {
       references: User.current.references
     };
 
-    console.log(this.formData);
 }
     submitForm() {
       this.isSubmitting = true;
       this._User.update(this.formData).then(
         (user) => {
-          console.log('succes!');
           this.isSubmitting = false;
           this._$state.go('app.profile', {djName:user.djName});
         },

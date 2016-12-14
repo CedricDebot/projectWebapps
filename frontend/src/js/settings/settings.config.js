@@ -1,7 +1,6 @@
-function SettingsConfig($stateProvider, $httpProvider) {
+function SettingsConfig($stateProvider) {
   'ngInject';
 
-  // Define the routes
   $stateProvider
   .state('app.settings', {
     url: '/settings',

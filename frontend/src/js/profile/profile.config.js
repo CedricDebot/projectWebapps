@@ -6,7 +6,6 @@ function ProfileConfig($stateProvider) {
     url: '/djs/profile/:djName',
     controller: 'ProfileCtrl as $ctrl',
     templateUrl: 'profile/profile.html',
-    //title: "profile",
     resolve: {
       profile: function(Profile, $state, $stateParams) {
         return Profile.get($stateParams.djName).then(

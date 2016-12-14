@@ -9,8 +9,6 @@ function OverviewConfig($stateProvider) {
     title: 'djs',
     resolve: {
       profile: function(Profile, $stateParams, $state) {
-        console.log("queryParams");
-        console.log($stateParams.queryParams);
         return Profile.searchDjs($stateParams.queryParams).then(
           (profile) => profile,
           (err) => $state.go('app.home')
