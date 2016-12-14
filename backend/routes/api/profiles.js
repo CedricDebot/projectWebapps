@@ -57,18 +57,6 @@ router.param('djName', function(req, res, next, djName){
 	});
 });
 
-/*router.post('/djs', function(req, res, next){
-	var dj = new User(req.body);
-
-	dj.save(function(err, dj) {
-		if(err) {
-		       	return next(err);
-		}
-
-		res.json(dj);
-	});
-});*/
-
 router.get('/inthepicture', function(req, res, next) {
  	User.findRandom().limit(3).exec(function(err, dj) {
 		if(err) {
