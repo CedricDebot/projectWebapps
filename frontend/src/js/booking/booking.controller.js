@@ -1,6 +1,8 @@
 class BookingCtrl {
-  constructor() {
+  constructor(profile) {
     'ngInject';
+
+    this.profile = profile;
   }
 }
 

@@ -7,7 +7,9 @@ class ProfileCtrl {
     }
 
   book() {
-    this._$state.go("app.booking");
+    console.log(this.profile.djName);
+    this._$state.go('app.booking',  {djName: this.profile.djName});
   }
 }
+
 export default ProfileCtrl;

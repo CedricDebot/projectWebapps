@@ -25,6 +25,7 @@ class SettingsController {
         (user) => {
           console.log('succes!');
           this.isSubmitting = false;
+          this._$state.go('app.profile', {djName:user.djName});
         },
         (err) => {
           this.isSubmitting = false;

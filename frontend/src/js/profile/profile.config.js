@@ -11,10 +11,10 @@ function ProfileConfig($stateProvider) {
       profile: function(Profile, $state, $stateParams) {
         return Profile.get($stateParams.djName).then(
           (profile) => profile,
-          (err) => $state.go('app.overview'),
+          (err) => $state.go('app.home')
         );
       }
-  }
+    }
   });
 }
 

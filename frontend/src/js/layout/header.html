@@ -55,14 +55,7 @@
         <li>
           <a class="nav-link"
             ui-sref-active="active"
-            ui-sref="app.djs">
-            DJ's
-          </a>
-        </li>
-        <li>
-          <a class="nav-link"
-            ui-sref-active="active"
-            ui-sref="app.profile">
+            ui-sref="app.profile({djName: $ctrl.currentUser.djName})">
             Mijn Profiel
           </a>
         </li>
