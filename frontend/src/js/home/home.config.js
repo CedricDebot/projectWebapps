@@ -7,11 +7,6 @@ function HomeConfig($stateProvider) {
     controller: 'HomeCtrl as $ctrl',
     templateUrl: 'home/home.html',
     title: 'Home',
-    /*resolve: {
-      auth: function(User) {
-        return User.ensureAuthIs(true);
-      }
-    }*/
     resolve: {
       profile: function(Profile) {
         return Profile.getDjsInThePicture();
