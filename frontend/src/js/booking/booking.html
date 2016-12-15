@@ -1,11 +1,9 @@
 <div class="bookings-page">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 offset-md-3 col-xs-12">
-        <h1 class="text-xs-center">Boek dj-naam</h1>
+      <div class="form_header">
+        <h1 class="text-xs-center">Boek {{::$ctrl.profile.djName}}</h1>
 
         <list-errors errors="$ctrl.errors"></list-errors>
-
+      </div>
         <form ng-submit="$ctrl.submitForm()">
           <fieldset ng-disabled="$ctrl.isSubmitting">
 
@@ -59,7 +57,7 @@
             </fieldset>
 
             <fieldset class="form-group">
-              <input class="form-group"
+              <input class="form-control"
               type="text"
               placeholder="locatie"
               ng-model="$ctrl.formData.location"/>
@@ -78,7 +76,4 @@
             </button>
           </fieldset>
         </form>
-      </div>
-    </div>
-  </div>
 </div>

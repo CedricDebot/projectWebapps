@@ -24,7 +24,7 @@
         padding-top: 5px; }
 
 header {
-  background-color: #449d44;
+  background-color: #01579B;
   height: 150px; }
 
 .logo {
@@ -66,7 +66,7 @@ header {
         padding-top: 5px; }
 
 footer {
-  background-color: #449d44;
+  background-color: #01579B;
   width: 100%; }
   footer .footer_content {
     text-align: center; }
@@ -116,7 +116,6 @@ body {
         margin: auto; }
       body .form_search form button {
         margin-left: 69.5%;
-        background-color: #449d44;
         margin-bottom: 5%; }
   body #last_form {
     margin-bottom: 2%; }
@@ -193,7 +192,7 @@ body {
       margin: auto; }
     .form_contact form button {
       margin-left: 63.5%;
-      background-color: #449d44;
+      background-color: #01579B;
       margin-bottom: 5%; }
 
 /** */
@@ -240,12 +239,16 @@ body {
       .profile .left_container .profile_price h3 {
         text-align: center;
         margin-bottom: 10%; }
+  .profile .profile_bio {
+    margin-left: 25%;
+    padding-top: 2%;
+    width: 75%; }
   .profile .profile_references {
     background-color: #f3f3f3;
     position: relative;
     width: 50%;
     margin: auto;
-    top: 200px;
+    top: 175px;
     left: 125px; }
     .profile .profile_references h2 {
       text-align: center;
@@ -255,7 +258,7 @@ body {
   .profile .profile_button {
     float: right;
     margin-right: 2%;
-    margin-top: 20%; }
+    margin-top: 15%; }
 
 /** */
 /*  Primary button colors */
@@ -307,7 +310,37 @@ body {
     .form_settings form .form-control {
       width: 60%;
       margin: auto; }
+    .form_settings form .form_label {
+      padding-left: 20%; }
     .form_settings form button {
       margin-left: 59.5%;
-      background-color: #449d44;
+      background-color: #01579B;
+      margin-bottom: 5%; }
+
+/** */
+/*  Primary button colors */
+/** */
+.bookings-page {
+  width: 75%;
+  height: auto;
+  margin: 2% auto;
+  background-color: #fff; }
+  .bookings-page .form_header {
+    width: 75%;
+    margin-left: 12.5%;
+    margin-bottom: 2rem !important;
+    padding-top: 1.5%;
+    text-align: center; }
+  .bookings-page form {
+    width: 50%;
+    margin: auto; }
+    .bookings-page form .form_group {
+      margin: auto;
+      margin-bottom: 2%; }
+    .bookings-page form .form-control {
+      width: 60%;
+      margin: auto; }
+    .bookings-page form button {
+      margin-left: 63.5%;
+      background-color: #01579B;
       margin-bottom: 5%; }
